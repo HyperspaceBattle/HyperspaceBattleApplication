@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperspaceBattle", "Assembly-CSharp.csproj", "{0414D0AE-C929-A768-A86B-BA2D5B0650F1}"
+EndProject
+Project("{BF3CCEDC-2602-4034-74E8-9E9365648EC9}") = "HyperspaceBattle", "Assembly-UnityScript.unityproj", "{1C191301-3E6E-625E-13E6-ED9C22C41682}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperspaceBattle", "Assembly-CSharp-Editor.csproj", "{11195CBD-C9C9-3EA4-AF95-0BFB255BA222}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0414D0AE-C929-A768-A86B-BA2D5B0650F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0414D0AE-C929-A768-A86B-BA2D5B0650F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0414D0AE-C929-A768-A86B-BA2D5B0650F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0414D0AE-C929-A768-A86B-BA2D5B0650F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C191301-3E6E-625E-13E6-ED9C22C41682}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C191301-3E6E-625E-13E6-ED9C22C41682}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C191301-3E6E-625E-13E6-ED9C22C41682}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C191301-3E6E-625E-13E6-ED9C22C41682}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11195CBD-C9C9-3EA4-AF95-0BFB255BA222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11195CBD-C9C9-3EA4-AF95-0BFB255BA222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11195CBD-C9C9-3EA4-AF95-0BFB255BA222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11195CBD-C9C9-3EA4-AF95-0BFB255BA222}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal
