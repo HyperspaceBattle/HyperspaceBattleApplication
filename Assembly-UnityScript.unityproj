@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{1C191301-3E6E-625E-13E6-ED9C22C41682}</ProjectGuid>
+    <ProjectGuid>{C7CE0306-78C7-325A-D950-E26C0428EC7F}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-UnityScript</AssemblyName>
@@ -115,6 +115,15 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/Program Files/Unity5.4.3/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Rewired_Editor">
+ <HintPath>D:/Main Files/Art/Games/HyperspaceBattleApp/Assets/Component/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Rewired_Core">
+ <HintPath>D:/Main Files/Art/Games/HyperspaceBattleApp/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ </Reference>
+ <Reference Include="Rewired_Windows_Lib">
+ <HintPath>D:/Main Files/Art/Games/HyperspaceBattleApp/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/D/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -135,15 +144,6 @@
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/D/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Windows_Lib">
- <HintPath>D:/Main Files/Art/Games/HyperspaceBattle/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Core">
- <HintPath>D:/Main Files/Art/Games/HyperspaceBattle/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Editor">
- <HintPath>D:/Main Files/Art/Games/HyperspaceBattle/Assets/Component/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

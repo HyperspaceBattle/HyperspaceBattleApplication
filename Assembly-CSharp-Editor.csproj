@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{11195CBD-C9C9-3EA4-AF95-0BFB255BA222}</ProjectGuid>
+    <ProjectGuid>{FE0AF572-A87E-412C-99C4-0FFF95BC1FCA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp-Editor</AssemblyName>
@@ -51,6 +51,24 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Assets\Editor\ImageEffects\AntialiasingEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\BloomAndFlaresEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\BloomEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\CameraMotionBlurEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\ColorCorrectionCurvesEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\ColorCorrectionLookupEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\CreaseShadingEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\DepthOfFieldDeprecatedEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\DepthOfFieldEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\EdgeDetectionEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\NoiseAndGrainEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\SunShaftsEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\TonemappingEditor.cs" />
+     <Compile Include="Assets\Assets\Editor\ImageEffects\VignetteAndChromaticAberrationEditor.cs" />
+     <Compile Include="Assets\Assets\RetroTVEffects\Editor\CRTEffectInspector.cs" />
+     <Compile Include="Assets\Assets\RetroTVEffects\Editor\SpritePalettizer.cs" />
+     <Compile Include="Assets\Component\Paroxe\UltimateBloom\Editor\BokehTextureGenerator.cs" />
+     <Compile Include="Assets\Component\Paroxe\UltimateBloom\Editor\UltimateBloomEditor.cs" />
      <Compile Include="Assets\Component\Rewired\Extras\ControlMapper\Scripts\Editor\ControlMapperInspector.cs" />
      <Compile Include="Assets\Component\Rewired\Extras\ControlMapper\Scripts\Editor\CustomButtonInspector.cs" />
      <Compile Include="Assets\Component\Rewired\Extras\ControlMapper\Scripts\Editor\CustomSliderInspector.cs" />
@@ -75,40 +93,6 @@
      <Compile Include="Assets\Component\Standard Assets\Effects\LensAberrations\Editor\LensAberrationsEditor.cs" />
      <Compile Include="Assets\Component\Standard Assets\Effects\ScreenSpaceReflection\Editor\ScreenSpaceReflectionEditor.cs" />
      <Compile Include="Assets\Component\Standard Assets\Effects\TonemappingColorGrading\Editor\TonemappingColorGradingEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Attributes\PostProcessingModelEditorAttribute.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\AmbientOcclusionModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\AntialiasingModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\BloomModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\BuiltinDebugViewsEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\ChromaticAberrationEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\ColorGradingModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\DefaultPostFxModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\DepthOfFieldModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\DitheringModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\EyeAdaptationModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\FogModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\GrainModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\MotionBlurModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\ScreenSpaceReflectionModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\UserLutModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Models\VignetteModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Monitors\HistogramMonitor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Monitors\ParadeMonitor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Monitors\VectorscopeMonitor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Monitors\WaveformMonitor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PostProcessingBehaviourEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PostProcessingFactory.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PostProcessingInspector.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PostProcessingModelEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PostProcessingMonitor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PropertyDrawers\GetSetDrawer.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PropertyDrawers\MinDrawer.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\PropertyDrawers\TrackballGroupDrawer.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Utils\CurveEditor.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Utils\EditorGUIHelper.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Utils\EditorResources.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Utils\FxStyles.cs" />
-     <Compile Include="Assets\Component\Unity Particle Pack\PostProcessing\Editor\Utils\ReflectionUtils.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity5.4.3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -172,6 +156,15 @@
  <Reference Include="UnityEditor.WindowsStandalone.Extensions">
  <HintPath>D:/Program Files/Unity5.4.3/Editor/Data/PlaybackEngines/windowsstandalonesupport/UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Rewired_Editor">
+ <HintPath>D:/Main Files/Art/Games/HyperspaceBattleApp/Assets/Component/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="Rewired_Core">
+ <HintPath>D:/Main Files/Art/Games/HyperspaceBattleApp/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
+ </Reference>
+ <Reference Include="Rewired_Windows_Lib">
+ <HintPath>D:/Main Files/Art/Games/HyperspaceBattleApp/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>C:/Users/D/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>
  </Reference>
@@ -193,21 +186,12 @@
  <Reference Include="UnityEngine.StandardEvents">
  <HintPath>C:/Users/D/AppData/LocalLow/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.10/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
- <Reference Include="Rewired_Windows_Lib">
- <HintPath>D:/Main Files/Art/Games/HyperspaceBattle/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Windows_Lib.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Core">
- <HintPath>D:/Main Files/Art/Games/HyperspaceBattle/Assets/Component/Rewired/Internal/Libraries/Runtime/Rewired_Core.dll</HintPath>
- </Reference>
- <Reference Include="Rewired_Editor">
- <HintPath>D:/Main Files/Art/Games/HyperspaceBattle/Assets/Component/Rewired/Internal/Libraries/Editor/Rewired_Editor.dll</HintPath>
- </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{0414D0AE-C929-A768-A86B-BA2D5B0650F1}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{3D481E46-6779-B05A-886A-DDBAF78DF2F5}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript.csproj">
-      <Project>{1C191301-3E6E-625E-13E6-ED9C22C41682}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+      <Project>{C7CE0306-78C7-325A-D950-E26C0428EC7F}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
