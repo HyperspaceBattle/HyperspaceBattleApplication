@@ -86,14 +86,31 @@ public class Player1Controller : MonoBehaviour {
 	public float evolvedEnergyMax				= 10f;
 	public float evolvedExhaustRate				= 2f;
 	public float evolvedRestoreRate				= 1f;
-	
+
+
+	[SerializeField] private GameObject pausePanel; 
+	public bool paused = false;
+
 	// Use this for initialization
 	void Start () {
-		
+		pausePanel.SetActive(false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		if (player.GetButtonDown ("Pause"))
+		{
+			if (!paused) 
+			{
+				PauseGame();
+
+			}
+			else  
+			{
+				ContinueGame();   
+			}
+		} 
+
 		ShipActivator ();
 		if ( isControllable )											// if player controllable, then move character
 		{
@@ -102,6 +119,26 @@ public class Player1Controller : MonoBehaviour {
 			UpdateMove ();
 		}
 	
+
+	}
+
+	private void PauseGame()
+	{
+		Debug.Log ("Game Pause");
+		Time.timeScale = 0;
+		pausePanel.SetActive(true);
+		isControllable = false; 
+		//Disable scripts that still work while timescale is set to 0
+		paused = true;
+	} 
+	private void ContinueGame()
+	{
+		Debug.Log ("Game Continued");
+		Time.timeScale = 1;
+		pausePanel.SetActive(false);
+		isControllable = true;
+		//enable the scripts again
+		paused = false;
 	}
 
 	void UpdateMove (){													//Axis Movement, uses controller.move for proper collsion using character controller
