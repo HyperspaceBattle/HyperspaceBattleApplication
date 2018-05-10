@@ -4,7 +4,10 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - PlayerBullet
+  - Player1
+  - Player2
+  - Player4
+  - Player3
   layers:
   - Default
   - TransparentFX
@@ -14,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - PlayerBullet
+  - playerBullet
   - 
   - 
   - 

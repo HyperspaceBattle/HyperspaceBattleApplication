@@ -1,15 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 [RequireComponent(typeof(CharacterController))]
 public class Player1Controller : MonoBehaviour {
-
-	public bool isControllable					= true; 				// disables for menus or pause screens
-
-	//required rewired =====================================================================================
+	
+	//All objects report to the game manager which handles scenes, data, and menus  
+	public GameObject 							AppManager;
+	
+	//REWIRED CONTROLLER SUPPORT
+	//================================================================
 	public int playerId = 0; // The Rewired player id of this character
 	private Player player; // The Rewired Player
 	private CharacterController cc;
@@ -24,6 +26,11 @@ public class Player1Controller : MonoBehaviour {
 	}
 	//======================================================================================================
 	
+	//OBJECT VARIABLES
+	// disables for menus, pause screens, death, paralysis, etc.
+	public bool isControllable					= true; 				
+	public GameObject 							RotationController;
+
 	//movement variables 
 	private float speed 						= 0.0f;
 	private float speedNormal 					= .42f;
@@ -36,10 +43,11 @@ public class Player1Controller : MonoBehaviour {
 	private float hyperExhaustRate				= 2f; 
 	private float hyperRestoreRate				= 1f;
 
+	public int hitPoints						=	5;
 	
-	//player ship objects and bool to be set active/ inactive
+	//player ship objects to show/hide active/inactive and variable ship stats
 	public bool usingVector; 
-	public GameObject vectorShip; 
+	public GameObject 							vectorShip; 
 	public float vectorSpeedNormal				= .42f; 
 	public float vectorSpeedMax					= 2f;
 	public float vectorEnergyMax				= 10f;
@@ -47,29 +55,29 @@ public class Player1Controller : MonoBehaviour {
 	public float vectorRestoreRate				= 1f;
 	
 	public bool usingStalingrad; 
-	public GameObject stalingradShip;
-	public float stalingradSpeedNormal				= .42f; 
-	public float stalingradSpeedMax					= 2f;
-	public float stalingradEnergyMax				= 10f;
-	public float stalingradExhaustRate				= 2f;
-	public float stalingradRestoreRate				= 1f;
+	public GameObject 							stalingradShip;
+	public float stalingradSpeedNormal			= .42f; 
+	public float stalingradSpeedMax				= 2f;
+	public float stalingradEnergyMax			= 10f;
+	public float stalingradExhaustRate			= 2f;
+	public float stalingradRestoreRate			= 1f;
 	
 	public bool usingMoonFennec; 
-	public GameObject moonFennecShip;
-	public float moonFennecSpeedNormal				= .42f; 
-	public float moonFennecSpeedMax					= 2f;
-	public float moonFennecEnergyMax				= 10f;
-	public float moonFennecExhaustRate				= 2f;
-	public float moonFennecRestoreRate				= 1f;
+	public GameObject 							moonFennecShip;
+	public float moonFennecSpeedNormal			= .42f; 
+	public float moonFennecSpeedMax				= 2f;
+	public float moonFennecEnergyMax			= 10f;
+	public float moonFennecExhaustRate			= 2f;
+	public float moonFennecRestoreRate			= 1f;
 	
 	public bool usingLaGalaFighter; 
-	public GameObject laGalaFighterShipL;
-	public GameObject laGalaFighterShipR;
-	public float laGalaFighterSpeedNormal				= .42f; 
-	public float laGalaFighterSpeedMax					= 2f;
-	public float laGalaFighterEnergyMax				= 10f;
-	public float laGalaFighterExhaustRate				= 2f;
-	public float laGalaFighterRestoreRate				= 1f;
+	public GameObject 							laGalaFighterShipL;
+	public GameObject 							laGalaFighterShipR;
+	public float laGalaFighterSpeedNormal		= .42f; 
+	public float laGalaFighterSpeedMax			= 2f;
+	public float laGalaFighterEnergyMax			= 10f;
+	public float laGalaFighterExhaustRate		= 2f;
+	public float laGalaFighterRestoreRate		= 1f;
 	
 	public bool usingHunter; 
 	public GameObject hunterShip;
@@ -80,69 +88,68 @@ public class Player1Controller : MonoBehaviour {
 	public float hunterRestoreRate				= 1f;
 	
 	public bool usingEvolved; 
-	public GameObject evolvedShip;
+	public GameObject 							evolvedShip;
 	public float evolvedSpeedNormal				= .42f; 
-	public float evolvedSpeedMax					= 2f;
+	public float evolvedSpeedMax				= 2f;
 	public float evolvedEnergyMax				= 10f;
 	public float evolvedExhaustRate				= 2f;
 	public float evolvedRestoreRate				= 1f;
 
+	public GameObject 							explosionFX; 	//sound effect in explosion			
 
-	[SerializeField] private GameObject pausePanel; 
-	public bool paused = false;
+	public bool paused 							= false;		//pause state
 
+	private bool canPause 						= true;
 	// Use this for initialization
 	void Start () {
-		pausePanel.SetActive(false);
+		//pausePanel.SetActive(false);
+		ShipActivator ();		//can also be put in update if needed
 	}
 	
 	// Update is called once per frame
 	void Update () {
+		//simplest pause i could find
 		if (player.GetButtonDown ("Pause"))
 		{
-			if (!paused) 
-			{
-				PauseGame();
-
-			}
-			else  
-			{
-				ContinueGame();   
-			}
+			if (!paused) {PauseGame();}
+			else  {ContinueGame();}
 		} 
-
-		ShipActivator ();
-		if ( isControllable )											// if player controllable, then move character
+		
+		// if player controllable, then check to see if using hyperspeed then and move character
+		if ( isControllable )											
 		{
 			Hyperspeed (); 
 			HyperspeedEnergyLimiter ();
 			UpdateMove ();
 		}
+			 
 	
-
 	}
 
 	private void PauseGame()
 	{
 		Debug.Log ("Game Pause");
-		Time.timeScale = 0;
-		pausePanel.SetActive(true);
+		if(canPause){Time.timeScale = 0;}
+		//pausePanel.SetActive(true);
 		isControllable = false; 
 		//Disable scripts that still work while timescale is set to 0
+		RotationController.SetActive (false);
 		paused = true;
 	} 
 	private void ContinueGame()
 	{
 		Debug.Log ("Game Continued");
-		Time.timeScale = 1;
-		pausePanel.SetActive(false);
+		if(canPause){Time.timeScale = 1;}
+		//pausePanel.SetActive(false);
 		isControllable = true;
+		RotationController.SetActive (true);
 		//enable the scripts again
 		paused = false;
 	}
 
-	void UpdateMove (){													//Axis Movement, uses controller.move for proper collsion using character controller
-
+	void UpdateMove (){													
+	
+		//Axis Movement, uses controller.move for precise collision using character controller
 		moveVector.x = player.GetAxis("LS Move Horizontal"); 			// get input by name or action id
 		moveVector.z = player.GetAxis("LS Move Vertical");
 		
@@ -264,4 +271,78 @@ public class Player1Controller : MonoBehaviour {
 			else evolvedShip.SetActive (false); 
 			
 	}
+	
+	//COLLISION SECTION ======================
+	
+	void OnTriggerEnter( Collider other) {			
+
+		if (playerId == 0){ 
+			if (other.tag == "Player2" || other.tag == "Player3" ||other.tag == "Player4" ){
+				Debug.Log ("Player1 Collision");
+				hitPoints -= 1;
+					if (hitPoints <= 0){
+						Explode	();	
+						   SceneManager.LoadScene("P2Victory", LoadSceneMode.Single);
+
+					}
+			}
+		}
+			
+			
+		if (playerId == 1){
+			if (other.tag == "Player3" || other.tag == "Player4" ||other.tag == "Player1" ){
+				Debug.Log ("Player2 Collision");		
+				hitPoints -= 1;
+					if (hitPoints <= 0){
+						Explode	();	
+						   SceneManager.LoadScene("P1Victory", LoadSceneMode.Single);
+					}
+			}
+		}
+		if (playerId == 2){
+			if (other.tag == "Player4" || other.tag == "Player1" ||other.tag == "Player2" ){
+				Debug.Log ("Player3 Collision");
+				hitPoints -= 1;
+					if (hitPoints <= 0){
+						Explode	();	
+						SceneManager.LoadScene("P3Victory", LoadSceneMode.Single);
+					}
+			}
+		}
+		
+		if (playerId == 3){
+			if (other.tag == "Player1" || other.tag == "Player2" ||other.tag == "Player3" ){
+				Debug.Log ("Player4 Collision");
+					hitPoints -= 1;
+					if (hitPoints <= 0){
+						Explode	();	
+						SceneManager.LoadScene("P4Victory", LoadSceneMode.Single);
+					}
+			}
+		}
+											
+
+	}
+	
+	void Explode (){
+		canPause = false;
+		Time.timeScale = .1f;
+		isControllable = false;
+		//spawn explosion
+		 Instantiate(explosionFX, transform.position, transform.rotation);
+		RotationController.SetActive (false);
+		
+		//turn off ship meshes
+		vectorShip.SetActive (false);
+		stalingradShip.SetActive (false);
+		moonFennecShip.SetActive (false);
+		laGalaFighterShipL.SetActive (false);
+		laGalaFighterShipR.SetActive (false);
+		hunterShip.SetActive (false);
+		evolvedShip.SetActive (false);
+		gameObject.SetActive (false);
+
+	}
+		
 }
+	
