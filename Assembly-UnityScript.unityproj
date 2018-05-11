@@ -52,6 +52,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Component\MasterLock.js" />
+     <Compile Include="Assets\Component\MusicTransitionFader.js" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Program Files/Unity5.4.3/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

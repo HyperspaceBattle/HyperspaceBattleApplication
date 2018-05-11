@@ -1,13 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\Player1Controller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Component\ShipSelect.cs">
     <Files>
-      <File FileName="Assets\Component\FramerateControl.cs" Line="1" Column="1" />
-      <File FileName="Assets\Controller\PlayerGunStd.cs" Line="1" Column="1" />
-      <File FileName="Assets\Controller\PlayerAimRotate.cs" Line="5" Column="47" />
-      <File FileName="Assets\Model\AppManager.cs" Line="11" Column="3" />
-      <File FileName="Assets\Controller\Player1Controller.cs" Line="285" Column="36" />
-      <File FileName="Assets\Component\TimedReset.cs" Line="41" Column="3" />
+      <File FileName="Assets\Model\AppManager.cs" Line="66" Column="68" />
+      <File FileName="Assets\Controller\Player1Controller.cs" Line="30" Column="2" />
+      <File FileName="Assets\Component\ShipSelect.cs" Line="102" Column="40" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -23,6 +23,7 @@ public class Player1Controller : MonoBehaviour {
 		player = ReInput.players.GetPlayer(playerId);
 		// Get the character controller
 		cc = GetComponent<CharacterController>();
+		isControllable = true;
 	}
 	//======================================================================================================
 	
@@ -38,68 +39,87 @@ public class Player1Controller : MonoBehaviour {
 	private Vector3 direction; 
 	
 	private bool canHyperspeed 					= true;
-	private float hyperEnergy					= 0f;
+	public float hyperEnergy					= 0f;
 	private float hyperEnergyMax				= 10f;
 	private float hyperExhaustRate				= 2f; 
 	private float hyperRestoreRate				= 1f;
+	private float collisionRadius				= .5f;
 
-	public int hitPoints						=	5;
 	
 	//player ship objects to show/hide active/inactive and variable ship stats
 	public bool usingVector; 
 	public GameObject 							vectorShip; 
+	public int vectorHp							= 5;
 	public float vectorSpeedNormal				= .42f; 
 	public float vectorSpeedMax					= 2f;
 	public float vectorEnergyMax				= 10f;
 	public float vectorExhaustRate				= 2f;
 	public float vectorRestoreRate				= 1f;
+	public float vectorcollisionRadius			= .5f;
 	
 	public bool usingStalingrad; 
 	public GameObject 							stalingradShip;
+	public int stalingradHp						= 5;
 	public float stalingradSpeedNormal			= .42f; 
 	public float stalingradSpeedMax				= 2f;
 	public float stalingradEnergyMax			= 10f;
 	public float stalingradExhaustRate			= 2f;
 	public float stalingradRestoreRate			= 1f;
-	
+	public float stalingradCollisionRadius		= .5f;
+
 	public bool usingMoonFennec; 
 	public GameObject 							moonFennecShip;
+	public int moonFennecHp						= 5;
 	public float moonFennecSpeedNormal			= .42f; 
 	public float moonFennecSpeedMax				= 2f;
 	public float moonFennecEnergyMax			= 10f;
 	public float moonFennecExhaustRate			= 2f;
 	public float moonFennecRestoreRate			= 1f;
-	
+	public float moonFennecCollisionRadius		= .5f;
+
 	public bool usingLaGalaFighter; 
 	public GameObject 							laGalaFighterShipL;
 	public GameObject 							laGalaFighterShipR;
+	public int laGalaFighterHp					= 5;
 	public float laGalaFighterSpeedNormal		= .42f; 
 	public float laGalaFighterSpeedMax			= 2f;
 	public float laGalaFighterEnergyMax			= 10f;
 	public float laGalaFighterExhaustRate		= 2f;
 	public float laGalaFighterRestoreRate		= 1f;
-	
+	public float laGalaFighterCollisionRadius	= .5f;
+
 	public bool usingHunter; 
 	public GameObject hunterShip;
 	public float hunterSpeedNormal				= .42f; 
+	public int HunterHp							= 5;
 	public float hunterSpeedMax					= 2f;
 	public float hunterEnergyMax				= 10f;
 	public float hunterExhaustRate				= 2f;
 	public float hunterRestoreRate				= 1f;
-	
+	public float hunterCollisionRadius			= .5f;
+
 	public bool usingEvolved; 
 	public GameObject 							evolvedShip;
+	public int evolvedHp						= 5;
 	public float evolvedSpeedNormal				= .42f; 
 	public float evolvedSpeedMax				= 2f;
 	public float evolvedEnergyMax				= 10f;
 	public float evolvedExhaustRate				= 2f;
 	public float evolvedRestoreRate				= 1f;
+	public float evolvedCollisionRadius			= .5f;
 
 	public GameObject 							explosionFX; 	//sound effect in explosion			
+	public GameObject							chargingFX;
 
 	public bool paused 							= false;		//pause state
-
 	private bool canPause 						= true;
+
+	public int hitPoints						= 5;
+	public GameObject 							hpmarker1;
+	public GameObject 							hpmarker2;
+	public GameObject 							hpmarker3;
+	public GameObject 							hpmarker4;
+	public GameObject 							hpmarker5;
 	// Use this for initialization
 	void Start () {
 		//pausePanel.SetActive(false);
@@ -108,6 +128,7 @@ public class Player1Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		updateHP ();
 		//simplest pause i could find
 		if (player.GetButtonDown ("Pause"))
 		{
@@ -160,6 +181,15 @@ public class Player1Controller : MonoBehaviour {
 
 	}
 	void Hyperspeed (){
+
+		//charging fx code
+		if (hyperEnergy <= hyperEnergyMax *.9f) {
+			chargingFX.SetActive (true);
+		} 
+		else {
+			chargingFX.SetActive (false);
+		}
+
 		//press the button
 		if (player.GetButton /*LongPress*/ ("Hyperspeed")){
 			//what to do if you have no energy
@@ -178,6 +208,7 @@ public class Player1Controller : MonoBehaviour {
 				// you have enough to start
 				if (hyperEnergy >= hyperEnergyMax * .25f){
 				canHyperspeed = true;
+
 				}
 			}
 		
@@ -192,18 +223,26 @@ public class Player1Controller : MonoBehaviour {
 				//hyperEnergy += hyperRestoreRate * Time.deltaTime;
 
 			}
+			chargingFX.SetActive (false);
 			
 		}
-		else hyperEnergy += hyperRestoreRate * Time.deltaTime;
+		 else {
+
+			hyperEnergy += hyperRestoreRate * Time.deltaTime;
+			speed = speedNormal;
+//			if (hyperEnergy >= hyperEnergyMax) {
+//				hyperEnergyMax -= .05f;
+//			}
+		}
 
 	}
 	
 	void HyperspeedEnergyLimiter (){
-			if (hyperEnergy > hyperEnergyMax){
-				hyperEnergy = hyperEnergyMax;}
+			if (hyperEnergy >= hyperEnergyMax){
+				hyperEnergy = hyperEnergyMax *.999F;}
 			
 			if (hyperEnergy <= 0){
-				hyperEnergy = 0;}			
+				hyperEnergy = 0;}	
 	}
 	
 	//For ship selection it sets the object active at match start
@@ -214,7 +253,9 @@ public class Player1Controller : MonoBehaviour {
 			speedMax = vectorSpeedMax;
 			hyperEnergyMax = vectorEnergyMax;
 			hyperExhaustRate = vectorExhaustRate; 
-			hyperRestoreRate = vectorRestoreRate;		
+			hyperRestoreRate = vectorRestoreRate;	
+			collisionRadius = vectorcollisionRadius;
+			hitPoints = vectorHp;
 			}
 			else vectorShip.SetActive (false); 
 			
@@ -225,6 +266,8 @@ public class Player1Controller : MonoBehaviour {
 			hyperEnergyMax = stalingradEnergyMax;
 			hyperExhaustRate = stalingradExhaustRate; 
 			hyperRestoreRate = stalingradRestoreRate;	
+			collisionRadius = stalingradCollisionRadius;
+			hitPoints = stalingradHp;
 			}
 			else stalingradShip.SetActive (false); 
 			
@@ -235,6 +278,8 @@ public class Player1Controller : MonoBehaviour {
 			hyperEnergyMax = moonFennecEnergyMax;
 			hyperExhaustRate = moonFennecExhaustRate; 
 			hyperRestoreRate = moonFennecRestoreRate;	
+			collisionRadius = moonFennecCollisionRadius;
+			hitPoints = moonFennecHp;
 			}
 			else moonFennecShip.SetActive (false); 
 			
@@ -245,7 +290,9 @@ public class Player1Controller : MonoBehaviour {
 			speedMax = laGalaFighterSpeedMax; 
 			hyperEnergyMax = laGalaFighterEnergyMax;
 			hyperExhaustRate = laGalaFighterExhaustRate; 
-			hyperRestoreRate = laGalaFighterRestoreRate;	
+			hyperRestoreRate = laGalaFighterRestoreRate;
+			collisionRadius = laGalaFighterCollisionRadius;
+			hitPoints = laGalaFighterHp;
 			}
 		if (!usingLaGalaFighter){laGalaFighterShipL.SetActive (false); 
 			laGalaFighterShipR.SetActive (false);}
@@ -257,6 +304,8 @@ public class Player1Controller : MonoBehaviour {
 			hyperEnergyMax = hunterEnergyMax;
 			hyperExhaustRate = hunterExhaustRate; 
 			hyperRestoreRate = hunterRestoreRate;	
+			collisionRadius = hunterCollisionRadius;
+			hitPoints = HunterHp;
 			}
 			else hunterShip.SetActive (false); 
 			
@@ -267,9 +316,12 @@ public class Player1Controller : MonoBehaviour {
 			hyperEnergyMax = evolvedEnergyMax;
 			hyperExhaustRate = evolvedExhaustRate; 
 			hyperRestoreRate = evolvedRestoreRate;	
+			collisionRadius = evolvedCollisionRadius;
+			hitPoints = evolvedHp;
 			}
 			else evolvedShip.SetActive (false); 
 			
+		cc.radius = collisionRadius;
 	}
 	
 	//COLLISION SECTION ======================
@@ -342,6 +394,27 @@ public class Player1Controller : MonoBehaviour {
 		evolvedShip.SetActive (false);
 		gameObject.SetActive (false);
 
+		Time.timeScale = 1f;
+
+	}
+
+	void updateHP (){
+		if (hitPoints <= 4) {
+			hpmarker5.SetActive (false);
+		}
+
+		if (hitPoints <= 3) {
+			hpmarker4.SetActive (false);
+		}
+
+		if (hitPoints <= 2) {
+			hpmarker3.SetActive (false);
+		}
+
+		if (hitPoints <= 1) {
+			hpmarker2.SetActive (false);
+		}
+			
 	}
 		
 }
