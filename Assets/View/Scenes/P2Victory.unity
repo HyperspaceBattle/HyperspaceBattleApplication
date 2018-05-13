@@ -331,7 +331,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -432,8 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60e643a812e2dd94fb952255462cd0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerId: 1
-  secondsToWait: 15
+  secondsToWait: 400
 --- !u!114 &275661183
 MonoBehaviour:
   m_ObjectHideFlags: 0

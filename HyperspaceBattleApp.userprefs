@@ -1,10 +1,10 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Component\ShipSelect.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Controller\Player1Controller.cs">
     <Files>
-      <File FileName="Assets\Model\AppManager.cs" Line="66" Column="68" />
+      <File FileName="Assets\Model\AppManager.cs" Line="1" Column="1" />
       <File FileName="Assets\Controller\Player1Controller.cs" Line="30" Column="2" />
-      <File FileName="Assets\Component\ShipSelect.cs" Line="102" Column="40" />
+      <File FileName="Assets\Component\ShipSelect.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
