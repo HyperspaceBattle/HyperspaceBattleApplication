@@ -1650,7 +1650,7 @@ GameObject:
   - component: {fileID: 1271570701}
   - component: {fileID: 1271570700}
   m_Layer: 0
-  m_Name: MeunImage (2)
+  m_Name: stars
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1664,8 +1664,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271570698}
   m_LocalRotation: {x: -0, y: 0.7947667, z: -0, w: 0.60691506}
-  m_LocalPosition: {x: -0.0099995, y: 114.27, z: 1.91}
-  m_LocalScale: {x: -2.9402575, y: -2.9402344, z: -2.940233}
+  m_LocalPosition: {x: -0.01, y: 114.27, z: 1.91}
+  m_LocalScale: {x: -8.7307205, y: -8.73065, z: -8.730645}
   m_Children: []
   m_Father: {fileID: 275661181}
   m_RootOrder: 7
