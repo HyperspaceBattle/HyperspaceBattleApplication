@@ -51,9 +51,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Component\animateOffset.cs" />
      <Compile Include="Assets\Component\Armoire Cannonball Utilities\Example Assets\Scripts\CubeController.cs" />
      <Compile Include="Assets\Component\Armoire Cannonball Utilities\Magic Splitscreen\Scripts\MagicSplitscreen.cs" />
      <Compile Include="Assets\Component\ChangeScenePressAnyButton.cs" />
+     <Compile Include="Assets\Component\ExpandScale.cs" />
      <Compile Include="Assets\Component\FramerateControl.cs" />
      <Compile Include="Assets\Component\Paroxe\UltimateBloom\Scripts\BokehRenderer.cs" />
      <Compile Include="Assets\Component\Paroxe\UltimateBloom\Scripts\DeluxeFilmicCurve.cs" />

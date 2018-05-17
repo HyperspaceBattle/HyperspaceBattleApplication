@@ -1,6 +1,12 @@
 WindowsStandalone
 SceneListBegin?
-Assets/View/Scenes/CombatDebug.unity
+Assets/View/Scenes/MainMenu.unity
+Assets/View/Scenes/ShipSelect.unity
+Assets/View/Scenes/ShipSelectMenu.unity
+Assets/View/Scenes/CombatLocal1v1.unity
+Assets/View/Scenes/Lvl-PacMan.unity
+Assets/View/Scenes/P1Victory.unity
+Assets/View/Scenes/P2Victory.unity
 SceneListEnd?
 4d1404b53e0c81a5a1dd9f8e79f57774 Assembly-CSharp.dll:.PlayerShipRotate
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
@@ -20,6 +26,7 @@ a9a33659640d17463c80af07dc174135 Assembly-CSharp.dll:.PlayerGunStd
 2466c9cca508469dc99ca4a809011498 Assembly-CSharp.dll:Rewired.Data.UserDataStore_PlayerPrefs
 ee2360d41bf933d53934e6c32d20dd7c Assembly-CSharp.dll:.UltimateBloom
 ce95359056a9e6b4eb0e058f9a3b2945 Assembly-CSharp.dll:UnityStandardAssets.CinematicEffects.AntiAliasing
+9849c43cda96301a6f5324c862a3e15b Assembly-CSharp.dll:.animateOffset
 87476258953decc47d067d7bb3cb4306 Assembly-CSharp.dll:Rewired.UI.ControlMapper.CustomToggle
 78ba0cb076d118d8a68e451418ae5a6e Assembly-CSharp.dll:UnityStandardAssets.CinematicEffects.ScreenSpaceReflection
 25a8032d233df72c368030798802d97d Assembly-CSharp.dll:.ExtrudeRandomEdges
@@ -136,6 +143,7 @@ e297981fe505a31e53cc6ab201997a1e Rewired_Core.dll:Rewired.ComponentControls.Touc
 f5382482d8a0279e2e73be2dc3b6b09c Rewired_Core.dll:Rewired.ComponentControls.TouchPad
 102783527db01b729fe2a25b6eedb776 Rewired_Core.dll:Rewired.ComponentControls.TouchRegion
 05524b8f659e7bfe5756d1335fec24ba Rewired_Core.dll:Rewired.Dev.Tools.UnityJoystickElementIdentifier
+dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.ExpandScale
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 60b2bb652410a5867a5ab9a01cd38461 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -184,6 +192,7 @@ c507acb13da7f62c0d0c74e1d5b7fa54 Assembly-CSharp.dll:Rewired.Demos.ControlMapper
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Advertisements.dll:UnityEngine.Advertisements.Editor.Placeholder
 6276bebdc35213b727ee218a512ff19c Assembly-CSharp.dll:UnityStandardAssets.CinematicEffects.LensAberrations
 f9db97d6a935cf660636bcbd838682fe Assembly-CSharp.dll:.MagicSplitscreen
+b2a2c7fa201901458eccc861fcbc5917 Assembly-CSharp.dll:.ShipSelect
 facefda0165c5c80a1cf7870a9b331bf Assembly-CSharp.dll:.FramerateControl
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:UnityStandardAssets.Utility.ObjectResetter
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:ProGrids.pg_IgnoreSnap
@@ -234,7 +243,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 463516d5b5fe8e67a0a24c48f2095b04 UnityEngine.HoloLens.dll:UnityEngine.EventSystems.HoloLensInputModule
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.XR.WSA.SpatialMappingRenderer
-59af955d21a651ec4addd5ade6f8a01c Assembly-CSharp.dll:.AppManager
+07b86be6d85ba5b7a4e6d50084036ba4 Assembly-CSharp.dll:.AppManager
 21c9cb2cd48c7954eca3329ba4443b95 Assembly-CSharp.dll:.pg_SceneMeshRender
 35d6aa2bc08e588b7900755c156d7bc9 Assembly-CSharp.dll:.Player1Controller
 9685b3f4abd6a5d55f9f7e9dce5ca124 Assembly-CSharp.dll:Rewired.Demos.TouchJoystickExample
@@ -260,4 +269,3 @@ dade8b3226f35214c1a4754f61331616 Assembly-CSharp.dll:Rewired.Demos.CustomControl
 32dcc1dca94294515dfea07e896e1a84 Assembly-CSharp.dll:ProBuilder2.Examples.RuntimeEdit
 028f1dd8dcdb0e2ebd379f84c8b344d2 Assembly-CSharp.dll:Rewired.UI.ControlMapper.CanvasScalerFitter
 2a6c1d6784c7c8eaa0a7b79d72d3beec Assembly-CSharp.dll:.TimedSelfDestruct
-66fad08e8162ceadf0a5b3d39538aeb0 Assembly-CSharp.dll:.ShipSelect

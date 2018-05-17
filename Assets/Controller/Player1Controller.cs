@@ -127,14 +127,14 @@ public class Player1Controller : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		updateHP ();
 		//simplest pause i could find
-		if (player.GetButtonDown ("Pause"))
-		{
-			if (!paused) {PauseGame();}
-			else  {ContinueGame();}
-		} 
+//		if (player.GetButtonDown ("Pause"))
+//		{
+//			if (!paused) {PauseGame();}
+//			else  {ContinueGame();}
+//		} 
 		
 		// if player controllable, then check to see if using hyperspeed then and move character
 		if ( isControllable )											

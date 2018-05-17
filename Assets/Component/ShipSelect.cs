@@ -28,7 +28,7 @@ public class ShipSelect : MonoBehaviour {
 	// public bool 			p2selected03;
 	public GameObject 		selection03;
 	public GameObject 		Model03L;
-	public GameObject 		Model03R;
+
 
 	public bool 			p1selected04;
 	// public bool 			p2selected04;
@@ -53,6 +53,7 @@ public class ShipSelect : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+			//Handles Selection
 		if (player.GetButtonDown ("LS Move Horizontal")){
 			
 			if (p1selected01){P1selected02 ();}
@@ -70,8 +71,8 @@ public class ShipSelect : MonoBehaviour {
 			else if (p1selected04){P1selected03 ();}
 			else if (p1selected05){P1selected04 ();}
 			else if (p1selected06){P1selected05 ();}
-		}	
-
+		}
+			
 }
 	//PLAYER 1 SELECTION
 		void P1selected01() {
@@ -85,13 +86,13 @@ public class ShipSelect : MonoBehaviour {
 			p1marker.transform.position = new Vector3(selection02.transform.position.x, p1marker.transform.position.y, p1marker.transform.position.z );
 		p1selected02 = true; p1selected01 = false; p1selected03 = false;
 				Model02.SetActive (true);
-		Model01.SetActive (false); Model03L.SetActive (false); Model03R.SetActive (false);
+		Model01.SetActive (false); Model03L.SetActive (false); 
 		}
 		
 		void P1selected03() {
 			p1marker.transform.position = new Vector3(selection03.transform.position.x, p1marker.transform.position.y, p1marker.transform.position.z );
 		p1selected03 = true; p1selected02 = false; p1selected04 = false;
-		Model03L.SetActive (true); Model03R.SetActive (true);
+		Model03L.SetActive (true); 
 		Model02.SetActive (false); Model04.SetActive (false);
 		}
 		
@@ -99,7 +100,7 @@ public class ShipSelect : MonoBehaviour {
 			p1marker.transform.position = new Vector3(selection04.transform.position.x, p1marker.transform.position.y, p1marker.transform.position.z );
 		p1selected04 = true; p1selected03 = false; p1selected05 = false;
 				Model04.SetActive (true);
-		Model03L.SetActive (false); Model03R.SetActive (false); Model05.SetActive (false);
+		Model03L.SetActive (false);  Model05.SetActive (false);
 		}
 		
 		void P1selected05() {
