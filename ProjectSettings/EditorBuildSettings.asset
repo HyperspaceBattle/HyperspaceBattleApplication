@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/View/Scenes/Lvl-PacMan.unity
     guid: d60d221833801e0499d290d9a23490d7
   - enabled: 1
+    path: Assets/View/Scenes/Lvl-Rift.unity
+    guid: 3066b049dcc702a47a8c86f661e26947
+  - enabled: 1
     path: Assets/View/Scenes/P1Victory.unity
     guid: 12a9605296831e046895591fae37d79e
   - enabled: 1

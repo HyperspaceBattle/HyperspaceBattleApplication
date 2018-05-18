@@ -15,40 +15,47 @@ public class ShipSelect : MonoBehaviour {
 	public GameObject p1marker;
 
 	public bool 			p1selected01;
-	// public bool 			p2selected01;
 	public GameObject 		selection01;
 	public GameObject 		Model01;
 
 	public bool 			p1selected02;
-	// public bool 			p2selected02;
 	public GameObject 		selection02;
 	public GameObject 		Model02;
 
 	public bool 			p1selected03;
-	// public bool 			p2selected03;
 	public GameObject 		selection03;
 	public GameObject 		Model03L;
 
 
 	public bool 			p1selected04;
-	// public bool 			p2selected04;
 	public GameObject 		selection04;
 	public GameObject 		Model04;
 
 	public bool 			p1selected05;
-	// public bool 			p2selected05;
 	public GameObject 		selection05;
 	public GameObject 		Model05;
 
 	public bool 			p1selected06;
-	// public bool 			p2selected06;
 	public GameObject 		selection06;
 	public GameObject 		Model06;
+
+	public Material p1m;
+	public bool colorSelectActive = true;
+
+	public bool red = false;
+	private bool magenta = false;
+	private bool yellow = false;
+
+	public bool blue = false;
+	private bool cyan = false;	
+	private bool green = false;
 
 	// Use this for initialization
 	void Start () {
 		P1selected01();
-		//P2selected06 ();
+
+		if (red) {p1m.SetColor("_Color", Color.red);}
+		if (blue) {p1m.SetColor("_Color", Color.blue);}
 	}
 	
 	// Update is called once per frame
@@ -71,6 +78,16 @@ public class ShipSelect : MonoBehaviour {
 			else if (p1selected04){P1selected03 ();}
 			else if (p1selected05){P1selected04 ();}
 			else if (p1selected06){P1selected05 ();}
+		}
+
+		if (colorSelectActive && player.GetButtonDown ("HyperSpeed")){ 
+			if 		(red) 		{p1m.SetColor("_Color", Color.magenta); magenta = true; red = false;}
+			else if (magenta)	{p1m.SetColor("_Color", Color.yellow); yellow = true; magenta = false;}
+			else if (yellow) 	{p1m.SetColor("_Color", Color.red); red = true; yellow = false;}
+
+			else if (blue) 		{p1m.SetColor("_Color", Color.cyan); cyan = true; blue = false;}
+			else if (cyan)		{p1m.SetColor("_Color", Color.green); green = true; cyan = false;}
+			else if (green) 	{p1m.SetColor("_Color", Color.blue); blue = true; green = false;}
 		}
 			
 }
@@ -116,39 +133,5 @@ public class ShipSelect : MonoBehaviour {
 				Model06.SetActive (true);
 		Model05.SetActive (false); Model01.SetActive (false);
 		}  
-	// PLAYER 2 SELCTION
 
-		// void P2selected01() {
-			// p2marker.transform.position = new Vector3(selection01.transform.position.x, p2marker.transform.position.y, p2marker.transform.position.z );
-			// p2selected01 = true; p2selected06 = false; p2selected02 = false;
-		// }
-
-		// void P2selected02() {
-			// p2marker.transform.position = new Vector3(selection02.transform.position.x, p2marker.transform.position.y, p2marker.transform.position.z );
-			// p2selected02 = true; p2selected01 = false; p2selected03 = false;
-		// }
-
-		// void P2selected03() {
-			// p2marker.transform.position = new Vector3(selection03.transform.position.x, p2marker.transform.position.y, p2marker.transform.position.z );
-			// p2selected03 = true; p2selected02 = false; p2selected04 = false;
-		// }
-
-		// void P2selected04() {
-			// p2marker.transform.position = new Vector3(selection04.transform.position.x, p2marker.transform.position.y, p2marker.transform.position.z );
-			// p2selected04 = true; p2selected03 = false; p2selected05 = false;
-		// }
-
-		// void P2selected05() {
-			// p2marker.transform.position = new Vector3(selection05.transform.position.x, p2marker.transform.position.y, p2marker.transform.position.z );
-			// p2selected05 = true; p2selected04 = false; p2selected06 = false;
-		// }
-
-		// void P2selected06() {
-			// p2marker.transform.position = new Vector3(selection06.transform.position.x, p2marker.transform.position.y, p2marker.transform.position.z );
-			// p2selected06 = true; p2selected05 = false; p2selected01 = false;
-		// }  
-
-		void BroadcastSelection(){
-			
-		}
 }

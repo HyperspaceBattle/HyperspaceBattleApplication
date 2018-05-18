@@ -54,6 +54,7 @@
      <Compile Include="Assets\Component\animateOffset.cs" />
      <Compile Include="Assets\Component\Armoire Cannonball Utilities\Example Assets\Scripts\CubeController.cs" />
      <Compile Include="Assets\Component\Armoire Cannonball Utilities\Magic Splitscreen\Scripts\MagicSplitscreen.cs" />
+     <Compile Include="Assets\Component\CameraFacingBillboard.cs" />
      <Compile Include="Assets\Component\ChangeScenePressAnyButton.cs" />
      <Compile Include="Assets\Component\ExpandScale.cs" />
      <Compile Include="Assets\Component\FramerateControl.cs" />
@@ -125,6 +126,7 @@
      <Compile Include="Assets\Component\Rewired\Internal\Scripts\InputManager.cs" />
      <Compile Include="Assets\Component\Rewired\Internal\Scripts\Misc\ExternalTools.cs" />
      <Compile Include="Assets\Component\Rewired\Internal\Scripts\Platforms\Ouya\OuyaInputSource.cs" />
+     <Compile Include="Assets\Component\ScreenPixelization.cs" />
      <Compile Include="Assets\Component\ShipSelect.cs" />
      <Compile Include="Assets\Component\Standard Assets\Effects\AntiAliasing\AntiAliasing.cs" />
      <Compile Include="Assets\Component\Standard Assets\Effects\AntiAliasing\FXAA\FXAA.cs" />

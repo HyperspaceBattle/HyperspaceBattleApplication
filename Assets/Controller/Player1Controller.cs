@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 public class Player1Controller : MonoBehaviour {
 	
 	//All objects report to the game manager which handles scenes, data, and menus  
-	public GameObject 							AppManager;
 	
 	//REWIRED CONTROLLER SUPPORT
 	//================================================================
@@ -44,7 +43,7 @@ public class Player1Controller : MonoBehaviour {
 	private float hyperExhaustRate				= 2f; 
 	private float hyperRestoreRate				= 1f;
 	private float collisionRadius				= .5f;
-
+	public float autoFwd						= 0f;
 	
 	//player ship objects to show/hide active/inactive and variable ship stats
 	public bool usingVector; 
@@ -56,6 +55,7 @@ public class Player1Controller : MonoBehaviour {
 	public float vectorExhaustRate				= 2f;
 	public float vectorRestoreRate				= 1f;
 	public float vectorcollisionRadius			= .5f;
+	public float vectorAutoFwd					= 1.1f;
 	
 	public bool usingStalingrad; 
 	public GameObject 							stalingradShip;
@@ -66,6 +66,7 @@ public class Player1Controller : MonoBehaviour {
 	public float stalingradExhaustRate			= 2f;
 	public float stalingradRestoreRate			= 1f;
 	public float stalingradCollisionRadius		= .5f;
+	public float stalingradAutoFwd				= 0f;
 
 	public bool usingMoonFennec; 
 	public GameObject 							moonFennecShip;
@@ -76,6 +77,7 @@ public class Player1Controller : MonoBehaviour {
 	public float moonFennecExhaustRate			= 2f;
 	public float moonFennecRestoreRate			= 1f;
 	public float moonFennecCollisionRadius		= .5f;
+	public float moonFennecAutoFwd				= 1f;
 
 	public bool usingLaGalaFighter; 
 	public GameObject 							laGalaFighterShipL;
@@ -87,6 +89,7 @@ public class Player1Controller : MonoBehaviour {
 	public float laGalaFighterExhaustRate		= 2f;
 	public float laGalaFighterRestoreRate		= 1f;
 	public float laGalaFighterCollisionRadius	= .5f;
+	public float laGalaFighterAutoFwd			= 1.2f;
 
 	public bool usingHunter; 
 	public GameObject hunterShip;
@@ -97,6 +100,7 @@ public class Player1Controller : MonoBehaviour {
 	public float hunterExhaustRate				= 2f;
 	public float hunterRestoreRate				= 1f;
 	public float hunterCollisionRadius			= .5f;
+	public float hunterAutoFwd					= 0f;
 
 	public bool usingEvolved; 
 	public GameObject 							evolvedShip;
@@ -107,6 +111,7 @@ public class Player1Controller : MonoBehaviour {
 	public float evolvedExhaustRate				= 2f;
 	public float evolvedRestoreRate				= 1f;
 	public float evolvedCollisionRadius			= .5f;
+	public float evolvedAutoFwd					= 0f;
 
 	public GameObject 							explosionFX; 	//sound effect in explosion			
 	public GameObject							chargingFX;
@@ -176,9 +181,14 @@ public class Player1Controller : MonoBehaviour {
 		
 		if(moveVector.x != 0.0f || moveVector.z != 0.0f) {
 			direction = new Vector3 (moveVector.x * Time.deltaTime, 0, moveVector.z * Time.deltaTime).normalized * speed;
+
 			cc.Move (direction);		
 		}
+	
+		if (autoFwd > 0) {			
+			cc.Move (direction * autoFwd);	
 
+		}
 	}
 	void Hyperspeed (){
 
@@ -256,6 +266,7 @@ public class Player1Controller : MonoBehaviour {
 			hyperRestoreRate = vectorRestoreRate;	
 			collisionRadius = vectorcollisionRadius;
 			hitPoints = vectorHp;
+			autoFwd = vectorAutoFwd;
 			}
 			else vectorShip.SetActive (false); 
 			
@@ -268,6 +279,7 @@ public class Player1Controller : MonoBehaviour {
 			hyperRestoreRate = stalingradRestoreRate;	
 			collisionRadius = stalingradCollisionRadius;
 			hitPoints = stalingradHp;
+			autoFwd = stalingradAutoFwd;
 			}
 			else stalingradShip.SetActive (false); 
 			
@@ -280,6 +292,7 @@ public class Player1Controller : MonoBehaviour {
 			hyperRestoreRate = moonFennecRestoreRate;	
 			collisionRadius = moonFennecCollisionRadius;
 			hitPoints = moonFennecHp;
+			autoFwd = moonFennecAutoFwd;
 			}
 			else moonFennecShip.SetActive (false); 
 			
@@ -293,6 +306,7 @@ public class Player1Controller : MonoBehaviour {
 			hyperRestoreRate = laGalaFighterRestoreRate;
 			collisionRadius = laGalaFighterCollisionRadius;
 			hitPoints = laGalaFighterHp;
+			autoFwd = laGalaFighterAutoFwd;
 			}
 		if (!usingLaGalaFighter){laGalaFighterShipL.SetActive (false); 
 			laGalaFighterShipR.SetActive (false);}
@@ -306,6 +320,7 @@ public class Player1Controller : MonoBehaviour {
 			hyperRestoreRate = hunterRestoreRate;	
 			collisionRadius = hunterCollisionRadius;
 			hitPoints = HunterHp;
+			autoFwd = hunterAutoFwd;
 			}
 			else hunterShip.SetActive (false); 
 			
@@ -318,6 +333,7 @@ public class Player1Controller : MonoBehaviour {
 			hyperRestoreRate = evolvedRestoreRate;	
 			collisionRadius = evolvedCollisionRadius;
 			hitPoints = evolvedHp;
+			autoFwd = evolvedAutoFwd;
 			}
 			else evolvedShip.SetActive (false); 
 			

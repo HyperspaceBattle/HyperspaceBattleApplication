@@ -14,14 +14,18 @@ public class AppManager : MonoBehaviour {
 	private Player player; // The Rewired Player
 	private CharacterController cc;
 	private Vector3 moveVector;
-	public bool ShipSelectOneShot = true;
+	private bool ShipSelectOneShot = true;
 	public GameObject Menu;
 	public GameObject P1prefab;
 	public Player1Controller p1c;
-	public GameObject P2prefab;
 	public Player1Controller p2c;
+	public GameObject P2prefab;
 	public GameObject Splitscreen;
 	public GameObject Camera;
+	public ShipSelect p1s;
+	public ShipSelect p2s;
+
+	public string level;
 
 	void Awake (){
 		player = ReInput.players.GetPlayer(playerId);
@@ -43,23 +47,40 @@ public class AppManager : MonoBehaviour {
 		//Debug.Log("Active scene is '" + scene.name + "'.");
 		if (scene.name == "ShipSelect"){
 			SceneManager.LoadScene("ShipSelectMenu", LoadSceneMode.Additive);}
+		level = "Lvl-PacMan";
 	}
 
 
-	void Update(){
 
+	void Update(){
+		if (player.GetButtonDown ("Special")) {
+			ChangeLevel ();
+		}
+			
 		if (ShipSelectOneShot && (player.GetButtonDown ("Pause"))){
 				LoadLevel ();
 		}
 	}
 
+	void ChangeLevel(){
+		if (level == "Lvl-PacMan") {level = "Lvl-Rift";} 
+		else {level = "Lvl-PacMan";}
+	}
 
 	void LoadLevel () {
 		//hides menu, then loads level
+		p1s.colorSelectActive = false;
+		p2s.colorSelectActive = false; 
+
 		ShipSelectOneShot = false;
 		Menu.SetActive (false);
 		SceneManager.UnloadSceneAsync ("ShipSelectMenu");
-		SceneManager.LoadScene("Lvl-PacMan", LoadSceneMode.Additive);
+		if (level == "Lvl-PacMan") {
+			SceneManager.LoadScene ("Lvl-PacMan", LoadSceneMode.Additive);
+		}
+		else if (level == "Lvl-Rift") {
+			SceneManager.LoadScene ("Lvl-Rift", LoadSceneMode.Additive);
+		}
 		//SceneManager.LoadScene("CombatLocal1v1", LoadSceneMode.Additive);
 
 		//tells me what was selected for spawn
@@ -81,9 +102,6 @@ public class AppManager : MonoBehaviour {
 		Camera.SetActive (true);
 		P1prefab.SetActive (true);
 		P2prefab.SetActive (true);
-
-
-
 
 	}
 
