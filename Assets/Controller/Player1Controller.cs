@@ -21,6 +21,7 @@ public class Player1Controller : MonoBehaviour {
 		//rewire start settings
 		// Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
 		player = ReInput.players.GetPlayer(playerId);
+        
 		// Get the character controller
 		cc = GetComponent<CharacterController>();
 		isControllable = true;
@@ -143,8 +144,6 @@ public class Player1Controller : MonoBehaviour {
 			HyperspeedEnergyLimiter ();
 			UpdateMove ();
 		}
-			 
-	
 	}
 
 	private void PauseGame()

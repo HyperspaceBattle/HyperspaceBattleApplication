@@ -251,7 +251,7 @@ public class MagicSplitscreen : MonoBehaviour
         {
             // Adjust displacement to be in the direction of the central point but not at it
             this.cameraDisplacement2d = this.distanceBetweenPlayers.normalized * this.triggerDistance;
-
+            
             // Aim cameras at players
             this.cameraTarget1 = this.player1.position + this.cameraDisplacement2d;
             this.cameraTarget2 = this.player2.position - this.cameraDisplacement2d;

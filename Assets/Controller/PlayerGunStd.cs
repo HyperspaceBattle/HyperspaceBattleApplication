@@ -30,7 +30,7 @@ public class PlayerGunStd : MonoBehaviour {
 					Rigidbody newBullet = Instantiate (bullet, transform.position, transform.rotation) as Rigidbody;
 					//newBullet.AddForce (-transform.forward*velocity,ForceMode.VelocityChange);
 					newBullet.AddForce (-transform.forward * velocity, ForceMode.VelocityChange);
-					GetComponent<AudioSource> ().Play ();
+					GetComponent<AudioSource>().Play ();
 					Reset ();
 				}
 			}
