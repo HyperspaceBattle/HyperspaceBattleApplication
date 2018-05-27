@@ -81,7 +81,8 @@
               <li><a href="Controllers.html">Controllers</a></li>
               <li><a href="ControllerMaps.html">Controller Maps</a></li>
               <li><a href="MapCategories.html">Map Categories</a></li>
-              <li><a href="ControllerMaps.html"></a><a href="Layouts.html">Layouts</a></li>
+              <li><a href="Layouts.html">Layouts</a></li>
+              <li><a href="ControllerTemplates.html">Controller Templates</a></li>
               <li><a href="CustomControllers.html">Custom Controllers</a></li>
             </ul>
             <strong>Extras:</strong>
@@ -133,7 +134,7 @@
     	<div class="main-body">
 	        <div class="logo"><a href="http://guavaman.com/projects/rewired" title="Rewired"><img src="files/images/rewired-logo.png" width="173" height="139" alt="Rewired" /></a></div>
                      
-          <h1>
+            <h1>
             <!-- InstanceBeginEditable name="PageHeader" -->Troubleshooting <!-- InstanceEndEditable -->
             </h1>
             
@@ -143,8 +144,8 @@
     <h3>General:</h3>
     <ul>
       <li><a href="#something-isnt-working">Something isn't working...</a></li>
+      <li><a href="#debug-information">Debug Information: How to find the source of the problem</a></li>
       <li><a href="#controller-doesnt-work">My controller doesn't work</a></li>
-      <li><a href="#debug-information">How to find the source of the problem</a></li>
       <li><a href="#joystick-problems">Joystick control doesn't work</a></li>
       <li><a href="#keyboard-problems">Keyboard control doesn't work</a></li>
       <li><a href="#mouse-problems">Mouse control doesn't work</a></li>
@@ -168,6 +169,7 @@
       <li><a href="#null-reference-during-recompile">Null reference exception when recompiling scripts in the editor at runtime</a></li>
       <li><a href="#compile-errors-ps4-xbone">Unity 5 compile errors in PS4, XBox One, WiiU, or other special platforms</a></li>
       <li><a href="#missing-files">Some component of Rewired is missing (RewiredStandloneInputModule, Control Mapper, etc.)</a></li>
+      <li><a href="#clean-reinstall">Doing a clean reinstall of Rewired</a></li>
     </ul>
 <h3><a href="#windows">Windows:</a></h3>
     <ul>
@@ -215,24 +217,14 @@
     <p><img src="files/images/console-warnings.png" width="472" height="394" alt="Console Warnings" /></p>
     <p>&nbsp;</p>
     <hr />
-    <h3><a name="gamepad-doesnt-work"></a><a name="controller-doesnt-work"></a>My controller doesn't work</h3>
-    <p>If you're using a controller <a href="SupportedControllers.html">that   is not listed here</a>, your controller doesn't have a hardware definition and will not   automatically be recognized and mapped. Instead, it will use the Unknown Controller map and need to be manually mapped by the user prior to use through a custom control remapping screen. Please read about the <a href="ControllerMaps.html#unknown-controllers">Unknown Controller map and how unrecognized controllers are handled</a> to understand why.</p>
-    <p><strong>My gamepad doesn't work. I created a map using the Dual Analog Gamepad Template but it doesn't work.</strong></p>
-    <p>Just because a controller is a gamepad does not mean Rewired will recognize it as a gamepad. Just what a &quot;gamepad&quot; is varies from product to product. There is no universal definition of a gamepad and the device itself does not provide any kind of element layout information. The Dual Analog Gamepad Template only applies to <a href="SupportedControllers.html">controllers that have had definitions created for them</a> and have been specifically assigned and configured for that template. If you want to use a gamepad <a href="SupportedControllers.html">that is not listed here</a>, you either have to <a href="HowTos.html#new-controller-definitions">make a controller definition for it</a> and <a href="HowTos.html#add-controller-to-existing-controller-template">add it to the Dual Analog Gamepad Template</a> or <a href="HowTos.html#controller-mapping-screen">provide your users with a control remapping screen</a> so they can map the controls themselves.</p>
-    <p><strong><a name="controller-doesnt-work-more-reasons" id="controller-doesnt-work-more-reasons"></a>More reasons why your controller may appear not to work:</strong></p>
-    <ul>
-      <li>You have multiple controllers connected, one Player, and have left the default <a href="http://guavaman.com/projects/rewired/docs/RewiredEditor.html#Settings">Joystick Auto-Assignment Settings in the Rewired input manager</a>: 
-        Based on the default settings, Rewired will assign only one controller per-Player. If multiple controllers are present, only one will be assigned to each Player. If you only have one Player, the second controller will be left unassigned. In order to allow auto-assignment of multiple Joysticks to the same Player, Max Joysticks Per Player must be raised to a value greater than 1.  <a href="Controllers.html">See this page for information on Controllers</a>.    </li>
-    </ul>
-    <p>See <a href="#debug-information">this topic</a> for information on how to find the source of the problem.</p>
-    <p>&nbsp;</p>
-<hr />
-    <h3><a name="debug-information" id="debug-information"></a>How to find the source of the problem</h3>
-<p>You can easily determine why your something is not working by looking at the Player, Joystick, Controller Map, and other objects in the Debug Information foldout in the <a href="InputManager.html#inspector">Rewired Input Manager inspector</a>. This shows a ton of useful information allowing you to visualize most objects in the system at runtime. For example, you can see if a Joystick has been assigned to a Player  or view which Joystick Maps have been assigned and enabled.</p>
-<p><img src="files/images/inputmanager_inspector_debug_info.png" /></p>
-<p>For game builds where you do not have access to the inspector, you can use the prefab in Assets/Rewired/DevTools/DebugInformation. Drag this prefab into your scene and build. It will display on screen the same information shown in the Debug Information foldout in the inspector. Note: The main camera in your scene must have an enabled GUILayer component or no information will be visible.</p>
-<p>You can also get this information by using a little bit of debug code. This code will show all Joysticks assigned to each Player and all mappings in each Controller Map. You will be able to tell if a Joystick is assigned to a particular Player, if any Controller Maps were loaded for that Joystick, whether or not those Controller Maps are enabled, and the what Action is bound to each element. There are many more members in each of the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Player.htm">Player</a>, <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Joystick.htm">Joystick</a>, <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_JoystickMap.htm">JoystickMap</a>, and <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_ActionElementMap.htm">ActionElementMap</a> classes that you can get useful information from.</p>
-<pre class="code">
+    <h3><a name="debug-information" id="debug-information"></a>Debug Information: How to find the source of the problem</h3>
+    <p>You can easily determine why something is not working by looking at the Player, Joystick, Controller Map, and other objects in the Debug Information foldout in the <a href="InputManager.html#inspector">Rewired Input Manager inspector</a>. This shows a ton of useful information allowing you to visualize most objects in the system at runtime. For example, you can see if a Joystick has been assigned to a Player  or view which Joystick Maps have been assigned and enabled.</p>
+    <p><img src="files/images/inputmanager_inspector_debug_info.png" /></p>
+    <p><strong>Prefab Method:<br />
+    </strong>For game builds where you do not have access to the inspector, you can use the prefab in Assets/Rewired/DevTools/DebugInformation. Drag this prefab into your scene and build. It will display on screen the same information shown in the Debug Information foldout in the inspector. You can use the mouse or the touch screen to unfold the various items to find the information you want.</p>
+<p><strong>Scripting Method:</strong><br />
+  You can also get this information by using a little bit of debug code. This code will show all Joysticks assigned to each Player and all mappings in each Controller Map. You will be able to tell if a Joystick is assigned to a particular Player, if any Controller Maps were loaded for that Joystick, whether or not those Controller Maps are enabled, and the what Action is bound to each element. There are many more members in each of the <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Player.htm">Player</a>, <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_Joystick.htm">Joystick</a>, <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_JoystickMap.htm">JoystickMap</a>, and <a href="http://guavaman.com/projects/rewired/docs/api-reference/html/T_Rewired_ActionElementMap.htm">ActionElementMap</a> classes that you can get useful information from.</p>
+    <pre class="code">
 <span class="comment">// Log assigned Joystick information for all joysticks regardless of whether or not they've been assigned</span>
 Debug.Log(&quot;Rewired found &quot; + ReInput.controllers.joystickCount + &quot; joysticks attached.&quot;);
 for(int i = 0; i &lt; ReInput.controllers.joystickCount; i++) {
@@ -246,12 +238,12 @@ for(int i = 0; i &lt; ReInput.controllers.joystickCount; i++) {
 
 <span class="comment">// Log assigned Joystick information for each Player</span>
 foreach(var p in ReInput.players.Players) {
-    Debug.Log("PlayerId = " + p.id + &quot; is assigned &quot; + p.controllers.joystickCount + &quot; joysticks.&quot;);
+    Debug.Log(&quot;PlayerId = &quot; + p.id + &quot; is assigned &quot; + p.controllers.joystickCount + &quot; joysticks.&quot;);
 
     <span class="comment">// Log information for each Joystick assigned to this Player</span>
     foreach(var j in p.controllers.Joysticks) {
         Debug.Log(
-          "Joystick: " + j.name + &quot;\n&quot; +
+          &quot;Joystick: &quot; + j.name + &quot;\n&quot; +
           &quot;Is Recognized: &quot; + (j.hardwareTypeGuid != System.Guid.Empty ? &quot;Yes&quot; : &quot;No&quot;)
         );
 
@@ -261,14 +253,26 @@ foreach(var p in ReInput.players.Players) {
             foreach(var aem in map.GetElementMaps()) {
                 var action = ReInput.mapping.GetAction(aem.actionId);
                 if(action == null) continue; <span class="comment">// invalid Action</span>
-                Debug.Log("Action \"" + action.name + "\" is bound to \"" +
-                    aem.elementIdentifierName
+                Debug.Log(&quot;Action \&quot;&quot; + action.name + &quot;\&quot; is bound to \&quot;&quot; +
+                    aem.elementIdentifierName + &quot;\&quot;&quot;
                 );
             }
         }
     }
-}</pre>
-<p>&nbsp;</p>
+}    </pre>
+    <p>&nbsp;</p>
+    <hr />
+    <h3><a name="gamepad-doesnt-work"></a><a name="controller-doesnt-work"></a>My controller doesn't work</h3>
+    <p>If you're using a controller <a href="SupportedControllers.html">that   is not listed here</a>, your controller doesn't have a hardware definition and will not   automatically be recognized and mapped. Instead, it will use the Unknown Controller map and need to be manually mapped by the user prior to use through a custom control remapping screen. Please read about the <a href="ControllerMaps.html#unknown-controllers">Unknown Controller map and how unrecognized controllers are handled</a> to understand why.</p>
+    <p><strong>My gamepad doesn't work. I created a map using the Gamepad Template but it doesn't work.</strong></p>
+    <p>Just because a controller is a gamepad does not mean Rewired will recognize it as a gamepad. Just what a &quot;gamepad&quot; is varies from product to product. There is no universal definition of a gamepad and the device itself does not provide any kind of element layout information. The Gamepad Template only applies to <a href="SupportedControllers.html">controllers that have had definitions created for them</a> and have been specifically assigned and configured for that template. If you want to use a gamepad <a href="SupportedControllers.html">that is not listed here</a>, you either have to <a href="HowTos.html#new-controller-definitions">make a controller definition for it</a> and <a href="HowTos.html#add-controller-to-existing-controller-template">add it to the Gamepad Template</a> or <a href="HowTos.html#controller-mapping-screen">provide your users with a control remapping screen</a> so they can map the controls themselves.</p>
+    <p><strong><a name="controller-doesnt-work-more-reasons" id="controller-doesnt-work-more-reasons"></a>More reasons why your controller may appear not to work:</strong></p>
+    <ul>
+      <li>You have multiple controllers connected, one Player, and have left the default <a href="http://guavaman.com/projects/rewired/docs/RewiredEditor.html#Settings">Joystick Auto-Assignment Settings in the Rewired input manager</a>: 
+        Based on the default settings, Rewired will assign only one controller per-Player. If multiple controllers are present, only one will be assigned to each Player. If you only have one Player, the second controller will be left unassigned. In order to allow auto-assignment of multiple Joysticks to the same Player, Max Joysticks Per Player must be raised to a value greater than 1.  <a href="Controllers.html">See this page for information on Controllers</a>.    </li>
+    </ul>
+    <p>See <a href="#debug-information">this topic</a> for information on how to find the source of the problem.</p>
+    <p>&nbsp;</p>
 <hr />
 <h3><a name="joystick-problems" id="dll-not-found-xinput2"></a>Joystick control doesn't work</h3>
 <ol>
@@ -547,6 +551,21 @@ void CacheRewiredPlayer() {
     And allow the installer to install. This will not destroy any of your input configuration data which is stored in the Rewired Input Manager game object, not in the Rewired project folder. </li>
   <li>If the files are still missing, delete and reinstall Rewired from the Unity Asset Store. First, delete the entire Rewired folder from the project. This will not destroy any of your input configuration data which is stored in the Rewired Input Manager game object, not in the Rewired project folder.  Then re-install Rewired from the Unity Asset Store.<br />
     <strong>Important:</strong> After deleting the Rewired folder DO NOT save your scene or project until after you have re-installed Rewired. If you save your scene or project while Rewired is deleted, serialzed data on gameobjects in your scene may be erased by Unity because the Rewired classes no longer exist. Once Rewired is re-installed, it should be safe to save your scene, but                                  it would be safer to quit and restart Unity before doing so. </li>
+  </ol>
+<p>&nbsp;</p>
+<hr />
+<h3><a name="clean-reinstall" id="clean-reinstall"></a>Doing a clean reinstall of Rewired</h3>
+<p>How to do a clean reinstall of Rewired:</p>
+<ol>
+  <li> Close the Unity editor if it is open.</li>
+  <li> Open   the Unity editor.</li>
+  <li>Delete the Rewired folder.</li>
+  <li>Close the Unity editor without saving if   asked.</li>
+  <li> Open the Unity editor.</li>
+  <li> Install Rewired from the Unity Asset Store.</li>
+  <li> Close the Unity editor without saving   if asked.</li>
+  <li> Open the Unity editor.</li>
+  <li>Test.</li>
 </ol>
 <p>&nbsp;</p>
 <hr />
@@ -554,7 +573,7 @@ void CacheRewiredPlayer() {
 <h2><a name="windows" id="windows"></a>Windows</h2>
 <p></p>
 <h3><a name="windows-xbox-one-controller-doesnt-work" id="windows-xbox-one-controller-doesnt-work"></a>Windows: XBox One controller doesn't work</h3>
-<p>Most often this is caused by creating a Joystick Map specifically for the Xbox One controller when Use XInput is enabled instead of using the Dual Analog Gamepad Template. See <a href="ControllerMaps.html#xinput-devices-windows">Controller Maps - Special Considerations for XInput gamepads on Windows Standalone, Windows App Store, and Windows 10 Universal</a>.</p>
+<p>Most often this is caused by creating a Joystick Map specifically for the Xbox One controller when Use XInput is enabled instead of using the Gamepad Template. See <a href="ControllerMaps.html#xinput-devices-windows">Controller Maps - Special Considerations for XInput gamepads on Windows Standalone, Windows App Store, and Windows 10 Universal</a>.</p>
 <p>&nbsp;</p>
 <hr />
 <h3><a name="xbox360-triggers" id="dll-not-found-xinput5"></a>Windows: XBox 360 controller L/R triggers can't be pressed at the same time on Windows</h3>

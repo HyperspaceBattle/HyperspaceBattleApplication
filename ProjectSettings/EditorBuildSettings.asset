@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/View/Scenes/MainMenu.unity
     guid: 0d2ceab281d16fa44bce26b4cc78c74c
   - enabled: 1
+    path: Assets/View/Scenes/Controls.unity
+    guid: ab79602902fdabb478e5247d7776a616
+  - enabled: 1
     path: Assets/View/Scenes/ShipSelect.unity
     guid: 7162a3eb0eddde44f908715902a90cd9
   - enabled: 1
@@ -17,6 +20,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/View/Scenes/CombatLocal1v1.unity
     guid: 91ac395cbdd6ca9408bb34285b67816b
+  - enabled: 1
+    path: Assets/View/Scenes/Lvl-Vector Debris Cluster.unity
+    guid: 5f5169a827b2a5d45a0c6af7b59be6d1
+  - enabled: 1
+    path: Assets/View/Scenes/Lvl-LaGalas Simulation.unity
+    guid: c837e1f109a016748a90722930da0518
+  - enabled: 1
+    path: Assets/View/Scenes/Lvl-MoonFennec SectorQ.unity
+    guid: 6146915c56c2d1b45a5cf2b2efb50fa6
+  - enabled: 1
+    path: Assets/View/Scenes/Lvl-Evolved Geomis.unity
+    guid: df95976291178a64184ce4207ff70fad
   - enabled: 1
     path: Assets/View/Scenes/Lvl-PacMan.unity
     guid: d60d221833801e0499d290d9a23490d7
@@ -29,3 +44,4 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/View/Scenes/P2Victory.unity
     guid: 73aa23d57e848c5459a5bd85346af8bc
+  m_configObjects: {}

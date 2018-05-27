@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/View/Scenes/Lvl-Rift.unity
+- path: Assets/View/Scenes/Lvl-MoonFennec SectorQ.unity
   isLoaded: 1
   isActive: 1

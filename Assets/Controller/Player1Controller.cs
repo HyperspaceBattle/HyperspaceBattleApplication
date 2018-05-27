@@ -115,6 +115,8 @@ public class Player1Controller : MonoBehaviour {
 
 	public GameObject 							explosionFX; 	//sound effect in explosion			
 	public GameObject							chargingFX;
+	public GameObject 							HitFeedback01;
+	public GameObject 							HitFeedback02;
 
 	public bool paused 							= false;		//pause state
 	private bool canPause 						= true;
@@ -125,6 +127,11 @@ public class Player1Controller : MonoBehaviour {
 	public GameObject 							hpmarker3;
 	public GameObject 							hpmarker4;
 	public GameObject 							hpmarker5;
+	public GameObject 							hpmarker6;
+	public GameObject 							hpmarker7;
+	public GameObject 							hpmarker8;
+	public GameObject 							hpmarker9;
+	public GameObject 							hpmarker10;
 	// Use this for initialization
 	void Start () {
 		//pausePanel.SetActive(false);
@@ -348,6 +355,7 @@ public class Player1Controller : MonoBehaviour {
 			if (other.tag == "Player2" || other.tag == "Player3" ||other.tag == "Player4" ){
 				Debug.Log ("Player1 Collision");
 				hitPoints -= 1;
+				Instantiate(HitFeedback01, transform.position, transform.rotation);
 					if (hitPoints <= 0){
 						Explode	();	
 						   SceneManager.LoadScene("P2Victory", LoadSceneMode.Single);
@@ -361,6 +369,7 @@ public class Player1Controller : MonoBehaviour {
 			if (other.tag == "Player3" || other.tag == "Player4" ||other.tag == "Player1" ){
 				Debug.Log ("Player2 Collision");		
 				hitPoints -= 1;
+				Instantiate(HitFeedback02, transform.position, transform.rotation);
 					if (hitPoints <= 0){
 						Explode	();	
 						   SceneManager.LoadScene("P1Victory", LoadSceneMode.Single);
@@ -415,6 +424,25 @@ public class Player1Controller : MonoBehaviour {
 	}
 
 	void updateHP (){
+		if (hitPoints <= 9) {
+			hpmarker10.SetActive (false);
+		}
+
+		if (hitPoints <= 8) {
+			hpmarker9.SetActive (false);
+		}
+
+		if (hitPoints <= 7) {
+			hpmarker8.SetActive (false);
+		}
+
+		if (hitPoints <= 6) {
+			hpmarker7.SetActive (false);
+		}
+
+		if (hitPoints <= 5) {
+			hpmarker6.SetActive (false);
+		}
 		if (hitPoints <= 4) {
 			hpmarker5.SetActive (false);
 		}

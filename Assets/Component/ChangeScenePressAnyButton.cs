@@ -8,6 +8,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour {
 	//REWIRED CONTROLLER SUPPORT
 	//================================================================
 	public int playerId = 0; // The Rewired player id of this character
+	public string sceneToLoad = "MainMenu";
 	private Player player; // The Rewired Player
 	private CharacterController cc;
 	private Vector3 moveVector;
@@ -25,7 +26,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour {
 
 		if(player.GetButton ("Pause")) {
 			Debug.Log ("start pressed");
-			SceneManager.LoadScene("ShipSelect", LoadSceneMode.Single);
+			SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
 		}
 	}
 }

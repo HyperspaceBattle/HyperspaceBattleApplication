@@ -353,8 +353,8 @@ namespace Rewired.Utils {
 
 #if UNITY_ANDROID && !UNITY_EDITOR
 
-        const int SDK_VERSION_HONEYCOMB = 9;
-        const int SDK_VERSION_KITKAT = 19;
+        const int API_LEVEL_HONEYCOMB = 9;
+        const int API_LEVEL_KITKAT = 19;
 
         public void GetDeviceVIDPIDs(out List<int> vids, out List<int> pids) {
 
@@ -362,12 +362,7 @@ namespace Rewired.Utils {
             pids = new List<int>();
 
             try {
-                // Get the Android SDK version
-                int androidSDKVersion = SDK_VERSION_HONEYCOMB;
-                using(var version = new AndroidJavaClass("android.os.Build$VERSION")) {
-                    androidSDKVersion = version.GetStatic<int>("SDK_INT");
-                }
-                if(androidSDKVersion < SDK_VERSION_KITKAT) return;
+                if(GetAndroidAPILevel() < API_LEVEL_KITKAT) return;
 
                 AndroidJavaClass android_view_InputDevice = new AndroidJavaClass("android.view.InputDevice");
 
@@ -392,10 +387,27 @@ namespace Rewired.Utils {
             } catch {
             }
         }
+
+        public int GetAndroidAPILevel() {
+            try {
+                // Get the Android SDK version
+                int apiLevel = API_LEVEL_HONEYCOMB;
+                using(var version = new AndroidJavaClass("android.os.Build$VERSION")) {
+                    apiLevel = version.GetStatic<int>("SDK_INT");
+                }
+                return apiLevel;
+            } catch {
+                return -1;
+            }
+        }
 #else
         public void GetDeviceVIDPIDs(out List<int> vids, out List<int> pids) {
             vids = new List<int>();
             pids = new List<int>();
+        }
+
+        public int GetAndroidAPILevel() {
+            return -1;
         }
 #endif
         #region Unity UI
@@ -453,7 +465,23 @@ namespace Rewired.Utils {
             return 1.0f;
 #endif
         }
-        
+
+        #endregion
+
+        #region Controller Templates
+
+        public IControllerTemplate CreateControllerTemplate(System.Guid typeGuid, object payload) {
+            return Rewired.Internal.ControllerTemplateFactory.Create(typeGuid, payload);
+        }
+
+        public System.Type[] GetControllerTemplateTypes() {
+            return Rewired.Internal.ControllerTemplateFactory.templateTypes;
+        }
+
+        public System.Type[] GetControllerTemplateInterfaceTypes() {
+            return Rewired.Internal.ControllerTemplateFactory.templateInterfaceTypes;
+        }
+
         #endregion
     }
 }

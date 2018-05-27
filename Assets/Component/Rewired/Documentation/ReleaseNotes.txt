@@ -1,3 +1,125 @@
+1.1.14.3:
+
+    Changes:
+      - Updated SDL2 Windows library to version 2.0.8.
+
+    Bug Fixes:
+      - Create Rewired Input Manager (Prefab) no longer throws an exception in Unity 2017+.
+
+1.1.14.2:
+    
+    Changes:
+      - Rewired Editor: Appended the word "Template" to Controller Templates in the joystick list for clarity.
+      - Some included dev tools now use Unity UI to display information on-screen.
+      - Added system to allow for Android version-dependent controller mappings.
+      
+    Controller Definitions:
+      - Sony DualShock 4, Android: Added additional product name matching variations for wired mode connections in some versions of Android.
+      - Sony DualShock 4, Android: Added variant for Android Oreo+.
+
+1.1.14.1:
+
+    Bug Fixes:
+      - Fixed issue in Gamepad Template causing L/R triggers to map incorrectly when bound to individual poles of an Axis-type Action on some gamepads introduced in 1.1.13.0.
+      - Fixed issue ActionElementMap.elementIdentifierName on Keyboard Maps returning null introduced in 1.1.13.0.
+
+1.1.14.0:
+    
+    API Changes:
+      - Added ReInput.ControllerHelper.controllerCount.
+      - Changed ReInput.ControllerHelper.Controllers return type to IList from IEnumerable.
+      - Deprecated ReInput.MappingHelper.GetFirstJoystickTemplateElementIdentifier method.
+
+    Controller Definitions:
+      - Microsoft Xbox 360 Controller, Linux Native: Added mapping for wireless controller on Arch Linux.
+
+1.1.13.0:
+
+    Changes:
+      - Added Unity 2018 branch.
+      - Added Initializer system for spawning the Rewired Input Manager in scenes as necessary.
+      - Added option to create Rewired Input Manager prefab asset file directly.
+      - Added data compact, import, export tools in Rewired Input Manager.
+      - Added script-accessible runtime Controller Template system.
+      - Added Gamepad Template UI example (Unity 5+).
+      - Rewired Editor: Constant exporter now remembers last save location and file name.
+      - Updated Bolt integration for compatibility with Bolt 1.3. Bolt 1.3 is now the minimum supported version.
+    
+    Controller Templates:
+      - Modified all Templates for new runtime Controller Template system.
+      - HOTAS Template: Changed "Throttle Zero Detent" element identifier names to "Throttle Min Detent".
+      - Flight Yoke Template: Changed "Lever Zero Detent" element identifier names to "Lever Min Detent".
+      - Dual Analog Gamepad Template: Changed name to "Gamepad", changed Left Shoulder 2 and Right Shoulder 2 to Axis type elements.
+    
+    Controller Definitions:
+      - Sony DualShock 4: Added support for wireless mode on Android.
+    
+    API Changes:
+      - Added Initializer class.
+      - Added Controller.GetElementById method.
+      - Added Controller.Element.id property.
+      - Added Controller.Element.elementIdentifier property.
+      - Added Controller.CompoundElement.id property.
+      - Added Controller.CompoundElement.elementIdentifier property.
+      - Added ControllerElementIdentifier.GetDisplayName method.
+      - Added ControllerTemplate class.
+      - Added ControllerTemplateElementIdentifier class.
+      - Added ControllerTemplateElementType enum.
+      - Added IControllerElementTarget interface.
+      - Added IControllerTemplate interface.
+      - Added IControllerTemplateAxisSource interface.
+      - Added IControllerTemplateButtonSource interface.
+      - Added IControllerTemplateElement interface.   
+      - Added IControllerTemplateButton interface.
+      - Added IControllerTemplateAxis interface.
+      - Added IControllerTemplateAnalogTrigger interface.
+      - Added IControllerTemplateStick interface.
+      - Added IControllerTemplateThumbStick interface.
+      - Added IControllerTemplateDPad interface.
+      - Added IControllerTemplateThrottle interface.
+      - Added IControllerTemplateHat interface.
+      - Added IControllerTemplateYoke interface.
+      - Added IGamepadTemplate interface.
+      - Added IFlightPedalsTemplate interface.
+      - Added IFlightYokeTemplate interface.
+      - Added IHOTASTemplate interface.
+      - Added IRacingWheelTemplate interface.
+      - Added GamepadTemplate class.
+      - Added FlightPedalsTemplate class.
+      - Added FlightYokeTemplate class.
+      - Added HOTASTemplate class.
+      - Added RacingWheelTemplate class.
+      - Added ReInput.ControllerHelper.GetControllerTemplates method.
+      - Added Player.ControllerHelper.GetControllerTemplates method.
+      - Added Player.ControllerHelper.GetFirstControllerWithTemplate method.
+      - Added Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget method.
+      - Added Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget method.
+      - Added Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget method.
+      - Player.ControllerHelper.MapHelper.GetAllMaps(..., List<ControllerMap> results) method overloads.
+      - Player.ControllerHelper.MapHelper.GetAllMapsInCategory(..., List<ControllerMap> results) method overloads.
+      - Player.ControllerHelper.MapHelper.GetMapsInCategory(..., List<ControllerMap> results) method overloads.
+      - Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(..., List<ControllerMap> results) method overloads.
+      - Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(..., List<ControllerMap> results) method overloads.
+      - Player.ControllerHelper.MapHelper.GetElementMapsWithAction(..., List<ControllerMap> results) method overloads.
+      - ControllerMap.GetElementMaps(..., List<ActionElementMap> results) method overloads.
+      - ControllerMap.GetElementMapsWithAction(..., List<ActionElementMap> results) method overloads.
+      - ControllerMap.GetButtonMaps(..., List<ActionElementMap> results) method overloads.
+      - ControllerMap.GetButtonMapsWithAction(..., List<ActionElementMap> results) method overloads.
+      - ControllerMapWithAxes.GetAxisMaps(..., List<ActionElementMap> results) method overloads.
+      - ControllerMapWithAxes.GetAxisMapsWithAction(..., List<ActionElementMap> results) method overloads.    
+      - Added ControllerMap.GetFirstElementMapWithAction(string actionName, bool skipDisabledMaps) method overload.
+      - Added ControllerMap.GetFirstElementMapWithElementTarget method.
+      - Added ControllerMap.ElementMapsWithElementTarget method.
+      - Added ControllerMap.GetElementMapsWithElementTarget method.
+      - Added ActionElementMap.actionDescriptiveName method.
+      - Added ActionElementMap.IsTarget method.
+      - Added ReInput.MappingHelper.GetJoystickMapInstance(Guid joystickTypeGuid, ...) method overloads.
+
+    Bug Fixes:
+      - Constant exporter now allows periods in namespace names (for nested namespaces).
+      - When deleting a Controller Map Category or a Layout, Player default Controller Map assignments that use the deleted Category / Layout are removed.
+      - Controller.Elements no longer always returns null.
+
 1.1.12.2:
 
     Controller Definitions:

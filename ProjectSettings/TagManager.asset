@@ -8,6 +8,8 @@ TagManager:
   - Player2
   - Player4
   - Player3
+  - PlayerBullet
+  - Boundary
   layers:
   - Default
   - TransparentFX

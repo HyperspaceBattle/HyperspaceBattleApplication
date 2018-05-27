@@ -1621,6 +1621,21 @@
             Only for input sources that get their device connections from within
             </summary>
         </member>
+        <member name="F:Rewired.LowLevelEvent.id">
+            <summary>
+            NEVER SET THIS VALUE!
+            </summary>
+        </member>
+        <member name="F:Rewired.LowLevelEvent.timestamp">
+            <summary>
+            NEVER SET THIS VALUE!
+            </summary>
+        </member>
+        <member name="F:Rewired.LowLevelButtonEvent.value">
+            <summary>
+            NEVER SET THIS VALUE!
+            </summary>
+        </member>
         <member name="P:Rewired.TouchInfo.isValid">
             <summary>
             Does this contain valid touch data?
@@ -1662,6 +1677,9 @@
             <exclude></exclude>
         </member>
         <member name="T:Rewired.UI.UIPivot">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Internal.GUIText">
             <exclude></exclude>
         </member>
         <member name="T:Rewired.ComponentControls.ComponentControl">
@@ -3056,6 +3074,13 @@
             The id is unique among controllers of a specific controller type.
             </summary>
         </member>
+        <member name="M:Rewired.Controller.GetElementById(System.Int32)">
+            <summary>
+            Gets the Element with the specified element identifier id.
+            </summary>
+            <param name="elementIdentifierId">The element identifier id.</param>
+            <returns>The Element with the specified element idenfitier id. Returns null if not found.</returns>
+        </member>
         <member name="M:Rewired.Controller.GetButtonIndexById(System.Int32)">
             <summary>
             Gets the index of the Button with the specified element idenfitier id.
@@ -3370,6 +3395,51 @@
             <typeparam name="T">Type</typeparam>
             <returns>Extension</returns>
         </member>
+        <member name="M:Rewired.Controller.GetTemplate(System.Guid)">
+            <summary>
+            Gets a Controller Template by type GUID.
+            </summary>
+            <param name="typeGuid">Controller Template type GUID</param>
+            <returns>Returns the Controller Template if it exists in the Controller, null if it does not.</returns>
+        </member>
+        <member name="M:Rewired.Controller.GetTemplate(System.Type)">
+            <summary>
+            Gets a Controller Template by type.
+            </summary>
+            <param name="type">Controller Template type</param>
+            <returns>Returns the Controller Template if it exists in the Controller, null if it does not.</returns>
+        </member>
+        <member name="M:Rewired.Controller.GetTemplate``1">
+            <summary>
+            Gets the first Controller Template that implements the specified type.
+            Note that it is possible to have multiple Controller Templates that implement a specific type of interface
+            such as IControllerTemplate. You should use the most specific interface type possible such as IDualAnalogGamepadTemplate instead,
+            which would be guaranteed to only apply to a single Controller Template.
+            </summary>
+            <typeparam name="T">Controller Template interface type</typeparam>
+            <returns>Returns the Controller Template if it exists in the Controller, null if it does not.</returns>
+        </member>
+        <member name="M:Rewired.Controller.ImplementsTemplate(System.Guid)">
+            <summary>
+            Determines if the Controller implements a Controller Template by type GUID.
+            </summary>
+            <param name="typeGuid">Controller Template type GUID</param>
+            <returns>True if the Controller implements the Controller Template type, false if it does not.</returns>
+        </member>
+        <member name="M:Rewired.Controller.ImplementsTemplate(System.Type)">
+            <summary>
+            Determines if the Controller implements a Controller Template by type.
+            </summary>
+            <param name="type">Controller Template type</param>
+            <returns>True if the Controller implements the Controller Template type, false if it does not.</returns>
+        </member>
+        <member name="M:Rewired.Controller.ImplementsTemplate``1">
+            <summary>
+            Determines if the Controller implements a Controller Template by type.
+            </summary>
+            <typeparam name="T">Controller Template type</typeparam>
+            <returns>True if the Controller implements the Controller Template type, false if it does not.</returns>
+        </member>
         <member name="P:Rewired.Controller.enabled">
             <summary>
             Is the controller enabled? Disabled controllers return no input.
@@ -3447,9 +3517,24 @@
             which is at the same index as the corresponding Button.
             </summary>
         </member>
+        <member name="P:Rewired.Controller.Templates">
+            <summary>
+            The Controller Templates that the Controller implements.
+            </summary>
+        </member>
+        <member name="P:Rewired.Controller.templateCount">
+            <summary>
+            The Template count in the controller.
+            </summary>
+        </member>
         <member name="T:Rewired.Controller.Element">
             <summary>
             The base class for all controller elements.
+            </summary>
+        </member>
+        <member name="F:Rewired.Controller.Element.id">
+            <summary>
+            The element identifier id.
             </summary>
         </member>
         <member name="F:Rewired.Controller.Element.name">
@@ -3462,7 +3547,7 @@
             The element type.
             </summary>
         </member>
-        <member name="F:Rewired.Controller.Element.dataSet">
+        <member name="P:Rewired.Controller.Element.elementIdentifier">
             <summary>
             The controller element identifier.
             </summary>
@@ -3642,6 +3727,11 @@
             Compound elements cannot be mapped with an ActionElementMap. Instead, the component axes are each mapped individually.
             </summary>
         </member>
+        <member name="P:Rewired.Controller.CompoundElement.id">
+            <summary>
+            The element identifier id.
+            </summary>
+        </member>
         <member name="P:Rewired.Controller.CompoundElement.name">
             <summary>
             The name of this element.
@@ -3665,6 +3755,11 @@
         <member name="P:Rewired.Controller.CompoundElement.elementCapacity">
             <summary>
             The maximum capacity of memober elements in this compound element.
+            </summary>
+        </member>
+        <member name="P:Rewired.Controller.CompoundElement.elementIdentifier">
+            <summary>
+            The controller element identifier.
             </summary>
         </member>
         <member name="T:Rewired.Controller.Axis2D">
@@ -3818,6 +3913,13 @@
             The contents of this class have been moved into Conroller.
             This class no longer serves any purpose and may be removed in the future.
             </summary>
+        </member>
+        <member name="M:Rewired.ControllerWithAxes.GetElementById(System.Int32)">
+            <summary>
+            Gets the Element with the specified element identifier id.
+            </summary>
+            <param name="elementIdentifierId">The element identifier id.</param>
+            <returns>The Element with the specified element idenfitier id. Returns null if not found.</returns>
         </member>
         <member name="M:Rewired.ControllerWithAxes.GetAxisIndexById(System.Int32)">
             <summary>
@@ -4847,6 +4949,763 @@
             The difference in position of the mouse pointer on the screen since the last frame in pixels.
             </summary>
         </member>
+        <member name="T:Rewired.ControllerTemplate">
+            <summary>
+            Base class for a Controller Template.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplate">
+            <summary>
+            Interface for a Controller Template.
+            </summary>
+        </member>
+        <member name="M:Rewired.IControllerTemplate.GetElement(System.Int32)">
+            <summary>
+            Gets the specified Controller Template element.
+            </summary>
+            <param name="id">Id of the Controller Template element.</param>
+            <returns>Returns the Controller Template element. Returns null if the element was not found.</returns>
+        </member>
+        <member name="M:Rewired.IControllerTemplate.GetElement``1(System.Int32)">
+            <summary>
+            Gets the specified Controller Template element.
+            </summary>
+            <typeparam name="T">Controller template element type.</typeparam>
+            <param name="id">Id of the Controller Template element.</param>
+            <returns>Returns the Controller Template element. Returns null if the element was not found or the type is not implemented by the element.</returns>
+        </member>
+        <member name="M:Rewired.IControllerTemplate.GetElementTargets(Rewired.ControllerElementTarget,System.Collections.Generic.IList{Rewired.ControllerTemplateElementTarget})">
+            <summary>
+            Gets a list of all Controller Template Element targets that map to the specified target Controller Element.
+            </summary>
+            <param name="target">The target Controller Element.</param>
+            <param name="results">The list of results. Provide a list which will be used to return the results. The list will be cleared by the method.</param>
+            <returns>All Template Element targets that map to the specified target Controller Element</returns>
+        </member>
+        <member name="P:Rewired.IControllerTemplate.controller">
+            <summary>
+            Parent Controller to which the Controller Template belongs.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplate.name">
+            <summary>
+            Display name of the Controller Template.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplate.typeGuid">
+            <summary>
+            GUID of the Controller Template type.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplate.elements">
+            <summary>
+            List of Controller Template elements.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplate.elementCount">
+            <summary>
+            Count of Controller Template elements.
+            </summary>
+        </member>
+        <member name="M:Rewired.ControllerTemplate.GetElement``1(System.Int32)">
+            This is protected so implementing classes can get the element
+        </member>
+        <member name="T:Rewired.ControllerTemplate.Element">
+            <summary>
+            Base of all elements whether they are actual buttons/axes, compound elements, or template-level elements
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateElement">
+            <summary>
+            Interface for a Controller Template Element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateElement.id">
+            <summary>
+            Id of the Controller Template Element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateElement.descriptiveName">
+            <summary>
+            Display name of the Controller Template Element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateElement.type">
+            <summary>
+            Type of the Controller Template Element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateElement.exists">
+            <summary>
+            Does the Element exist in the parent Controller?
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateElement.source">
+            <summary>
+            Information about the source element(s) in the parent Controller.
+            This will return null for elements that cannot have a directly mappable source Controller Element.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerTemplate.ElementWithSources">
+            <summary>
+            Base of actual functional elements that point back to real controller element sources.
+            Button and axis only.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateAxis">
+            <summary>
+            Interface for a Controller Template Axis.
+            An Axis has a floating-point value.
+            An Axis consists of two poles, positive and negative.
+            </summary>
+        </member>
+        <member name="M:Rewired.IControllerTemplateAxis.GetDescriptiveName(Rewired.AxisRange)">
+            <summary>
+            Gets the display name of the Controller Template Element for the specified axis range.
+            </summary>
+            <param name="axisRange">The axis range for which to get the descriptiveName</param>
+            <returns>Returns the display name of the Controller Template Element for the specified axis range</returns>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis.positiveDescriptiveName">
+            <summary>
+            Display name of the Controller Template Element for the positive axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis.negativeDescriptiveName">
+            <summary>
+            Display name of the Controller Template Element for the negative axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis.value">
+            <summary>
+            The current value of the axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis.valuePrev">
+            <summary>
+            The value of the axis in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis.source">
+            <summary>
+            The Controller element source.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis.AsButton">
+            <summary>
+            Gets the element cast to <see cref="T:Rewired.IControllerTemplateButton"/>.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateButton">
+            <summary>
+            Interface for a Controller Template Button.
+            A Button has an on/off value and optionally a pressure value.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.value">
+            <summary>
+            The current value of the button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.valuePrev">
+            <summary>
+            The value of the button in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.pressure">
+            <summary>
+            The current pressure of the button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.pressurePrev">
+            <summary>
+            The pressure of the button in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.justPressed">
+            <summary>
+            Was this button just pressed this frame? Returns true for only one frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.justReleased">
+            <summary>
+            Was this button just released this frame? Returns true for only one frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.justChangedState">
+            <summary>
+            Returns true if the button was just pressed or just released. Returns true for only one frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.source">
+            <summary>
+            The Controller element source.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButton.AsAxis">
+            <summary>
+            Gets the element cast to <see cref="T:Rewired.IControllerTemplateAxis"/>.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateAxis2D">
+            <summary>
+            Interface for a Controller Template axis 2D.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis2D.value">
+            <summary>
+            The current value of the axis 2D.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis2D.valuePrev">
+            <summary>
+            The value of the axis 2D in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis2D.horizontal">
+            <summary>
+            The horizontal axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis2D.vertical">
+            <summary>
+            The vertical axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateAxis3D">
+            <summary>
+            Interface for a Controller Template axis 2D.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis3D.value">
+            <summary>
+            The current value of the axis 3D.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis3D.valuePrev">
+            <summary>
+            The value of the axis 3D in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis3D.horizontal">
+            <summary>
+            The horizontal axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis3D.vertical">
+            <summary>
+            The vertical axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxis3D.depth">
+            <summary>
+            The depth axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateStick">
+            <summary>
+            Interface for a Controller Template Stick.
+            A Stick can have up to 3 axes: Horizontal, Vertical, and Rotation.
+            This is used for flight sticks.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateStick.value">
+            <summary>
+            The current value of the stick.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateStick.valuePrev">
+            <summary>
+            The value of the stick in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateStick.horizontal">
+            <summary>
+            The horizontal axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateStick.vertical">
+            <summary>
+            The vertical axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateStick.rotation">
+            <summary>
+            The rotation axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateThumbStick">
+            <summary>
+            Interface for a Controller Template Thumb Stick.
+            A Thumb Stick has 2 axes and an optional button.
+            This is used for gamepad sticks.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThumbStick.value">
+            <summary>
+            The current value of the thumb stick.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThumbStick.valuePrev">
+            <summary>
+            The value of the thumb stick in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThumbStick.horizontal">
+            <summary>
+            The horizontal axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThumbStick.vertical">
+            <summary>
+            The vertical axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThumbStick.press">
+            <summary>
+            The stick press button.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateDPad">
+            <summary>
+            Interface for a Controller Template D-Pad.
+            A D-Pad consists of 4 directional buttons and an optional press-in button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.value">
+            <summary>
+            The current value of the D-Pad as a 2D axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.valuePrev">
+            <summary>
+            The value of the D-Pad as a 2D axis in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.up">
+            <summary>
+            The up button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.right">
+            <summary>
+            The right button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.down">
+            <summary>
+            The down button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.left">
+            <summary>
+            The left button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateDPad.press">
+            <summary>
+            The press button.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateThrottle">
+            <summary>
+            Interface for a Controller Template Throttle.
+            A Throttle has an axis and an optional button activated when the throttle is at its minimum value.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThrottle.value">
+            <summary>
+            The current value of the throttle.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThrottle.valuePrev">
+            <summary>
+            The value of the throttle in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThrottle.throttle">
+            <summary>
+            The axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateThrottle.minDetent">
+            <summary>
+            The min-detent button.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateHat">
+            <summary>
+            Interface for a Controller Template Hat.
+            A Hat is an 8-directional switch.
+            This is commonly used on flight sticks.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.value">
+            <summary>
+            The current value of the Hat as a 2D axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.valuePrev">
+            <summary>
+            The value of the Hat as a 2D axis in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.up">
+            <summary>
+            The up button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.upRight">
+            <summary>
+            The up-right button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.right">
+            <summary>
+            The right button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.downRight">
+            <summary>
+            The down-right button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.down">
+            <summary>
+            The down button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.downLeft">
+            <summary>
+            The down-left button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.left">
+            <summary>
+            The left button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateHat.upLeft">
+            <summary>
+            The up-left button.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateYoke">
+            <summary>
+            Interface for a Controller Template Yoke.
+            A Yoke has 2 axes: Rotation and Push/Pull.
+            This is used for flight yokes.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateYoke.value">
+            <summary>
+            The current value of the yoke as a 2D axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateYoke.valuePrev">
+            <summary>
+            The value of the yoke as a 2D axis in the previous frame.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateYoke.rotation">
+            <summary>
+            The rotation axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateYoke.pushPull">
+            <summary>
+            The push / pull axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateElementSource">
+            <summary>
+            Interface for a Controller Template Element Source.
+            This provides information about the source of the Controller Template Element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateElementSource.type">
+            <summary>
+            Gets the type of the element source.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateAxisSource">
+            <summary>
+            Interface for a Controller Template Axis Source.
+            This provides information about the source of the Controller Template Axis.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxisSource.splitAxis">
+            <summary>
+            Is this a split-axis assignment?
+            If false, <see cref="P:Rewired.IControllerTemplateAxisSource.fullTarget"/> is used.
+            If true, <see cref="P:Rewired.IControllerTemplateAxisSource.positiveTarget"/> and <see cref="P:Rewired.IControllerTemplateAxisSource.negativeTarget"/> are used.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxisSource.fullTarget">
+            <summary>
+            Target Controller element for the axis.
+            This is only used if <see cref="P:Rewired.IControllerTemplateAxisSource.splitAxis"/> is false.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxisSource.positiveTarget">
+            <summary>
+            Target Controller element for the positive pole of the axis.
+            This is only used if <see cref="P:Rewired.IControllerTemplateAxisSource.splitAxis"/> is true.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateAxisSource.negativeTarget">
+            <summary>
+            Target Controller element for the negative pole of the axis.
+            This is only used if <see cref="P:Rewired.IControllerTemplateAxisSource.splitAxis"/> is true.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerTemplateButtonSource">
+            <summary>
+            Interface for a Controller Template Button Source.
+            This provides information about the source of the Controller Template Button.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerTemplateButtonSource.target">
+            <summary>
+            Target Controller element.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerTemplateElementTarget">
+            <summary>
+            Describes a specific Controller Template Element on a Controller Template including a partial Axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ControllerTemplateElementTarget.#ctor(Rewired.IControllerTemplateElement,Rewired.AxisRange)">
+            <summary>
+            Creates a <see cref="T:Rewired.ControllerTemplateElementTarget"/> instance.
+            </summary>
+            <param name="element">The Controller Template Element.</param>
+            <param name="axisRange">The range of the target Axis. Only used for Axis targets.</param>
+        </member>
+        <member name="M:Rewired.ControllerTemplateElementTarget.#ctor(Rewired.ControllerTemplateElementTarget)">
+            <summary>
+            Creates a copy of a <see cref="T:Rewired.ControllerTemplateElementTarget"/>.
+            </summary>
+            <param name="other">The <see cref="T:Rewired.ControllerTemplateElementTarget"/> to copy.</param>
+        </member>
+        <member name="P:Rewired.ControllerTemplateElementTarget.axisRange">
+            <summary>
+            For Axes, the portion of the Axis that applies.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerTemplateElementTarget.elementType">
+            <summary>
+            Gets the element type of the target Controller Template element.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerTemplateElementTarget.descriptiveName">
+            <summary>
+            Gets the name of the target element.
+            For split axes, this will return the Positive or Negative name or the Descriptive Name with a +/- suffix.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerTemplateElementTarget.element">
+            <summary>
+            The target Controller Template Element.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerTemplateElementTarget.template">
+            <summary>
+            The target Controller Template.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerTemplateElementTarget.hasTarget">
+            <summary>
+            Does a valid target exist in the Controller Template?
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerElementTarget">
+            <summary>
+            Describes a specific Controller Element on a Controller including a partial Axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ControllerElementTarget.#ctor(Rewired.ActionElementMap)">
+            <summary>
+            Creates a <see cref="T:Rewired.ControllerElementTarget"/> instance from an <see cref="T:Rewired.ActionElementMap"/>.
+            </summary>
+            <param name="actionElementMap">The Action Element Map.</param>
+        </member>
+        <member name="M:Rewired.ControllerElementTarget.#ctor(Rewired.ControllerElementTarget)">
+            <summary>
+            Creates a copy of a <see cref="T:Rewired.ControllerElementTarget"/>.
+            </summary>
+            <param name="other">The <see cref="T:Rewired.ControllerElementTarget"/> to copy.</param>
+        </member>
+        <member name="M:Rewired.ControllerElementTarget.#ctor(Rewired.IControllerElementTarget)">
+            <summary>
+            Creates a copy of a <see cref="T:Rewired.IControllerElementTarget"/>.
+            </summary>
+            <param name="other">The <see cref="T:Rewired.IControllerElementTarget"/> to copy.</param>
+        </member>
+        <member name="M:Rewired.ControllerElementTarget.op_Implicit(Rewired.ActionElementMap)~Rewired.ControllerElementTarget">
+            <summary>
+            Implicit conversion from an Action Element Map.
+            </summary>
+            <param name="actionElementMap">The Action Element Map.</param>
+            <returns>Returns the converted object.</returns>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.elementIdentifierId">
+            <summary>
+            The element identifier id of the target element.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.axisRange">
+            <summary>
+            Determines whether the full range or just one pole of the target element is used.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.hasTarget">
+            <summary>
+            Does a valid target exist in the Controller?
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.elementType">
+            <summary>
+            Gets the element type of the target Controller element.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.descriptiveName">
+            <summary>
+            Gets the name of the target elementr.
+            For split axes, this will return the Positive or Negative name or the Descriptive Name with a +/- suffix.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.controller">
+            <summary>
+            The target Controller.
+            </summary>
+        </member>
+        <member name="P:Rewired.ControllerElementTarget.element">
+            <summary>
+            The target Controller Element.
+            </summary>
+        </member>
+        <member name="T:Rewired.IControllerElementTarget">
+            <summary>
+            Interface for a Controller element target.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.elementIdentifierId">
+            <summary>
+            The element identifier id of the target element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.axisRange">
+            <summary>
+            For Axes, the portion of the Axis that is being targeted.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.hasTarget">
+            <summary>
+            Does a valid target exist in the Controller?
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.elementType">
+            <summary>
+            Gets the element type of the target Controller element.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.descriptiveName">
+            <summary>
+            Gets the name of the target element.
+            For split axes, this will return the Positive or Negative name or the Descriptive Name with a +/- suffix.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.controller">
+            <summary>
+            The target Controller.
+            </summary>
+        </member>
+        <member name="P:Rewired.IControllerElementTarget.element">
+            <summary>
+            The target Controller Element.
+            </summary>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Utility.IPoolableObject">
+            <summary>
+            Interface for a simple poolable object that maintains a reference to its parent pool so it can be returned easily.
+            </summary>
+        </member>
+        <member name="M:Rewired.Utils.Classes.Utility.IPoolableObject.Return">
+            <summary>
+            Return the object to its pool.
+            </summary>
+        </member>
+        <member name="M:Rewired.Utils.Classes.Utility.IPoolableObject.Clear">
+            <summary>
+            Clear the object.
+            </summary>
+        </member>
+        <member name="P:Rewired.Utils.Classes.Utility.IPoolableObject.pool">
+            <summary>
+            The object's parent pool.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerTemplateElementType">
+            <summary>
+            Controller Template Element type.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.Axis">
+            <summary>
+            An axis.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.Button">
+            <summary>
+            A button.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.ThumbStick">
+            <summary>
+            A thumb stick with a button.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.DPad">
+            <summary>
+            A 4-way directional pad.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.Stick">
+            <summary>
+            A 2 or 3 axis stick.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.Throttle">
+            <summary>
+            A throttle.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.Hat">
+            <summary>
+            An 8-way hat.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementType.Yoke">
+            <summary>
+            A flight yoke.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerTemplateElementSourceType">
+            <summary>
+            Controller Template Element Source type.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementSourceType.Axis">
+            <summary>
+            An axis.
+            </summary>
+        </member>
+        <member name="F:Rewired.ControllerTemplateElementSourceType.Button">
+            <summary>
+            A button.
+            </summary>
+        </member>
         <member name="T:Rewired.Platforms.Custom.CustomInputSource">
             <exclude></exclude>
         </member>
@@ -4977,6 +5836,11 @@
             <exclude></exclude>
         </member>
         <member name="T:Rewired.Interfaces.IHardwareControllerMap">
+            <summary>
+            Interface for hardware controller maps.
+            </summary>
+        </member>
+        <member name="T:Rewired.Interfaces.IHardwareControllerMap_Internal">
             <summary>
             Interface for hardware controller maps.
             </summary>
@@ -5358,6 +6222,11 @@
         </member>
         <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_WebGL">
             <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareControllerTemplateMap">
+            <summary>
+            Base class for controller template maps.
+            </summary>
         </member>
         <member name="T:Rewired.Data.Mapping.HardwareJoystickTemplateMap">
             <summary>
@@ -6050,6 +6919,30 @@
             Joystick type.
             </summary>
         </member>
+        <member name="T:Rewired.Initializer">
+            <exclude></exclude>
+        </member>
+        <member name="F:Rewired.Initializer._inputManagerPrefab">
+            <exclude></exclude>
+        </member>
+        <member name="F:Rewired.Initializer._destroySelf">
+            <exclude></exclude>
+        </member>
+        <member name="M:Rewired.Initializer.Initialize">
+            <summary>
+            Spawns the prefab if one does not already exist.
+            </summary>
+        </member>
+        <member name="P:Rewired.Initializer.inputManagerPrefab">
+            <summary>
+            Set this to a prefab of your Rewired Input Manager.
+            </summary>
+        </member>
+        <member name="P:Rewired.Initializer.destroySelf">
+            <summary>
+            Destroy this GameObject after initialization.
+            </summary>
+        </member>
         <member name="T:Rewired.Utils.Interfaces.IExternalTools">
             <exclude></exclude>
         </member>
@@ -6364,6 +7257,20 @@
             <param name="fieldActionRange">The range of the input field.</param>
             <returns>True/False</returns>
         </member>
+        <member name="M:Rewired.ActionElementMap.IsTarget(Rewired.ControllerElementTarget)">
+            <summary>
+            Is the Controller Element target mapped by this ActionElementMap?
+            </summary>
+            <param name="elementTarget">The Controller Element target</param>
+            <returns>True if the the Controller Element target is mapped by this ActionElementMap, false if it is not.</returns>
+        </member>
+        <member name="M:Rewired.ActionElementMap.IsTarget(Rewired.IControllerElementTarget)">
+            <summary>
+            Is the Controller Element target mapped by this ActionElementMap?
+            </summary>
+            <param name="elementTarget">The Controller Element target</param>
+            <returns>True if the the Controller Element target is mapped by this ActionElementMap, false if it is not.</returns>
+        </member>
         <member name="P:Rewired.ActionElementMap.actionId">
             <summary>
             Gets the id of the Action to which the element is bound.
@@ -6446,7 +7353,14 @@
         </member>
         <member name="P:Rewired.ActionElementMap.elementIdentifierName">
             <summary>
-            Gets the name of the element identifier bound to the Action. For split axes, this will return the Positive or Negative name or the Descriptive Name with a +/- suffix.
+            Gets the descriptive name of the element identifier bound to the Action.
+            For split axes, this will return the Positive or Negative Descriptive Name or the Descriptive Name with a +/- suffix.
+            </summary>
+        </member>
+        <member name="P:Rewired.ActionElementMap.actionDescriptiveName">
+            <summary>
+            Gets the descriptive name of the Action.
+            For split axes, this will return the Positive or Negative Descriptive Name or the Descriptive Name with a +/- suffix.
             </summary>
         </member>
         <member name="P:Rewired.ActionElementMap.elementIndex">
@@ -6692,6 +7606,38 @@
         <member name="T:Rewired.ControllerElementIdentifier">
             <summary>
             Represents a single element on a controller. Used to identify physical elements on controllers by type and name.
+            </summary>
+        </member>
+        <member name="M:Rewired.ControllerElementIdentifier.GetDisplayName(Rewired.ControllerElementType,Rewired.AxisRange)">
+            <summary>
+            Gets the display name for the specified element type and range.
+            </summary>
+            <param name="actualElementType">The element type of the actual Controller Element. This can differ from the element type of the Element Identifier.</param>
+            <param name="axisRange">The range.</param>
+            <returns>Returns the display name for the specified element type and range.</returns>
+        </member>
+        <member name="M:Rewired.ControllerElementIdentifier.GetDisplayName(Rewired.AxisRange)">
+            <summary>
+            Gets the display name for the specified range.
+            </summary>
+            <param name="axisRange">The range.</param>
+            <returns>Returns the display name for the specified range.</returns>
+        </member>
+        <member name="T:Rewired.ControllerTemplateElementIdentifier">
+            <summary>
+            Represents a single element on a controller template. Used to identify physical elements on controller templates by type and name.
+            </summary>
+        </member>
+        <member name="M:Rewired.ControllerTemplateElementIdentifier.GetDisplayName(Rewired.AxisRange)">
+            <summary>
+            Gets the display name for the specified axis range.
+            </summary>
+            <param name="axisRange">The range.</param>
+            <returns>Returns the display name for the specified axis range.</returns>
+        </member>
+        <member name="T:Rewired.Data.ControllerTemplateElementIdentifier_Editor">
+            <summary>
+            Represents a single element on a controller template. Used to identify physical elements on controller templates by type and name.
             </summary>
         </member>
         <member name="T:Rewired.ControllerMapSaveData">
@@ -7005,19 +7951,42 @@
         <member name="M:Rewired.ControllerMap.GetElementMaps">
             <summary>
             Gets all ActionElementMaps in this controller map.
+            Warning: Calling this allocates memory.
+            Use <see cref="P:Rewired.ControllerMap.AllMaps"/> instead.
             </summary>
             <returns>Array of ActionElementMap</returns>
         </member>
         <member name="M:Rewired.ControllerMap.GetElementMaps(System.Boolean)">
             <summary>
             Gets all ActionElementMaps in this controller map.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetElementMaps(System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>Array of ActionElementMap</returns>
         </member>
+        <member name="M:Rewired.ControllerMap.GetElementMaps(System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps in this controller map.
+            </summary>
+            <param name="results">List which will be populated with matching results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMaps(System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps in this controller map.
+            </summary>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
         <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.String)">
             <summary>
             Gets all ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetElementMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionName">The name of the Action</param>
             <returns>Array of ActionElementMap</returns>
@@ -7025,6 +7994,8 @@
         <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.Int32)">
             <summary>
             Gets all ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetElementMapsWithAction(System.Int32,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionId">The id of the Action</param>
             <returns>Array of ActionElementMap</returns>
@@ -7032,6 +8003,8 @@
         <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.String,System.Boolean)">
             <summary>
             Gets all ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetElementMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionName">The name of the Action</param>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
@@ -7040,10 +8013,50 @@
         <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.Int32,System.Boolean)">
             <summary>
             Gets all ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetElementMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionId">The id of the Action</param>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>Array of ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.Int32,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionId">The id of the Action</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
         </member>
         <member name="M:Rewired.ControllerMap.ElementMapsWithAction(System.String)">
             <summary>
@@ -7097,6 +8110,176 @@
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>ActionElementMap</returns>
         </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithAction(System.String,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found in this controller that contains a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.ElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.ElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.ElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.ElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.ElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.ElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithElementTarget(Rewired.ControllerElementTarget,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithElementTarget(Rewired.IControllerElementTarget,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithElementTarget(Rewired.ControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithElementTarget(Rewired.ControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithElementTarget(Rewired.IControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetFirstElementMapWithElementTarget(Rewired.IControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
         <member name="M:Rewired.ControllerMap.GetFirstElementMapMatch(System.Predicate{Rewired.ActionElementMap})">
             <summary>
             Finds the first Action Element Map of any kind that matches the conditions defined by the specified predicate.
@@ -7146,19 +8329,34 @@
         <member name="M:Rewired.ControllerMap.GetButtonMaps">
             <summary>
             Gets all Button ActionElementMaps in this controller map.
+            Warning: Calling this allocates memory.
+            Use <see cref="P:Rewired.ControllerMap.ButtonMaps"/> instead.
             </summary>
             <returns>Array of ActionElementMap</returns>
         </member>
         <member name="M:Rewired.ControllerMap.GetButtonMaps(System.Boolean)">
             <summary>
             Gets all Button ActionElementMaps in this controller map.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetButtonMaps(System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>Array of ActionElementMap</returns>
         </member>
+        <member name="M:Rewired.ControllerMap.GetButtonMaps(System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Button ActionElementMaps in this controller map.
+            </summary>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
         <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.String)">
             <summary>
             Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionName">The name of the Action</param>
             <returns>Array of ActionElementMap</returns>
@@ -7166,6 +8364,8 @@
         <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.Int32)">
             <summary>
             Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.Int32,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionId">The id of the Action</param>
             <returns>Array of ActionElementMap</returns>
@@ -7173,6 +8373,8 @@
         <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.String,System.Boolean)">
             <summary>
             Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionName">The name of the Action</param>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
@@ -7181,10 +8383,50 @@
         <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.Int32,System.Boolean)">
             <summary>
             Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionId">The id of the Action</param>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>Array of ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.Int32,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionId">The id of the Action</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMap.GetButtonMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Button ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
         </member>
         <member name="M:Rewired.ControllerMap.ButtonMapsWithAction(System.Int32)">
             <summary>
@@ -7564,6 +8806,7 @@
         <member name="M:Rewired.ControllerMap.GetButtonNames">
             <summary>
             Gets the element identifier names in all button maps.
+            Warning: Calling this allocates memory.
             </summary>
             <returns>Array of names</returns>
         </member>
@@ -7764,19 +9007,33 @@
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisMaps">
             <summary>
             Gets all Axis ActionElementMaps in this controller map.
+            Warning: Calling this allocates memory.
+            Use <see cref="P:Rewired.ControllerMapWithAxes.AxisMaps"/> instead.
             </summary>
             <returns>Array of ActionElementMap</returns>
         </member>
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisMaps(System.Boolean)">
             <summary>
             Gets all Axis ActionElementMaps in this controller map.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMapWithAxes.GetAxisMaps(System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>Array of ActionElementMap</returns>
         </member>
+        <member name="M:Rewired.ControllerMapWithAxes.GetAxisMaps(System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Axis ActionElementMaps in this controller map.
+            </summary>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.String)">
             <summary>
             Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionName">The name of the Action</param>
             <returns>Array of ActionElementMap</returns>
@@ -7784,6 +9041,8 @@
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.Int32)">
             <summary>
             Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.Int32,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionId">The id of the Action</param>
             <returns>Array of ActionElementMap</returns>
@@ -7791,6 +9050,8 @@
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.String,System.Boolean)">
             <summary>
             Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionName">The name of the Action</param>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
@@ -7799,10 +9060,50 @@
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.Int32,System.Boolean)">
             <summary>
             Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            Warning: Calling this allocates memory.
+            Use <see cref="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})"/> instead.
             </summary>
             <param name="actionId">The id of the Action</param>
             <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
             <returns>Array of ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.String,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.Int32,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionId">The id of the Action</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
+        <member name="M:Rewired.ControllerMapWithAxes.GetAxisMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all Axis ActionElementMaps in this controller map that contain a specific Action.
+            </summary>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">List which will be populated with matching results.</param>
+            <returns>Number of maps found.</returns>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
         </member>
         <member name="M:Rewired.ControllerMapWithAxes.AxisMapsWithAction(System.String)">
             <summary>
@@ -8016,6 +9317,7 @@
         <member name="M:Rewired.ControllerMapWithAxes.GetAxisNames">
             <summary>
             Gets the element identifier names in all axis maps.
+            Warning: Calling this allocates memory.
             </summary>
             <returns>Array of names</returns>
         </member>
@@ -8057,6 +9359,16 @@
             Maps actions to controller elements for a custom controller.
             </summary>
         </member>
+        <member name="M:Rewired.IControllerMapSet.GetMaps">
+            <summary>
+            GC!
+            </summary>
+        </member>
+        <member name="M:Rewired.IControllerMapSet.GetMapsByCategory(System.Int32)">
+            <summary>
+            GC!
+            </summary>
+        </member>
         <member name="M:Rewired.ControllerMapSet`1.Rewired#IControllerMapSet#GetMaps``1">
             <summary>
             Used for getting the type-specific list from the interface.
@@ -8096,7 +9408,7 @@
         </member>
         <member name="T:Rewired.InputBehavior">
             <summary>
-            Provides configutaion options for an InputAction.
+            Provides configuration options for an InputAction.
             </summary>
         </member>
         <member name="M:Rewired.InputBehavior.ToXmlString">
@@ -8273,6 +9585,11 @@
         <member name="T:Rewired.InputMapCategory">
             <summary>
             A category for organizing controller maps.
+            </summary>
+        </member>
+        <member name="P:Rewired.InputMapCategory.checkConflictsCategoryIds_orig">
+            <summary>
+            Used by RIM data exporter.
             </summary>
         </member>
         <member name="T:Rewired.InputLayout">
@@ -10086,6 +11403,34 @@
             Remove all delegates to no longer receive any callbacks when the last active controller changes.
             </summary>
         </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetFirstControllerWithTemplate(System.Guid)">
+            <summary>
+            Gets the first Controller of any type that implements the specified Controller Template.
+            </summary>
+            <param name="templateTypeGuid">Controller Template type GUID</param>
+            <returns>Returns the first Controller that implements the Controller Template or null if none were found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetFirstControllerWithTemplate(System.Type)">
+            <summary>
+            Gets the first Controller of any type that implements the specified Controller Template.
+            </summary>
+            <param name="templateType">Controller Template type</param>
+            <returns>Returns the first Controller that implements the Controller Template or null if none were found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetFirstControllerWithTemplate``1">
+            <summary>
+            Gets the first Controller of any type that implements the specified Controller Template.
+            </summary>
+            <typeparam name="T">Controller Template Type</typeparam>
+            <returns>Returns the first Controller that implements the Controller Template or null if none were found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetControllerTemplates``1">
+            <summary>
+            Gets a list of all Controller Templates in assigned Controllers that match the type.
+            </summary>
+            <typeparam name="TInterface">Controller Template interface type. Note: You must use the interface of the Controller Template and not the concrete class.</typeparam>
+            <returns></returns>
+        </member>
         <member name="P:Rewired.Player.ControllerHelper.hasMouse">
             <summary>
             Is the mouse assigned to this Player?
@@ -10658,6 +12003,14 @@
             </summary>
             <returns>IEnumerable of controller maps</returns>
         </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMaps(System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets all controller maps assigned to this Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMaps``1">
             <summary>
             Enumerates all controller maps assigned to this Player.
@@ -10665,12 +12018,29 @@
             <typeparam name="T">Controller Map type</typeparam>
             <returns>IEnumerable of controller maps</returns>
         </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMaps``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Gets all controller maps assigned to this Player.
+            </summary>
+            <typeparam name="T">Controller Map type</typeparam>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+        </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMaps(Rewired.ControllerType)">
             <summary>
             Enumerates all controller maps for a specific controller type assigned to this Player.
             </summary>
             <param name="controllerType">Controller type</param>
             <returns>IEnumerable of controller maps</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMaps(Rewired.ControllerType,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets all controller maps for a specific controller type assigned to this Player.
+            </summary>
+            <param name="controllerType">Controller type</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
         </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory(System.String)">
             <summary>
@@ -10717,6 +12087,64 @@
             <param name="categoryId">Category id</param>
             <param name="controllerType">Controller type</param>
             <returns>IEnumerable of controller maps</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory(System.String,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of all controller maps assigned to this player in a specific category.
+            </summary>
+            <param name="categoryName">Category name</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory(System.Int32,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of all controller maps assigned to this player in a specific category.
+            </summary>
+            <param name="categoryId">Category id</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory``1(System.String,System.Collections.Generic.List{``0})">
+            <summary>
+            Gets a list of all controller maps assigned to this player in a specific category.
+            </summary>
+            <typeparam name="T">Controller Map type</typeparam>
+            <param name="categoryName">Category name</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory``1(System.Int32,System.Collections.Generic.List{``0})">
+            <summary>
+            Gets a list of all controller maps assigned to this player in a specific category.
+            </summary>
+            <typeparam name="T">Controller Map type</typeparam>
+            <param name="categoryId">Category id</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory(System.String,Rewired.ControllerType,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of all controller maps assigned to this player in a specific category.
+            </summary>
+            <param name="categoryName">Category name</param>
+            <param name="controllerType">Controller type</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory(System.Int32,Rewired.ControllerType,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of all controller maps assigned to this player in a specific category.
+            </summary>
+            <param name="categoryId">Category id</param>
+            <param name="controllerType">Controller type</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
         </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMaps``1(System.Int32)">
             <summary>
@@ -10775,6 +12203,48 @@
             <param name="categoryName">Map Category name.</param>
             <returns>Enumeration of Controller Maps</returns>
         </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory(Rewired.ControllerType,System.Int32,System.Int32,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player in a specific category.
+            </summary>
+            <param name="controllerType">Controller type.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="categoryId">Map Category id.</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of Controller Maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory(Rewired.ControllerType,System.Int32,System.String,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player in a specific category.
+            </summary>
+            <param name="controllerType">Controller type.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="categoryName">Map Category name.</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of Controller Maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory(Rewired.Controller,System.Int32,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player in a specific category.
+            </summary>
+            <param name="controller">Controller.</param>
+            <param name="categoryId">Map Category id.</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of Controller Maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory(Rewired.Controller,System.String,System.Collections.Generic.List{Rewired.ControllerMap})">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player in a specific category.
+            </summary>
+            <param name="controller">Controller.</param>
+            <param name="categoryName">Map Category name.</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of Controller Maps found.</returns>
+        </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory``1(System.Int32,System.Int32)">
             <summary>
             Enumerates controller maps for a specific controller assigned to this Player in a specific category.
@@ -10792,6 +12262,28 @@
             <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
             <param name="categoryName">Map Category name.</param>
             <returns>Enumeration of Controller Maps</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory``1(System.Int32,System.Int32,System.Collections.Generic.List{``0})">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player in a specific category.
+            </summary>
+            <typeparam name="T">Controller Map type.</typeparam>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="categoryId">Map Category id.</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of Controller Maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapsInCategory``1(System.Int32,System.String,System.Collections.Generic.List{``0})">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player in a specific category.
+            </summary>
+            <typeparam name="T">Controller Map type.</typeparam>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="categoryName">Map Category name.</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of Controller Maps found.</returns>
         </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMap``1(System.Int32,System.Int32)">
             <summary>
@@ -11337,6 +12829,86 @@
             Enumerates all button ActionElementMaps for any controller type that contains a specific Action.
             </summary>
         </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(Rewired.ControllerType,System.Int32,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controllerType">The type of controller.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="actionId">Id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(Rewired.ControllerType,System.Int32,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controllerType">The type of controller.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="actionName">Name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(Rewired.Controller,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controller">The Controller.</param>
+            <param name="actionId">Id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(Rewired.Controller,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controller">The Controller.</param>
+            <param name="actionName">Name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(Rewired.ControllerType,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for a specific controller type that contains a specific Action.
+            This overload applies to all Controllers of the specified type assigned to the Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(Rewired.ControllerType,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for a specific controller type that contains a specific Action.
+            This overload applies to all Controllers of the specified type assigned to the Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for any controller type that contains a specific Action.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetButtonMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all button ActionElementMaps for any controller type that contains a specific Action.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstAxisMapWithAction(Rewired.ControllerType,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Get the first axis ActionElementMap for a specific controller that contains a specific Action.
@@ -11457,6 +13029,86 @@
             Enumerates all axis ActionElementMaps for any controller type that contains a specific Action.
             </summary>
         </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(Rewired.ControllerType,System.Int32,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controllerType">The type of controller.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="actionId">Id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(Rewired.ControllerType,System.Int32,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controllerType">The type of controller.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="actionName">Name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(Rewired.Controller,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controller">The Controller.</param>
+            <param name="actionId">Id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(Rewired.Controller,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controller">The Controller.</param>
+            <param name="actionName">Name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(Rewired.ControllerType,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for a specific controller type that contains a specific Action.
+            This overload applies to all Controllers of the specified type assigned to the Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(Rewired.ControllerType,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for a specific controller type that contains a specific Action.
+            This overload applies to all Controllers of the specified type assigned to the Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for any controller type that contains a specific Action.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAxisMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all axis ActionElementMaps for any controller type that contains a specific Action.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithAction(Rewired.ControllerType,System.Int32,System.Int32,System.Boolean)">
             <summary>
             Get the first ActionElementMap for a specific controller that contains a specific Action.
@@ -11576,6 +13228,245 @@
             <summary>
             Enumerates all ActionElementMaps for any controller type that contains a specific Action.
             </summary>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(Rewired.ControllerType,System.Int32,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controllerType">The type of controller.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="actionId">Id of the Action</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(Rewired.ControllerType,System.Int32,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controllerType">The type of controller.</param>
+            <param name="controllerId">Controller id - Get this from the Controller.id property. For Keyboard and Mouse, just use 0.</param>
+            <param name="actionName">Name of the Action</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(Rewired.Controller,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for a specific controller that contains a specific Action.
+            </summary>
+            <param name="controller">The Controller.</param>
+            <param name="actionId">Id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(Rewired.Controller,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for a specific controller that contains a specific Action.
+            </summary><param name="controller">The Controller.</param>
+            <param name="actionName">Name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled Controller Maps and Action Element Maps be skipped?</param>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(Rewired.ControllerType,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for a specific controller type that contains a specific Action.
+            This overload applies to all Controllers of the specified type assigned to the Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(Rewired.ControllerType,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for a specific controller type that contains a specific Action.
+            This overload applies to all Controllers of the specified type assigned to the Player.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for any controller type that contains a specific Action.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithAction(System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets a list of all ActionElementMaps for any controller type that contains a specific Action.
+            </summary>
+            <param name="results">The list that will be filled with the results.</param>
+            <exception cref="T:System.ArgumentNullException">results is null</exception>
+            <returns>Number of maps found.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.ElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Enumarates all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>IEnumerable</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget(Rewired.ControllerElementTarget,System.Boolean)">
+            <summary>
+            Get the first ActionElementMap found that maps to a specific controller element target.
+            </summary>
+            <param name="elementTarget"></param>
+            <param name="skipDisabledMaps"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget(Rewired.IControllerElementTarget,System.Boolean)">
+            <summary>
+            Get the first ActionElementMap found that maps to a specific controller element target.
+            </summary>
+            <param name="elementTarget"></param>
+            <param name="skipDisabledMaps"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget(Rewired.ControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget(Rewired.ControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget(Rewired.IControllerElementTarget,System.Int32,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstElementMapWithElementTarget(Rewired.IControllerElementTarget,System.String,System.Boolean)">
+            <summary>
+            Gets the first ActionElementMap found that maps to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <returns>ActionElementMap</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget(Rewired.ControllerElementTarget,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.Int32,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionId">The id of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetElementMapsWithElementTarget(Rewired.IControllerElementTarget,System.String,System.Boolean,System.Collections.Generic.List{Rewired.ActionElementMap})">
+            <summary>
+            Gets all ActionElementMaps that map to a specific controller element target and a specific Action.
+            </summary>
+            <param name="elementTarget">Target controller element</param>
+            <param name="actionName">The name of the Action</param>
+            <param name="skipDisabledMaps">Should disabled ActionElementMaps be skipped?</param>
+            <param name="results">The results list which will be filled with the results.</param>
+            <returns>Returns the count of results returned.</returns>
         </member>
         <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMapSaveData``1(System.Int32,System.Boolean)">
             <summary>
@@ -12869,6 +14760,13 @@
             <param name="tag">Tag of the CustomController</param>
             <returns>CustomControllers enumeration</returns>
         </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetControllerTemplates``1">
+            <summary>
+            Gets a list of all Controller Templates in connected Controllers that match the type.
+            </summary>
+            <typeparam name="TInterface">Controller Template interface type. Note: You must use the interface of the Controller Template and not the concrete class.</typeparam>
+            <returns></returns>
+        </member>
         <member name="M:Rewired.ReInput.ControllerHelper.GetLastActiveController">
             <summary>
             Get the last controller that produced input.
@@ -13019,11 +14917,16 @@
             Auto-assigns all unassigned Joysticks to Players based on the joystick auto-assignment settings in the Rewired Input Manager.
             </summary>
         </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.controllerCount">
+            <summary>
+            The number of controllers of all types currently connected.
+            </summary>
+        </member>
         <member name="P:Rewired.ReInput.ControllerHelper.Controllers">
             <summary>
-            Gets an enumeration of connected controllers.
+            Gets a collection of connected controllers of all types.
             </summary>
-            <returns>IEnumerable of Controller</returns>
+            <returns>IList of Controller</returns>
         </member>
         <member name="P:Rewired.ReInput.ControllerHelper.Mouse">
             <summary>
@@ -13445,7 +15348,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetControllerMapInstance(Rewired.Controller,System.Int32,System.Int32)">
             <summary>
-            Gets an instanced copy of a controller map
+            Gets an instanced copy of a controller map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="controller">Controller for which to retrieve the map</param>
             <param name="categoryId">Category Id</param>
@@ -13454,7 +15359,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetControllerMapInstance(Rewired.Controller,System.String,System.String)">
             <summary>
-            Gets an instanced copy of a controller map
+            Gets an instanced copy of a controller map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="controller">Controller for which to retrieve the map</param>
             <param name="categoryName">Category Name</param>
@@ -13463,7 +15370,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetJoystickMapInstance(Rewired.Joystick,System.Int32,System.Int32)">
             <summary>
-            Gets an instanced copy of a joystick map
+            Gets an instanced copy of a joystick map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="joystick">Joystick for which to retrieve the map</param>
             <param name="categoryId">Category Id</param>
@@ -13472,16 +15381,46 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetJoystickMapInstance(Rewired.Joystick,System.String,System.String)">
             <summary>
-            Gets an instanced copy of a joystick map
+            Gets an instanced copy of a joystick map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="joystick">Joystick for which to retrieve the map</param>
             <param name="categoryName">Category Name</param>
             <param name="layoutName">Layout Name</param>
             <returns>Joystick Map</returns>
         </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickMapInstance(System.Guid,System.Int32,System.Int32)">
+            <summary>
+            Gets an instanced copy of a joystick map from the default controller maps.
+            This overload can be used when no Joystick is actually connected and available to be used to look up the correct Controller Maps to load.
+            The Controller Map returned by this method is not guarateed to be consistent with the Controller Map that would be loaded
+            were the actual device to be connected. This is due to the fact that different Controller Maps may be loaded depending on the
+            actual device connected, properties returned by this device, the current input source(s) in use, and more factors.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
+            </summary>
+            <param name="joystickTypeGuid">Joystick GUID for which to retrieve the map</param>
+            <param name="categoryId">Category Id</param>
+            <param name="layoutId">Layout Id</param>
+            <returns>Joystick Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickMapInstance(System.Guid,System.String,System.String)">
+            <summary>
+            Gets an instanced copy of a joystick map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
+            </summary>
+            <param name="joystickTypeGuid">Joystick GUID for which to retrieve the map</param>
+            <param name="categoryName">Category Name</param>
+            <param name="layoutName">Layout Name</param>
+            <returns>Joystick Map</returns>
+        </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardMapInstance(System.Int32,System.Int32)">
             <summary>
-            Gets an instanced copy of a keyboard map
+            Gets an instanced copy of a keyboard map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="categoryId">Category Id</param>
             <param name="layoutId">Layout Id</param>
@@ -13489,7 +15428,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardMapInstance(System.String,System.String)">
             <summary>
-            Gets an instanced copy of a keyboard map
+            Gets an instanced copy of a keyboard map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="categoryName">Category Name</param>
             <param name="layoutName">Layout Name</param>
@@ -13497,7 +15438,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetMouseMapInstance(System.Int32,System.Int32)">
             <summary>
-            Gets an instanced copy of a mouse map
+            Gets an instanced copy of a mouse map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="categoryId">Category Id</param>
             <param name="layoutId">Layout Id</param>
@@ -13505,7 +15448,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetMouseMapInstance(System.String,System.String)">
             <summary>
-            Gets an instanced copy of a mouse map
+            Gets an instanced copy of a mouse map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="categoryName">Category Name</param>
             <param name="layoutName">Layout Name</param>
@@ -13513,7 +15458,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerMapInstance(Rewired.CustomController,System.Int32,System.Int32)">
             <summary>
-            Gets an instanced copy of a Custom Controller map
+            Gets an instanced copy of a Custom Controller map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="customController">Custom Controller for which to retrieve the map</param>
             <param name="categoryId">Category Id</param>
@@ -13522,7 +15469,9 @@
         </member>
         <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerMapInstance(Rewired.CustomController,System.String,System.String)">
             <summary>
-            Gets an instanced copy of a Custom Controller map
+            Gets an instanced copy of a Custom Controller map from the default controller maps.
+            This is only intended to be used to view the default Controller Map setup in the Rewired Input Manager.
+            Do not attempt to use this Controller Map in a Player.
             </summary>
             <param name="customController">Custom Controller for which to retrieve the map</param>
             <param name="categoryName">Category Name</param>
@@ -13914,6 +15863,14 @@
             <returns>true if the element is successfully found and removed; otherwise, false. This method returns false if key is not found in the <see cref="T:Rewired.Utils.Classes.Data.ADictionary`2"/>.</returns>
         </member>
         <!-- Badly formed XML comment ignored for member "M:Rewired.Utils.Classes.Data.ADictionary`2.TryGetValue(`0,`1@)" -->
+        <member name="M:Rewired.Utils.Classes.Data.ADictionary`2.GetValueSafe(`0)">
+            <summary>
+            Gets the value associated wit hthe specified key.
+            Does not throw an exception if the key does not exist.
+            </summary>
+            <param name="key">The key of the value to get.</param>
+            <returns>Returns the value associated with the specified key, if the key is found; otherwise, the default value.</returns>
+        </member>
         <member name="M:Rewired.Utils.Classes.Data.ADictionary`2.IndexOfKey(`0)">
             <summary>
             Gets the index of the entry with the specified key.
@@ -14513,6 +16470,16 @@
             <summary>
             An optional substitute name to use when serialized and deserialized.
             </summary>
+        </member>
+        <member name="T:Rewired.Utils.Libraries.TinyJson.JsonTools">
+            <exclude></exclude>
+        </member>
+        <member name="M:Rewired.Utils.Libraries.TinyJson.JsonTools.Clone``1(``0)">
+            <summary>
+            Creates a serialized clone of an object.
+            </summary>
+            <param name="obj">The object to copy</param>
+            <returns>The copy.</returns>
         </member>
         <member name="T:Rewired.Utils.Libraries.TinyJson.JsonParser">
             <exclude></exclude>
@@ -15289,6 +17256,7 @@
             Locks the target if and unlocks on dispose.
             Safe to use with a null target.
             Use with using statement.
+            THIS WILL RESULT IN AN UNBOXING PENALTY BECAUSE IT IS A STRUCT THAT IMPLEMENTS AN INTERFACE!
             </summary>
         </member>
         <member name="M:Rewired.Utils.Classes.Utility.ThreadHelper.Start(System.Boolean)">
@@ -15507,38 +17475,6 @@
             <param name="bufferLength">The length of the buffer in bytes.</param>
             <param name="numBytesToWrite">Number of bytes to write to the buffer.</param>
             <returns>Number of bytes written</returns>
-        </member>
-        <member name="T:Rewired.Utils.Classes.Utility.GCHandleHelper">
-            <summary>
-            Simple wrapper for GCHandle.
-            Use with using statement.
-            </summary>
-        </member>
-        <member name="T:Rewired.Utils.Classes.Utility.Pinner">
-            <summary>
-            Pins an object.
-            Use with using statement.
-            </summary>
-        </member>
-        <member name="T:Rewired.Utils.Classes.Utility.IPoolableObject">
-            <summary>
-            Interface for a simple poolable object that maintains a reference to its parent pool so it can be returned easily.
-            </summary>
-        </member>
-        <member name="M:Rewired.Utils.Classes.Utility.IPoolableObject.Return">
-            <summary>
-            Return the object to its pool.
-            </summary>
-        </member>
-        <member name="M:Rewired.Utils.Classes.Utility.IPoolableObject.Clear">
-            <summary>
-            Clear the object.
-            </summary>
-        </member>
-        <member name="P:Rewired.Utils.Classes.Utility.IPoolableObject.pool">
-            <summary>
-            The object's parent pool.
-            </summary>
         </member>
         <member name="T:Rewired.Utils.Classes.Utility.SetAndRestoreVar`1">
             <summary>
