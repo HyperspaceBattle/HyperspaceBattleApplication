@@ -13,6 +13,7 @@ TextureImporter:
     21300016: GalExplode03
     21300018: GalExplode04
     21300020: galaga_bullet
+    21300022: galagap2
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -301,13 +302,33 @@ TextureImporter:
         width: 3
         height: 9
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
       spriteID: 9d100631e75bda54c8b74d271c50e093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: galagap2
+      rect:
+        serializedVersion: 2
+        x: 362
+        y: 360
+        width: 3
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8cfc01446f1b994d986b63716318291
       vertices: []
       indices: 
       edges: []

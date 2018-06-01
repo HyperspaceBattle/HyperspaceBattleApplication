@@ -7,10 +7,8 @@ using UnityEngine.SceneManagement;
 [RequireComponent(typeof(CharacterController))]
 public class Player1Controller : MonoBehaviour {
 	
-	//All objects report to the game manager which handles scenes, data, and menus  
-	
-	//REWIRED CONTROLLER SUPPORT
-	//================================================================
+	//===================================      REWIRED CONTROLLER SUPPORT     =========================================
+
 	public int playerId = 0; // The Rewired player id of this character
 	private Player player; // The Rewired Player
 	private CharacterController cc;
@@ -24,9 +22,7 @@ public class Player1Controller : MonoBehaviour {
 		cc = GetComponent<CharacterController>();
 		isControllable = true;
 	}
-	//======================================================================================================
-	
-	//OBJECT VARIABLES
+	//================================================      VARIABLES     ===================================================	
 	// disables for menus, pause screens, death, paralysis, etc.
 	public bool isControllable					= true; 				
 	public GameObject 							RotationController;
@@ -56,6 +52,8 @@ public class Player1Controller : MonoBehaviour {
 	public float vectorRestoreRate				= 1f;
 	public float vectorcollisionRadius			= .5f;
 	public float vectorAutoFwd					= 1.1f;
+	public GameObject vectorGun;
+	public GameObject vectorSpecial;
 	
 	public bool usingStalingrad; 
 	public GameObject 							stalingradShip;
@@ -67,6 +65,8 @@ public class Player1Controller : MonoBehaviour {
 	public float stalingradRestoreRate			= 1f;
 	public float stalingradCollisionRadius		= .5f;
 	public float stalingradAutoFwd				= 0f;
+	public GameObject stalGun;
+	public GameObject stalSpecial;
 
 	public bool usingMoonFennec; 
 	public GameObject 							moonFennecShip;
@@ -78,6 +78,8 @@ public class Player1Controller : MonoBehaviour {
 	public float moonFennecRestoreRate			= 1f;
 	public float moonFennecCollisionRadius		= .5f;
 	public float moonFennecAutoFwd				= 1f;
+	public GameObject moonGun;
+	public GameObject moonSpecial;
 
 	public bool usingLaGalaFighter; 
 	public GameObject 							laGalaFighterShipL;
@@ -90,6 +92,8 @@ public class Player1Controller : MonoBehaviour {
 	public float laGalaFighterRestoreRate		= 1f;
 	public float laGalaFighterCollisionRadius	= .5f;
 	public float laGalaFighterAutoFwd			= 1.2f;
+	public GameObject galaGun;
+	public GameObject galaSpecial;
 
 	public bool usingHunter; 
 	public GameObject hunterShip;
@@ -101,6 +105,8 @@ public class Player1Controller : MonoBehaviour {
 	public float hunterRestoreRate				= 1f;
 	public float hunterCollisionRadius			= .5f;
 	public float hunterAutoFwd					= 0f;
+	public GameObject hunterGun;
+	public GameObject hunterSpecial;
 
 	public bool usingEvolved; 
 	public GameObject 							evolvedShip;
@@ -112,11 +118,17 @@ public class Player1Controller : MonoBehaviour {
 	public float evolvedRestoreRate				= 1f;
 	public float evolvedCollisionRadius			= .5f;
 	public float evolvedAutoFwd					= 0f;
+	public GameObject evolvedGun;
+	public GameObject evolvedSpecial;
 
 	public GameObject 							explosionFX; 	//sound effect in explosion			
-	public GameObject							chargingFX;
+	public GameObject							chargingFX01;
+	public GameObject							chargingFX02;
+	public GameObject 							specialChargeFx01;
+	public GameObject 							specialChargeFx02;
 	public GameObject 							HitFeedback01;
 	public GameObject 							HitFeedback02;
+	public GameObject 							shield;
 
 	public bool paused 							= false;		//pause state
 	private bool canPause 						= true;
@@ -133,10 +145,11 @@ public class Player1Controller : MonoBehaviour {
 	public GameObject 							hpmarker9;
 	public GameObject 							hpmarker10;
 
-	private bool canSpecial 					= true;
+	public bool invulnerable						= false;
 
-	public float specialChargeTime = 0;
-	public float specialChargeRate = 5f;
+
+//==========================================      CORE FUNCTIONALITY     ===============================================
+
 	// Use this for initialization
 	void Start () {
 		//pausePanel.SetActive(false);
@@ -157,16 +170,9 @@ public class Player1Controller : MonoBehaviour {
 		if ( isControllable )											
 		{
 			Hyperspeed (); 
-			if (hyperEnergy >= hyperEnergyMax * .95f) {
-				chargingFX.SetActive (true);} 
-			else {
-				chargingFX.SetActive (false);}
 			HyperspeedEnergyLimiter ();
 			UpdateMove ();
 		}
-
-		SpecialWeapons ();
-	
 	}
 
 	private void PauseGame()
@@ -207,26 +213,67 @@ public class Player1Controller : MonoBehaviour {
 
 		}
 	}
-	void Hyperspeed (){
-
-		//charging fx code
-		if (hyperEnergy <= hyperEnergyMax *.9f) {
-			//some glow effect
-		} 
-		else {
-			
+//================================================      HYPERSPEED     ===================================================
+	void chargeHyperEnabled(){
+		hyperEnergy += hyperRestoreRate * Time.deltaTime;
+		if (playerId == 00) {
+			if (hyperEnergy >= hyperEnergyMax * .95f) {
+				chargingFX01.SetActive (true);
+			} 
+				
 		}
 
-		//press the button
+		if (playerId == 01) { 
+			if (hyperEnergy >= hyperEnergyMax * .95f) {
+				chargingFX02.SetActive (true);
+			}
+		}
+	}
+
+	void chargeHyperDisabled (){
+		hyperEnergy -= hyperExhaustRate * Time.deltaTime;
+		chargingFX01.SetActive (false);
+		chargingFX02.SetActive (false);
+	}
+	void Hyperspeed (){
+		//pressed the button
 		if (player.GetButton /*LongPress*/ ("Hyperspeed")){
+			specialChargeFx01.SetActive (false);
+			specialChargeFx02.SetActive (false);
+
+						//firing diabled while in hyperspeed 
+						if (usingVector) {
+							vectorSpecial.SetActive (false);
+							vectorGun.SetActive (false);
+						}
+						if (usingStalingrad) {
+							stalSpecial.SetActive (false);
+							stalGun.SetActive (false);
+						}
+						if (usingMoonFennec) {
+							moonSpecial.SetActive (false);
+							moonGun.SetActive (false);
+						}
+						if (usingLaGalaFighter) {
+							galaSpecial.SetActive (false);
+							galaGun.SetActive (false);
+						}
+						if (usingHunter) {
+							hunterSpecial.SetActive (false);
+							hunterGun.SetActive (false);
+						}
+						if (usingEvolved) {
+							evolvedSpecial.SetActive (false);
+							evolvedGun.SetActive (false);
+						}
+
 			//what to do if you have no energy
 			if (hyperEnergy <= 0){
 				canHyperspeed = false;
-				hyperEnergy += hyperRestoreRate * Time.deltaTime;
-
+				chargeHyperEnabled ();
 			}
 			
-			//if you have energy set canhyperspeed to true
+			//if you have energy, set canhyperspeed to true
 			else {
 				//but you have less than enough energy to start
 				if (hyperEnergy <= 0){
@@ -235,31 +282,55 @@ public class Player1Controller : MonoBehaviour {
 				// you have enough to start
 				if (hyperEnergy >= hyperEnergyMax * .25f){
 				canHyperspeed = true;
-
+				
 				}
+
 			}
 		
 
 			//the actual line to speed you up and restore passively
 			if (canHyperspeed){
+				invulnerable = true;
+				shield.SetActive (true);
 				speed = speedMax;
-				hyperEnergy -= hyperExhaustRate * Time.deltaTime;
+				chargeHyperDisabled ();
 				}
 			if (!canHyperspeed) {
 				speed = speedNormal;
-
-				//hyperEnergy += hyperRestoreRate * Time.deltaTime;
+				invulnerable = false;
+				shield.SetActive (false);
 
 			}
 			
 		}
 		 else {
-			hyperEnergy += hyperRestoreRate * Time.deltaTime;
+			chargeHyperEnabled ();
 			speed = speedNormal;
-//			if (hyperEnergy >= hyperEnergyMax) {
-//				hyperEnergyMax -= .05f;
-//			}
+			HyperResetWeapons ();
+			invulnerable = false;
+			shield.SetActive (false);
 		}
+
+	}
+
+	void HyperResetWeapons (){
+		vectorSpecial.SetActive (true);
+		vectorGun.SetActive (true);
+
+			stalSpecial.SetActive (true);
+			stalGun.SetActive (true);
+
+			moonSpecial.SetActive (true);
+			moonGun.SetActive (true);
+
+			galaSpecial.SetActive (true);
+			galaGun.SetActive (true);
+
+			hunterSpecial.SetActive (true);
+			hunterGun.SetActive (true);
+
+			evolvedSpecial.SetActive (true);
+			evolvedGun.SetActive (true);
 
 	}
 	
@@ -270,7 +341,7 @@ public class Player1Controller : MonoBehaviour {
 			if (hyperEnergy <= 0){
 				hyperEnergy = 0;}	
 	}
-	
+//============================================      SHIP ACTIVATION     =================================================	
 	//For ship selection it sets the object active at match start
 	void ShipActivator (){
 		if (usingVector){
@@ -356,36 +427,36 @@ public class Player1Controller : MonoBehaviour {
 			
 		cc.radius = collisionRadius;
 	}
-	
-	//COLLISION SECTION ======================
+//=============================================      COLLISION & DEATH     ===================================================	
+
 	
 	void OnTriggerEnter( Collider other) {			
 
 		if (playerId == 0){ 
 			if (other.tag == "Player2" || other.tag == "Player3" ||other.tag == "Player4" ){
-				Debug.Log ("Player1 Collision");
-				hitPoints -= 1;
-				Instantiate(HitFeedback01, transform.position, transform.rotation);
-					if (hitPoints <= 0){
+				if (!invulnerable) {
+					hitPoints -= 1;
+					Instantiate (HitFeedback01, transform.position, transform.rotation);
+					if (hitPoints <= 0) {
 						Explode	();	
-					StartCoroutine (explosionTimerP1 ());
-						   
-
+						StartCoroutine (explosionTimerP1 ());
 					}
+				}
 			}
 		}
 			
 			
 		if (playerId == 1){
 			if (other.tag == "Player3" || other.tag == "Player4" ||other.tag == "Player1" ){
-				Debug.Log ("Player2 Collision");		
-				hitPoints -= 1;
-				Instantiate(HitFeedback02, transform.position, transform.rotation);
-					if (hitPoints <= 0){
+				if (!invulnerable) {
+					hitPoints -= 1;
+					Instantiate (HitFeedback02, transform.position, transform.rotation);
+					if (hitPoints <= 0) {
 						Explode	();	
-					StartCoroutine (explosionTimerP2 ());
+						StartCoroutine (explosionTimerP2 ());
 						   
 					}
+				}
 			}
 		}
 		if (playerId == 2){
@@ -422,7 +493,7 @@ public class Player1Controller : MonoBehaviour {
 		canPause = false;
 		Time.timeScale = .5f;
 		isControllable = false;
-		//spawn explosion
+		GetComponent<AudioSource> ().Play ();
 		Instantiate(explosionFX, transform.position, transform.rotation);
 		RotationController.SetActive (false);
 		
@@ -461,7 +532,7 @@ public class Player1Controller : MonoBehaviour {
 		Time.timeScale = 1f;
 	}
 
-//HITMARKERS===================================================
+	//================================================     HITMARKERS     ===================================================	
 	void updateHP (){
 		if (hitPoints <= 9) {
 			hpmarker10.SetActive (false);
@@ -500,36 +571,6 @@ public class Player1Controller : MonoBehaviour {
 			
 	}
 
-	void SpecialWeapons(){
 
-		if (player.GetButtonDown ("Special")) {
-			//StartCoroutine (SpecialRoutine ());
-//			if (player.GetButtonDown ("Special") && Time.time > 5f) {
-//				Debug.Log ("SpecialRoutine: stage 1");
-//			}
-//
-//			if (player.GetButtonDown ("Special") && Time.time < 20f) {
-//				Debug.Log ("SpecialRoutine: stage 2");
-//			}
-			if (canSpecial) {
-
-
-
-
-			} 
-
-			else {
-			
-			}
-		}
-	}
-
-
-
-	IEnumerator SpecialRoutine() {
-		canSpecial = true;
-		yield return new WaitForSeconds (5f);
-		specialChargeTime += specialChargeRate;
-	}
 }
 	

@@ -50,6 +50,7 @@ public class AppManager : MonoBehaviour {
 	public GameObject LevelCard06;
 
 	public GameObject FightCard;
+	public GameObject FightCard02;
 	void Start (){
 		//checks to see if on ship select screen if so load menu and set default level 
 		Scene scene = SceneManager.GetActiveScene();
@@ -58,6 +59,7 @@ public class AppManager : MonoBehaviour {
 			SceneManager.LoadScene("ShipSelectMenu", LoadSceneMode.Additive);}
 		level = "Lvl-Vector Debris Cluster";
 		FightCard.SetActive (false);
+		FightCard02.SetActive (false);
 	}
 
 
@@ -69,6 +71,7 @@ public class AppManager : MonoBehaviour {
 			
 		if (ShipSelectOneShot && (player.GetButtonDown ("Pause"))){
 			FightCard.SetActive (true);
+			FightCard02.SetActive (true);
 				LoadLevel ();
 		}
 

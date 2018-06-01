@@ -11,6 +11,7 @@ TagManager:
   - PlayerBullet
   - Boundary
   - Killzone
+  - FightCard
   layers:
   - Default
   - TransparentFX
