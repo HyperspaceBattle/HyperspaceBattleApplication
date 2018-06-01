@@ -5413,7 +5413,7 @@ MonoBehaviour:
   usingStalingrad: 0
   stalingradShip: {fileID: 1943037986995540}
   stalingradHp: 10
-  stalingradSpeedNormal: 0.25
+  stalingradSpeedNormal: 0.5
   stalingradSpeedMax: 2.5
   stalingradEnergyMax: 4
   stalingradExhaustRate: 2.5

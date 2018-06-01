@@ -12,6 +12,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour {
 	private Player player; // The Rewired Player
 	private CharacterController cc;
 	private Vector3 moveVector;
+	private GameObject singleton;
 
 	void Awake (){
 		//rewire start settings
@@ -26,6 +27,10 @@ public class ChangeScenePressAnyButton : MonoBehaviour {
 
 		if(player.GetButton ("Pause")) {
 			Debug.Log ("start pressed");
+				// I was having trouble with the singleton staying when resetting the game so I'm destroying it by name
+				singleton = GameObject.Find("$Initialization"); 
+				Destroy(singleton);
+
 			SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
 		}
 	}

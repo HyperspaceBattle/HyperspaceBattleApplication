@@ -235,7 +235,7 @@ Prefab:
         type: 2}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: 0c6f1568bba019041a6f32672fd21df1, type: 3}
+      objectReference: {fileID: 8300000, guid: 5504cd7f1e69e0044ba3a703176a0c72, type: 3}
     - target: {fileID: 4090550286388366, guid: 6674d852438469347b002583ab536313, type: 2}
       propertyPath: m_LocalPosition.y
       value: 98.71

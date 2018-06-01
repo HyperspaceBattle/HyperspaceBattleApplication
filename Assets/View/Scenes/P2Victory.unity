@@ -123,9 +123,6 @@ GameObject:
   m_Component:
   - component: {fileID: 275661181}
   - component: {fileID: 275661180}
-  - component: {fileID: 275661186}
-  - component: {fileID: 275661185}
-  - component: {fileID: 275661182}
   - component: {fileID: 275661184}
   - component: {fileID: 275661183}
   - component: {fileID: 275661187}
@@ -160,9 +157,9 @@ AudioSource:
   MaxDistance: 500
   Pan2D: 0
   rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
+  BypassEffects: 1
+  BypassListenerEffects: 1
+  BypassReverbZones: 1
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -252,25 +249,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!114 &275661182
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 275661179}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60e643a812e2dd94fb952255462cd0a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secondsToWait: 400
 --- !u!114 &275661183
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 275661179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bec0be602ce1a478d8ceace2a3a43e, type: 3}
   m_Name: 
@@ -283,41 +268,13 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 275661179}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 53bec0be602ce1a478d8ceace2a3a43e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   playerId: 0
   sceneToLoad: MainMenu
---- !u!114 &275661185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 275661179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ea88f133f8b1140ac8f09df51d3481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 1
-  sceneToLoad: MainMenu
-  secondsToWait: 400
---- !u!114 &275661186
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 275661179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 51ea88f133f8b1140ac8f09df51d3481, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  sceneToLoad: MainMenu
-  secondsToWait: 400
 --- !u!114 &275661187
 MonoBehaviour:
   m_ObjectHideFlags: 0

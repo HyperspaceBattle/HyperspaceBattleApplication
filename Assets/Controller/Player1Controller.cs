@@ -132,6 +132,11 @@ public class Player1Controller : MonoBehaviour {
 	public GameObject 							hpmarker8;
 	public GameObject 							hpmarker9;
 	public GameObject 							hpmarker10;
+
+	private bool canSpecial 					= true;
+
+	public float specialChargeTime = 0;
+	public float specialChargeRate = 5f;
 	// Use this for initialization
 	void Start () {
 		//pausePanel.SetActive(false);
@@ -152,10 +157,15 @@ public class Player1Controller : MonoBehaviour {
 		if ( isControllable )											
 		{
 			Hyperspeed (); 
+			if (hyperEnergy >= hyperEnergyMax * .95f) {
+				chargingFX.SetActive (true);} 
+			else {
+				chargingFX.SetActive (false);}
 			HyperspeedEnergyLimiter ();
 			UpdateMove ();
 		}
-			 
+
+		SpecialWeapons ();
 	
 	}
 
@@ -201,10 +211,10 @@ public class Player1Controller : MonoBehaviour {
 
 		//charging fx code
 		if (hyperEnergy <= hyperEnergyMax *.9f) {
-			chargingFX.SetActive (true);
+			//some glow effect
 		} 
 		else {
-			chargingFX.SetActive (false);
+			
 		}
 
 		//press the button
@@ -213,11 +223,11 @@ public class Player1Controller : MonoBehaviour {
 			if (hyperEnergy <= 0){
 				canHyperspeed = false;
 				hyperEnergy += hyperRestoreRate * Time.deltaTime;
+
 			}
 			
-			//what to do if you have energy
+			//if you have energy set canhyperspeed to true
 			else {
-				
 				//but you have less than enough energy to start
 				if (hyperEnergy <= 0){
 					canHyperspeed = false;
@@ -237,14 +247,13 @@ public class Player1Controller : MonoBehaviour {
 				}
 			if (!canHyperspeed) {
 				speed = speedNormal;
+
 				//hyperEnergy += hyperRestoreRate * Time.deltaTime;
 
 			}
-			chargingFX.SetActive (false);
 			
 		}
 		 else {
-
 			hyperEnergy += hyperRestoreRate * Time.deltaTime;
 			speed = speedNormal;
 //			if (hyperEnergy >= hyperEnergyMax) {
@@ -274,6 +283,7 @@ public class Player1Controller : MonoBehaviour {
 			collisionRadius = vectorcollisionRadius;
 			hitPoints = vectorHp;
 			autoFwd = vectorAutoFwd;
+			//enable vector special weapon
 			}
 			else vectorShip.SetActive (false); 
 			
@@ -358,7 +368,8 @@ public class Player1Controller : MonoBehaviour {
 				Instantiate(HitFeedback01, transform.position, transform.rotation);
 					if (hitPoints <= 0){
 						Explode	();	
-						   SceneManager.LoadScene("P2Victory", LoadSceneMode.Single);
+					StartCoroutine (explosionTimerP1 ());
+						   
 
 					}
 			}
@@ -372,7 +383,8 @@ public class Player1Controller : MonoBehaviour {
 				Instantiate(HitFeedback02, transform.position, transform.rotation);
 					if (hitPoints <= 0){
 						Explode	();	
-						   SceneManager.LoadScene("P1Victory", LoadSceneMode.Single);
+					StartCoroutine (explosionTimerP2 ());
+						   
 					}
 			}
 		}
@@ -397,18 +409,32 @@ public class Player1Controller : MonoBehaviour {
 					}
 			}
 		}
+
+		if (other.tag == "Killzone") {
+			hitPoints = 0;
+		}
 											
 
 	}
 	
 	void Explode (){
+		
 		canPause = false;
-		Time.timeScale = .1f;
+		Time.timeScale = .5f;
 		isControllable = false;
 		//spawn explosion
-		 Instantiate(explosionFX, transform.position, transform.rotation);
+		Instantiate(explosionFX, transform.position, transform.rotation);
 		RotationController.SetActive (false);
 		
+
+
+
+
+	}
+
+	IEnumerator explosionTimerP1 (){
+		yield return new WaitForSeconds(3);
+		SceneManager.LoadScene("P2Victory", LoadSceneMode.Single);
 		//turn off ship meshes
 		vectorShip.SetActive (false);
 		stalingradShip.SetActive (false);
@@ -418,11 +444,24 @@ public class Player1Controller : MonoBehaviour {
 		hunterShip.SetActive (false);
 		evolvedShip.SetActive (false);
 		gameObject.SetActive (false);
-
 		Time.timeScale = 1f;
-
+	}
+	IEnumerator explosionTimerP2 (){
+		yield return new WaitForSeconds(3);
+		SceneManager.LoadScene("P1Victory", LoadSceneMode.Single);
+		//turn off ship meshes
+		vectorShip.SetActive (false);
+		stalingradShip.SetActive (false);
+		moonFennecShip.SetActive (false);
+		laGalaFighterShipL.SetActive (false);
+		laGalaFighterShipR.SetActive (false);
+		hunterShip.SetActive (false);
+		evolvedShip.SetActive (false);
+		gameObject.SetActive (false);
+		Time.timeScale = 1f;
 	}
 
+//HITMARKERS===================================================
 	void updateHP (){
 		if (hitPoints <= 9) {
 			hpmarker10.SetActive (false);
@@ -460,6 +499,37 @@ public class Player1Controller : MonoBehaviour {
 		}
 			
 	}
-		
+
+	void SpecialWeapons(){
+
+		if (player.GetButtonDown ("Special")) {
+			//StartCoroutine (SpecialRoutine ());
+//			if (player.GetButtonDown ("Special") && Time.time > 5f) {
+//				Debug.Log ("SpecialRoutine: stage 1");
+//			}
+//
+//			if (player.GetButtonDown ("Special") && Time.time < 20f) {
+//				Debug.Log ("SpecialRoutine: stage 2");
+//			}
+			if (canSpecial) {
+
+
+
+
+			} 
+
+			else {
+			
+			}
+		}
+	}
+
+
+
+	IEnumerator SpecialRoutine() {
+		canSpecial = true;
+		yield return new WaitForSeconds (5f);
+		specialChargeTime += specialChargeRate;
+	}
 }
 	
