@@ -28,8 +28,8 @@ public class FramerateControl : MonoBehaviour {
 		{
 			instance = this;	
 		}
-		DontDestroyOnLoad(this.gameObject);
-		gameObject.name = "$Initialization";
+		//DontDestroyOnLoad(this.gameObject);
+		//gameObject.name = "$Initialization";
 
 		//sets game to 60fps
 		if (vsync)
