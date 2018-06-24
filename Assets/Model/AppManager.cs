@@ -6,8 +6,8 @@ using System;
 public static class AppManager
 {
     private static Color[] playerColors = { Color.white, Color.white };
-    private static bool[] isPlayersReady = { false, false };
 
+    private static bool[] isPlayersReady = { false, false };
     public static bool PlayersReady
     {
         get

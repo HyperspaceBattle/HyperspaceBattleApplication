@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/View/Scenes/ShipSelect.unity
+- path: Assets/View/Scenes/ShipSelectMenu.unity
   isLoaded: 1
   isActive: 1

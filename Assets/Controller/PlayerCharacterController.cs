@@ -78,7 +78,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error in FixedUpdate: " + ex.Message.ToString());
+            Debug.LogError("Error in PlayerCharacterController's FixedUpdate: " + ex.Message.ToString());
         }
     }
 
@@ -107,7 +107,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error in OnFirePress: " + ex.Message.ToString());
+            Debug.LogError("Error in PlayerCharacterController's OnFirePress: " + ex.Message.ToString());
         }
     }
     void OnHyperSpeedRelease(InputActionEventData data)
@@ -123,14 +123,14 @@ public class PlayerCharacterController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error in OnHyperSpeedRelease: " + ex.Message.ToString());
+            Debug.LogError("Error in PlayerCharacterController's OnHyperSpeedRelease: " + ex.Message.ToString());
         }
     }
 
     void OnHyperSpeedPress(InputActionEventData data)
     {        
         try
-        {
+        {            
             if (!isPaused)
             {
                 //but you have less than enough energy to start
@@ -159,7 +159,7 @@ public class PlayerCharacterController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error in OnHyperSpeedPress: " + ex.Message.ToString());
+            Debug.LogError("Error in PlayerCharacterController's OnHyperSpeedPress: " + ex.Message.ToString());
         }
     }
 
@@ -190,24 +190,28 @@ public class PlayerCharacterController : MonoBehaviour
         }
         catch (Exception ex)
         {
-            Debug.LogError("Error in OnPausePress: " + ex.Message.ToString());
+            Debug.LogError("Error in PlayerCharacterController's OnPausePress: " + ex.Message.ToString());
         }
     }
 
     public void Explode(GameObject explosion)
     {
-        Time.timeScale = .1f;
-        //spawn explosion
-        Instantiate(explosion, this.character.View.transform.position, this.character.View.transform.rotation);
-        this.character.gameObject.SetActive(false);
-        Time.timeScale = 1f;
-
-        player.RemoveInputEventDelegate(OnPausePress);
-        player.RemoveInputEventDelegate(OnHyperSpeedPress);
-        player.RemoveInputEventDelegate(OnHyperSpeedRelease);
-        player.RemoveInputEventDelegate(OnFirePress);
-
-        Destroy(this.character);
+        try
+        {
+            Time.timeScale = .1f;
+            //spawn explosion
+            Instantiate(explosion, this.character.View.transform.position, this.character.View.transform.rotation);
+            this.character.gameObject.SetActive(false);
+            Time.timeScale = 1f;
+            
+            this.player.ClearInputEventDelegates();
+            this.player = null;
+            Destroy(this.character);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in PlayerCharacterController's Explode: " + ex.Message.ToString());
+        }
     }
 
 
