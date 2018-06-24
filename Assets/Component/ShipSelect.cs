@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
 using UnityEngine.SceneManagement;
+using System;
 
 public class ShipSelect : MonoBehaviour
 {
@@ -20,7 +21,40 @@ public class ShipSelect : MonoBehaviour
     private List<GameObject> LevelList;
 
     public Material playerColor;
-    public Color[] ShipColors = { Color.red , Color.blue, Color.magenta, Color.yellow, Color.cyan, Color.green };
+    public Color[,] ShipColors = new Color[,] { 
+        {
+            new Color(255,0,0,255), 
+            new Color(255,65,29,255), 
+            new Color(255,136,25,255),
+            new Color(255,183,0,255),
+            new Color(255,255,0,255),
+            new Color(255,220,220,255),
+            new Color(255,204,102,255),
+            new Color(236,151,135,255),
+            new Color(144,76,33,255),
+            new Color(168,52,46,255),
+            new Color(131,0,128,255),
+            new Color(72,0,0,255),
+            new Color(51,28,7,255),
+            new Color(22,0,140,255)
+        }, 
+        {
+            new Color(0,0,255,255),
+            new Color(0,131,213,255),
+            new Color(0,141,144,255),
+            new Color(0,185,0,255),
+            new Color(133,255,12,255),
+            new Color(202,220,255,255),
+            new Color(211,255,165,255),
+            new Color(108,160,220,255),
+            new Color(55,65,44,255),
+            new Color(37,12,42,255),
+            new Color(66,0,193,255),
+            new Color(0,0,72,255),
+            new Color(0,30,30,255),
+            new Color(0,255,255,255)
+        }
+    };
     private int ColorIndex = -1;
 
     private Color P1SELECTCOLOR = new Color(0.3f, 0, 0, 1f);
@@ -31,133 +65,191 @@ public class ShipSelect : MonoBehaviour
     // Use this for initialization
     void Start ()
     {
-        this.player = ReInput.players.GetPlayer(playerId);
-        this.player.AddInputEventDelegate(MoveCursor, UpdateLoopType.Update, InputActionEventType.NegativeButtonJustPressed, "LS Move Horizontal");
-        this.player.AddInputEventDelegate(MoveCursor, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "LS Move Horizontal");
-        this.player.AddInputEventDelegate(ColorChange, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "HyperSpeed");
-        this.player.AddInputEventDelegate(LevelChange, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Special");
-        this.player.AddInputEventDelegate(SelectedShip, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Pause");
-
-
-        this.ShipList = this.FillList(this.Ships);
-        this.ShipLogoList = this.FillList(this.ShipLogos);
-        this.LevelList = this.FillList(this.Levels);
-
-        switch (this.playerId)
+        try
         {
-            case 0:
-                this.ShipIndex = 0;
-                break;
-            case 1:
-                this.ShipIndex = this.ShipLogoList.Count - 1;
-                break;
+            this.player = ReInput.players.GetPlayer(playerId);
+            this.player.AddInputEventDelegate(MoveCursor, UpdateLoopType.Update, InputActionEventType.NegativeButtonJustPressed, "LS Move Horizontal");
+            this.player.AddInputEventDelegate(MoveCursor, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "LS Move Horizontal");
+            this.player.AddInputEventDelegate(ColorChange, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "HyperSpeed");
+            this.player.AddInputEventDelegate(LevelChange, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Special");
+            this.player.AddInputEventDelegate(SelectedShip, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Pause");
+
+
+            this.ShipList = this.FillList(this.Ships);
+            this.ShipLogoList = this.FillList(this.ShipLogos);
+            this.LevelList = this.FillList(this.Levels);
+
+            switch (this.playerId)
+            {
+                case 0:
+                    this.ShipIndex = 0;
+                    break;
+                case 1:
+                    this.ShipIndex = this.ShipLogoList.Count - 1;
+                    break;
+            }
+
+            this.SelectShip(this.ShipIndex, 0);
+            // Sets the color for the player
+            this.ColorIndex = 0;
+            AppManager.SetPlayerColor(this.playerId, this.ShipColors[this.playerId,this.ColorIndex]);
+            this.playerColor.SetColor("_Color", AppManager.GetPlayerColor(this.playerId));
+
+            this.LevelList[AppManager.LevelIndex].SetActive(true);
+            AppManager.SetIsPlayerReady(this.playerId, false);
         }
-
-        this.SelectShip(this.ShipIndex, 0);
-        // Sets the color for the player
-        this.ColorIndex = this.playerId;
-        AppManager.SetPlayerColor(this.playerId, this.ShipColors[this.ColorIndex]);
-        this.playerColor.SetColor("_Color", AppManager.GetPlayerColor(this.playerId));
-
-        this.LevelList[AppManager.LevelIndex].SetActive(true);
-        AppManager.SetIsPlayerReady(this.playerId, false);
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's Start, Player " + playerId + ": " + ex.Message.ToString());
+        }
     }
 
     void MoveCursor(InputActionEventData data)
     {
-        if (!AppManager.GetIsPlayerReady(this.playerId))
+        try
         {
-            int previousIndex = this.ShipIndex;
-            if (data.GetAxis() >= 0)
+            if (!AppManager.GetIsPlayerReady(this.playerId))
             {
-                this.ShipIndex = (this.ShipIndex + 1) % this.ShipList.Count;
+                int previousIndex = this.ShipIndex;
+                if (data.GetAxis() >= 0)
+                {
+                    this.ShipIndex = (this.ShipIndex + 1) % this.ShipList.Count;
+                }
+                else
+                {
+                    this.ShipIndex = (this.ShipIndex - 1) % this.ShipList.Count;
+                    if (this.ShipIndex < 0)
+                        this.ShipIndex += this.ShipList.Count;
+                }
+                this.SelectShip(this.ShipIndex, previousIndex);
             }
-            else
-            {
-                this.ShipIndex = (this.ShipIndex - 1) % this.ShipList.Count;
-                if (this.ShipIndex < 0)
-                    this.ShipIndex += this.ShipList.Count;
-            }
-            this.SelectShip(this.ShipIndex, previousIndex);
-        }        
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's MoveCursor Start, Player " + playerId + ": " + ex.Message.ToString());
+        }
     }
 
     private List<GameObject> FillList(GameObject parent)
     {
         List<GameObject> list = new List<GameObject>();
-        for (int index = 0; index < parent.transform.childCount; index++)
-            list.Add(parent.transform.GetChild(index).gameObject);        
+        try
+        {
+            for (int index = 0; index < parent.transform.childCount; index++)
+                list.Add(parent.transform.GetChild(index).gameObject);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's FillList, Player " + playerId + ": " + ex.Message.ToString());
+        }
         return list;
     }
 
     private void SelectShip(int shipIndex, int prevShipIndex)
     {
-        // Deactivates the previously selected ship and activates the newly selected ship
-        this.ShipList[prevShipIndex].SetActive(false);
-        this.ShipList[shipIndex].SetActive(true);
+        try
+        {
+            // Deactivates the previously selected ship and activates the newly selected ship
+            this.ShipList[prevShipIndex].SetActive(false);
+            this.ShipList[shipIndex].SetActive(true);
 
-        // Place the Player Marker over the Ship Logo
-        GameObject shipLogo = this.ShipLogoList[shipIndex];
-        this.gameObject.transform.position = new Vector3(shipLogo.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
+            // Place the Player Marker over the Ship Logo
+            GameObject shipLogo = this.ShipLogoList[shipIndex];
+            this.gameObject.transform.position = new Vector3(shipLogo.transform.position.x, this.gameObject.transform.position.y, this.gameObject.transform.position.z);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in SelectShip, Player " + playerId + ": " + ex.Message.ToString());
+        }
     }
 
     void ColorChange(InputActionEventData data)
     {
-        if (!AppManager.GetIsPlayerReady(this.playerId))
+        try
         {
-            Color currentColor = this.ShipColors[this.ColorIndex];
-            while (currentColor == AppManager.GetPlayerColor(this.playerId))
+            if (!AppManager.GetIsPlayerReady(this.playerId))
             {
-                this.ColorIndex = (this.ColorIndex + 1) % this.ShipColors.Length;
-                Color newColor = this.ShipColors[this.ColorIndex];
-                if (AppManager.AvaliableColor(this.playerId, newColor))
-                {
-                    AppManager.SetPlayerColor(this.playerId, newColor);
-                    playerColor.SetColor("_Color", newColor);
-                }
+                //Color currentColor = this.ShipColors[this.playerId, this.ColorIndex];
+                //while (currentColor == AppManager.GetPlayerColor(this.playerId))
+                //{
+                //    this.ColorIndex = (this.ColorIndex + 1) % this.ShipColors.Length;
+                //    Color newColor = this.ShipColors[this.playerId, this.ColorIndex];
+                //    if (AppManager.AvaliableColor(this.playerId, newColor))
+                //    {
+                //        AppManager.SetPlayerColor(this.playerId, newColor);
+                //        playerColor.SetColor("_Color", newColor);
+                //    }
+                //}
+                this.ColorIndex = (this.ColorIndex + 1) % this.ShipColors.GetLength(1);
+                Color newColor = this.ShipColors[this.playerId, this.ColorIndex];
+                AppManager.SetPlayerColor(this.playerId, newColor);
+                playerColor.SetColor("_Color", newColor);
             }
-        }        
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's ColorChange, Player " + playerId + ": " + ex.Message.ToString());
+        }    
     }
 
     void LevelChange(InputActionEventData data)
     {
-        int prevLevel = AppManager.LevelIndex;
-        AppManager.LevelIndex = (1 + AppManager.LevelIndex) % this.LevelList.Count;
-        this.LevelList[prevLevel].SetActive(false);
-        this.LevelList[AppManager.LevelIndex].SetActive(true);
+        try
+        {
+            int prevLevel = AppManager.LevelIndex;
+            AppManager.LevelIndex = (1 + AppManager.LevelIndex) % this.LevelList.Count;
+            this.LevelList[prevLevel].SetActive(false);
+            this.LevelList[AppManager.LevelIndex].SetActive(true);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's LevelChange, Player " + playerId + ": " + ex.Message.ToString());
+        }
     }
 
     void SelectedShip(InputActionEventData data)
     {
-        Color selectColor = Color.white;
-        Color unselectColor = Color.black;
-        switch (this.playerId)
+        try
         {
-            case 0:
-                selectColor = P1SELECTCOLOR;
-                unselectColor = P1UNSELECTCOLOR;
-                break;
-            case 1:
-                selectColor = P2SELECTCOLOR;
-                unselectColor = P2UNSELECTCOLOR;
-                break;
+            Color selectColor = Color.white;
+            Color unselectColor = Color.black;
+            switch (this.playerId)
+            {
+                case 0:
+                    selectColor = P1SELECTCOLOR;
+                    unselectColor = P1UNSELECTCOLOR;
+                    break;
+                case 1:
+                    selectColor = P2SELECTCOLOR;
+                    unselectColor = P2UNSELECTCOLOR;
+                    break;
+            }
+            Color newColor = (AppManager.GetIsPlayerReady(this.playerId)) ? unselectColor : selectColor;
+            this.gameObject.GetComponent<Renderer>().materials[0].SetColor("_TintColor", newColor);
+            AppManager.SetIsPlayerReady(this.playerId, !AppManager.GetIsPlayerReady(this.playerId));
+            AppManager.SetPlayerShip(this.playerId, this.ShipList[this.ShipIndex].name);
+            if (AppManager.PlayersReady)
+                this.LoadLevel();
         }
-        Color newColor = (AppManager.GetIsPlayerReady(this.playerId)) ? unselectColor : selectColor;
-        this.gameObject.GetComponent<Renderer>().materials[0].SetColor("_TintColor", newColor);
-        AppManager.SetIsPlayerReady(this.playerId, !AppManager.GetIsPlayerReady(this.playerId));
-        AppManager.SetPlayerShip(this.playerId, this.ShipList[this.ShipIndex].name);
-        if (AppManager.PlayersReady)
-            this.LoadLevel();
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's SelectedShip, Player " + playerId + ": " + ex.Message.ToString());
+        }
     }
 
     void LoadLevel()
     {
-        this.player.RemoveInputEventDelegate(MoveCursor);
-        this.player.RemoveInputEventDelegate(ColorChange);
-        this.player.RemoveInputEventDelegate(LevelChange);
-        this.player.RemoveInputEventDelegate(SelectedShip);        
+        try
+        {
+            this.player.ClearInputEventDelegates();
 
-        // Loads the selected scene
-        SceneManager.LoadScene(this.LevelList[AppManager.LevelIndex].name);
+            // Loads the selected scene
+            SceneManager.LoadScene(this.LevelList[AppManager.LevelIndex].name);
+            Destroy(this.gameObject);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipSelect's LoadLevel, Player " + playerId + ": " + ex.Message.ToString());
+        }
     }
 }
