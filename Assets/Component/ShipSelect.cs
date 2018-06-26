@@ -169,17 +169,6 @@ public class ShipSelect : MonoBehaviour
         {
             if (!AppManager.GetIsPlayerReady(this.playerId))
             {
-                //Color currentColor = this.ShipColors[this.playerId, this.ColorIndex];
-                //while (currentColor == AppManager.GetPlayerColor(this.playerId))
-                //{
-                //    this.ColorIndex = (this.ColorIndex + 1) % this.ShipColors.Length;
-                //    Color newColor = this.ShipColors[this.playerId, this.ColorIndex];
-                //    if (AppManager.AvaliableColor(this.playerId, newColor))
-                //    {
-                //        AppManager.SetPlayerColor(this.playerId, newColor);
-                //        playerColor.SetColor("_Color", newColor);
-                //    }
-                //}
                 this.ColorIndex = (this.ColorIndex + 1) % this.ShipColors.GetLength(1);
                 Color newColor = this.ShipColors[this.playerId, this.ColorIndex];
                 AppManager.SetPlayerColor(this.playerId, newColor);
