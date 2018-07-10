@@ -8,7 +8,7 @@ using System;
 public class ShipSelect : MonoBehaviour
 {
 	public int playerId = 0;
-    private Player player;
+    private Rewired.Player player;
 
     private int ShipIndex = -1;
     [SerializeField] private GameObject Ships;
@@ -61,7 +61,7 @@ public class ShipSelect : MonoBehaviour
     private Color P1UNSELECTCOLOR = new Color(1f, 0, 0, 1f);
     private Color P2SELECTCOLOR = new Color(0, 0.08965492f, 0.3f, 1f);
     private Color P2UNSELECTCOLOR = new Color(0, 0.08965492f, 1f, 1f);
-
+    
     // Use this for initialization
     void Start ()
     {
@@ -85,7 +85,7 @@ public class ShipSelect : MonoBehaviour
                     this.ShipIndex = 0;
                     break;
                 case 1:
-                    this.ShipIndex = this.ShipLogoList.Count - 1;
+                    this.ShipIndex = this.ShipLogoList.Count - 2;
                     break;
             }
 
@@ -215,8 +215,17 @@ public class ShipSelect : MonoBehaviour
             }
             Color newColor = (AppManager.GetIsPlayerReady(this.playerId)) ? unselectColor : selectColor;
             this.gameObject.GetComponent<Renderer>().materials[0].SetColor("_TintColor", newColor);
+            
+            if (this.ShipList[this.ShipIndex].name.Equals("Random"))
+            {
+                System.Random rand = new System.Random((int)DateTime.Now.Ticks);
+                int randomIndex = Mathf.Abs(rand.Next() % this.ShipList.Count - 1);
+                AppManager.SetPlayerShip(this.playerId, this.ShipList[randomIndex].name);
+            }
+            else
+                AppManager.SetPlayerShip(this.playerId, this.ShipList[this.ShipIndex].name);
+
             AppManager.SetIsPlayerReady(this.playerId, !AppManager.GetIsPlayerReady(this.playerId));
-            AppManager.SetPlayerShip(this.playerId, this.ShipList[this.ShipIndex].name);
             if (AppManager.PlayersReady)
                 this.LoadLevel();
         }
@@ -241,4 +250,6 @@ public class ShipSelect : MonoBehaviour
             Debug.LogError("Error in ShipSelect's LoadLevel, Player " + playerId + ": " + ex.Message.ToString());
         }
     }
+
+    
 }

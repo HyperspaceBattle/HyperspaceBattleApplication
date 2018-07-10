@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestroySimple : MonoBehaviour {
+public class DestroySimple : MonoBehaviour
+{
 
 	public GameObject explosion;
 	

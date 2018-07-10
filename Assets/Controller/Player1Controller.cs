@@ -10,7 +10,7 @@ public class Player1Controller : MonoBehaviour {
 	//===================================      REWIRED CONTROLLER SUPPORT     =========================================
 
 	public int playerId = 0; // The Rewired player id of this character
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 	private CharacterController cc;
 	private Vector3 moveVector;
 

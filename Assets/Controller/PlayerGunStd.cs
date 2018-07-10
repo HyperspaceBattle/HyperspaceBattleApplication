@@ -5,7 +5,7 @@ using Rewired;
 public class PlayerGunStd : MonoBehaviour {
 
 	public int playerId = 0; // The Rewired player id of this character
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 	public Rigidbody bullet;
 	public float delayTime = .05f;	
 	public float velocity = 100.0f;

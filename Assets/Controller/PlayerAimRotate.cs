@@ -5,7 +5,7 @@ using Rewired;
 public class PlayerAimRotate : MonoBehaviour {
 	
 	public int playerId = 0; // The Rewired player id of this character
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 
 	public bool invert = false;
 	private float invertValue = -1f;

@@ -8,7 +8,7 @@ public class Pause : MonoBehaviour
 	[SerializeField] private GameObject pausePanel;
 	//REWIRED CONTROLLER SETUP
 	public int playerId = 0; // The Rewired player id of this character
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 	void Awake (){player = ReInput.players.GetPlayer(playerId);}
 
 	void Start()

@@ -14,10 +14,8 @@ public static class AppManager
         {
             bool results = true;
             foreach (bool ready in isPlayersReady)
-            {
                 if (!ready)
                     results = false;
-            }
             return results;
         }
     }

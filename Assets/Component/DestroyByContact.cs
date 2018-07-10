@@ -22,7 +22,7 @@ public class DestroyByContact : MonoBehaviour {
 			Destroy (gameObject);
 		}
 
-		if (other.tag == "Player01" || other.tag == "Player02") {
+		if (other.tag == "Ship") {
 			//kObject = other.gameObject.GetComponent<Player1Controller>();
 			//kObject.hitPoints -= 10;
 			//Instantiate(explosion, transform.position, transform.rotation);

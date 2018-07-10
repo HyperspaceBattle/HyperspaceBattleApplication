@@ -6,7 +6,7 @@ public class PlayerShipRotate : MonoBehaviour
 {	
 	public int playerId = 0; // The Rewired player id of this character
     public float rotationSpeed = 5f;
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 
 	void Awake ()
     {

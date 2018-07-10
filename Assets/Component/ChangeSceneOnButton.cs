@@ -13,7 +13,7 @@ public class ChangeSceneOnButton : MonoBehaviour {
 	public bool HasTimer;
 	public int seconds = 60;
 
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 	private CharacterController cc;
 	private Vector3 moveVector;
 

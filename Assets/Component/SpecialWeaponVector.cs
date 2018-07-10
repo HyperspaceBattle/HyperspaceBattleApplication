@@ -14,7 +14,7 @@ public class SpecialWeaponVector : MonoBehaviour {
 	//REWIRED CONTROLLER SUPPORT
 	//================================================================
 	public int playerId = 0; // The Rewired player id of this character
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 
 	void Awake (){
 		// Get the Rewired Player object for this player and keep it for the duration of the character's lifetime

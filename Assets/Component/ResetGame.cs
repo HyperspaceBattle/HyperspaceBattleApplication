@@ -9,7 +9,7 @@ public class ResetGame : MonoBehaviour {
 	//================================================================
 	public int playerId = 0; // The Rewired player id of this character
 	public string sceneToLoad = "MainMenu";
-	private Player player; // The Rewired Player
+	private Rewired.Player player; // The Rewired Player
 	private CharacterController cc;
 	private Vector3 moveVector;
 	

@@ -9,7 +9,7 @@ public class HpMarker : MonoBehaviour
     public GameObject HpMarker3;
     public GameObject HpMarker4;
     public GameObject HpMarker5;
-    [SerializeField] private Material healthBarColor;
+    private Material healthBarColor;
     private Queue<GameObject> hpMarkers;
     // Use this for initialization
     void Awake ()
@@ -22,8 +22,12 @@ public class HpMarker : MonoBehaviour
         hpMarkers.Enqueue(HpMarker5);
 	}
 
-    public void Init(int healthBarNum, int playerID)
+    public void Init(int playerNumber, int healthBarNum, Color color)
     {
+        this.healthBarColor = (Material)Resources.Load("Prefab/Materials Shared/PlayerColorEmissive" + playerNumber);
+        if (this.healthBarColor == null)
+            Debug.Log("Material is null. Player " + playerNumber);
+
         int index = 0;
         Queue<GameObject> tempQueue = new Queue<GameObject>();
         while(hpMarkers.Count > 0)
@@ -31,7 +35,7 @@ public class HpMarker : MonoBehaviour
             GameObject hpMarker = hpMarkers.Dequeue();
             if (index < healthBarNum)
             {
-                healthBarColor.SetColor("_TintColor", AppManager.GetPlayerColor(playerID));
+                healthBarColor.SetColor("_TintColor", color);
                 hpMarker.GetComponent<MeshRenderer>().sharedMaterial = healthBarColor;
                 tempQueue.Enqueue(hpMarker);
             }

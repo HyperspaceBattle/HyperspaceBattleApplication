@@ -12,6 +12,7 @@ TagManager:
   - Boundary
   - Killzone
   - FightCard
+  - Ship
   layers:
   - Default
   - TransparentFX
