@@ -89,8 +89,8 @@ GameObject:
   - component: {fileID: 33515648049944052}
   - component: {fileID: 23674734934535890}
   - component: {fileID: 64352789379219506}
-  - component: {fileID: 114127370134966680}
-  - component: {fileID: 114467321972942690}
+  - component: {fileID: 114759607369153014}
+  - component: {fileID: 114040099152817102}
   m_Layer: 0
   m_Name: MoonFennec
   m_TagString: Ship
@@ -1137,7 +1137,7 @@ TrailRenderer:
     generateLightingData: 0
   m_MinVertexDistance: 0
   m_Autodestruct: 0
---- !u!114 &114127370134966680
+--- !u!114 &114040099152817102
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1145,7 +1145,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 1546243065567322}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fab33c9b83fef2438f0a5ddb83fe1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bab030f0d47c9f41b6bdfcf21ac765b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114759607369153014
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1546243065567322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 0.42
@@ -1158,17 +1169,6 @@ MonoBehaviour:
   healthBars: 5
   leftStickRotation: 1
   bullet: 0
---- !u!114 &114467321972942690
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1546243065567322}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdac36e7148b5794db6f50811090542e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114953793034958416
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -192,8 +192,8 @@ GameObject:
   - component: {fileID: 33174579692365970}
   - component: {fileID: 23799762742024032}
   - component: {fileID: 64838338986616154}
-  - component: {fileID: 114478935839509484}
-  - component: {fileID: 114218581354182938}
+  - component: {fileID: 114121002184672926}
+  - component: {fileID: 114578139857686284}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Ship
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerId: 0
   hideObject: {fileID: 1904584949232372}
---- !u!114 &114218581354182938
+--- !u!114 &114121002184672926
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1043,9 +1043,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911681892571556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdac36e7148b5794db6f50811090542e, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedNormal: 0.42
+  speedMax: 2
+  hyperSpeedMax: 10
+  hyperExhaustRate: 2
+  hyperRestoreRate: 1
+  bulletDelayTime: 10
+  bulletVelocity: 80
+  healthBars: 5
+  leftStickRotation: 1
+  bullet: 0
 --- !u!114 &114422842284926146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1062,7 +1072,7 @@ MonoBehaviour:
   HpMarker3: {fileID: 1131142361953654}
   HpMarker4: {fileID: 1865680029909242}
   HpMarker5: {fileID: 1861730364612736}
---- !u!114 &114478935839509484
+--- !u!114 &114578139857686284
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1070,16 +1080,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 1911681892571556}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fab33c9b83fef2438f0a5ddb83fe1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bab030f0d47c9f41b6bdfcf21ac765b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedNormal: 0.42
-  speedMax: 2
-  hyperSpeedMax: 10
-  hyperExhaustRate: 2
-  hyperRestoreRate: 1
-  bulletDelayTime: 10
-  bulletVelocity: 80
-  healthBars: 5
-  leftStickRotation: 1
-  bullet: 0

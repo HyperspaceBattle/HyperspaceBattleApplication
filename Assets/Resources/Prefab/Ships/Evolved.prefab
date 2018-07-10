@@ -22,8 +22,8 @@ GameObject:
   - component: {fileID: 33923283805782414}
   - component: {fileID: 23399897094517660}
   - component: {fileID: 64997909917480032}
-  - component: {fileID: 114501948328049386}
-  - component: {fileID: 114246672019227704}
+  - component: {fileID: 114757211937357878}
+  - component: {fileID: 114266922382492066}
   m_Layer: 0
   m_Name: Evolved
   m_TagString: Ship
@@ -709,7 +709,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
---- !u!114 &114246672019227704
+--- !u!114 &114266922382492066
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -717,7 +717,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150183577524212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdac36e7148b5794db6f50811090542e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bab030f0d47c9f41b6bdfcf21ac765b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114451933662631812
@@ -736,7 +736,7 @@ MonoBehaviour:
   HpMarker3: {fileID: 1762095547007996}
   HpMarker4: {fileID: 1999177069919082}
   HpMarker5: {fileID: 1277335739852150}
---- !u!114 &114501948328049386
+--- !u!114 &114757211937357878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -744,7 +744,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1150183577524212}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fab33c9b83fef2438f0a5ddb83fe1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 0.42

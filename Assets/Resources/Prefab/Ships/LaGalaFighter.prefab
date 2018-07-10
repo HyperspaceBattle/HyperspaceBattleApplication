@@ -55,8 +55,8 @@ GameObject:
   - component: {fileID: 33194486412683348}
   - component: {fileID: 23263199320455558}
   - component: {fileID: 64381373309938260}
-  - component: {fileID: 114543905895769866}
-  - component: {fileID: 114422499220441650}
+  - component: {fileID: 114969085646958498}
+  - component: {fileID: 114692252190006612}
   m_Layer: 0
   m_Name: LaGalaFighter
   m_TagString: Ship
@@ -825,7 +825,7 @@ MonoBehaviour:
   HpMarker3: {fileID: 1701776680204676}
   HpMarker4: {fileID: 1014488673906818}
   HpMarker5: {fileID: 1506584427889090}
---- !u!114 &114422499220441650
+--- !u!114 &114692252190006612
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -833,10 +833,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167508092632836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdac36e7148b5794db6f50811090542e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bab030f0d47c9f41b6bdfcf21ac765b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114543905895769866
+--- !u!114 &114969085646958498
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1167508092632836}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fab33c9b83fef2438f0a5ddb83fe1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 0.42

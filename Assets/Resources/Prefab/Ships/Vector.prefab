@@ -156,8 +156,8 @@ GameObject:
   - component: {fileID: 33938950422754606}
   - component: {fileID: 23112818750153710}
   - component: {fileID: 64057111887133616}
-  - component: {fileID: 114435259387086866}
-  - component: {fileID: 114180410646486650}
+  - component: {fileID: 114953976352721714}
+  - component: {fileID: 114379611266941796}
   m_Layer: 0
   m_Name: Vector
   m_TagString: Ship
@@ -954,7 +954,7 @@ MonoBehaviour:
   bullet: {fileID: 5400000, guid: a098e9edd6995ef409e147abb8d14bf1, type: 2}
   delayTime: 0.05
   velocity: 100
---- !u!114 &114180410646486650
+--- !u!114 &114379611266941796
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -962,10 +962,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1833021802253994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdac36e7148b5794db6f50811090542e, type: 3}
+  m_Script: {fileID: 11500000, guid: 5bab030f0d47c9f41b6bdfcf21ac765b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114435259387086866
+--- !u!114 &114953976352721714
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -973,7 +973,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1833021802253994}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fab33c9b83fef2438f0a5ddb83fe1da, type: 3}
+  m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 0.42

@@ -19,6 +19,20 @@ public static class AppManager
             return results;
         }
     }
+
+    private static bool isPaused = false;
+    public static bool IsPaused
+    {
+        get
+        {
+            return isPaused;
+        }
+    }
+
+    public static void Pause()
+    {
+        isPaused = !isPaused;
+    }
     
     private static string[] playerShip = {"", ""};
     public static string GetPlayerShip(int playerID)
