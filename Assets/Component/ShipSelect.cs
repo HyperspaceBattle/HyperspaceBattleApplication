@@ -249,7 +249,5 @@ public class ShipSelect : MonoBehaviour
         {
             Debug.LogError("Error in ShipSelect's LoadLevel, Player " + playerId + ": " + ex.Message.ToString());
         }
-    }
-
-    
+    }    
 }
