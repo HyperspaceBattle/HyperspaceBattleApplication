@@ -210,7 +210,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364073157681342}
   m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433914}
-  m_LocalPosition: {x: -54, y: 45, z: -31}
+  m_LocalPosition: {x: -54, y: 45, z: -47}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4774378958483256}
@@ -237,7 +237,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1432775532137432}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -39.02, y: 0.60000014, z: -25.494202}
+  m_LocalPosition: {x: -39.02, y: 0.60000014, z: -11.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4132679142434808}
@@ -251,7 +251,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1840558686996334}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -60.199997, y: 0.60000014, z: -25.494202}
+  m_LocalPosition: {x: -60.199997, y: 0.60000014, z: -11.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4283646380360860}
@@ -2964,7 +2964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cameraDistance: 45
   cameraRotation: {x: 65, y: 0, z: 0}
-  triggerDistance: 15
+  triggerDistance: 20
   primaryCamera: {fileID: 20666253470626702}
   player1: {fileID: 4765398883367758}
   player2: {fileID: 4686482540790346}
