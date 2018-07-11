@@ -1,0 +1,205 @@
+fileFormatVersion: 2
+guid: 66550024060a6e04db71b99b912ece3f
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Basemesh_female_heroic:Group13243
+    100002: Basemesh_female_heroic:Group18600
+    100004: Basemesh_female_heroic:Group22327
+    100006: Basemesh_female_heroic:Group23627
+    100008: Basemesh_female_heroic:Group24417
+    100010: Basemesh_female_heroic:Group28760
+    100012: Basemesh_female_heroic:Group34918
+    100014: Basemesh_female_heroic:Group35375
+    100016: Basemesh_female_heroic:Group3604
+    100018: Basemesh_female_heroic:Group38747
+    100020: Basemesh_female_heroic:Group43462
+    100022: Basemesh_female_heroic:Group45812
+    100024: Basemesh_female_heroic:Group47111
+    100026: Basemesh_female_heroic:Group47654
+    100028: Basemesh_female_heroic:Group52163
+    100030: Basemesh_female_heroic:Group54233
+    100032: Basemesh_female_heroic:Group54635
+    100034: Basemesh_female_heroic:Group57875
+    100036: Basemesh_female_heroic:Group598
+    100038: Basemesh_female_heroic:Group64963
+    100040: Basemesh_female_heroic:Group8776
+    100042: Basemesh_female_heroic:transform1
+    100044: Basemesh_female_heroic:transform10
+    100046: Basemesh_female_heroic:transform11
+    100048: Basemesh_female_heroic:transform12
+    100050: Basemesh_female_heroic:transform13
+    100052: Basemesh_female_heroic:transform14
+    100054: Basemesh_female_heroic:transform15
+    100056: Basemesh_female_heroic:transform16
+    100058: Basemesh_female_heroic:transform17
+    100060: Basemesh_female_heroic:transform18
+    100062: Basemesh_female_heroic:transform19
+    100064: Basemesh_female_heroic:transform2
+    100066: Basemesh_female_heroic:transform20
+    100068: Basemesh_female_heroic:transform21
+    100070: Basemesh_female_heroic:transform3
+    100072: Basemesh_female_heroic:transform4
+    100074: Basemesh_female_heroic:transform5
+    100076: Basemesh_female_heroic:transform6
+    100078: Basemesh_female_heroic:transform7
+    100080: Basemesh_female_heroic:transform8
+    100082: Basemesh_female_heroic:transform9
+    100084: group
+    100086: //RootNode
+    100088: nurbsCube1
+    100090: pCube3
+    400000: Basemesh_female_heroic:Group13243
+    400002: Basemesh_female_heroic:Group18600
+    400004: Basemesh_female_heroic:Group22327
+    400006: Basemesh_female_heroic:Group23627
+    400008: Basemesh_female_heroic:Group24417
+    400010: Basemesh_female_heroic:Group28760
+    400012: Basemesh_female_heroic:Group34918
+    400014: Basemesh_female_heroic:Group35375
+    400016: Basemesh_female_heroic:Group3604
+    400018: Basemesh_female_heroic:Group38747
+    400020: Basemesh_female_heroic:Group43462
+    400022: Basemesh_female_heroic:Group45812
+    400024: Basemesh_female_heroic:Group47111
+    400026: Basemesh_female_heroic:Group47654
+    400028: Basemesh_female_heroic:Group52163
+    400030: Basemesh_female_heroic:Group54233
+    400032: Basemesh_female_heroic:Group54635
+    400034: Basemesh_female_heroic:Group57875
+    400036: Basemesh_female_heroic:Group598
+    400038: Basemesh_female_heroic:Group64963
+    400040: Basemesh_female_heroic:Group8776
+    400042: Basemesh_female_heroic:transform1
+    400044: Basemesh_female_heroic:transform10
+    400046: Basemesh_female_heroic:transform11
+    400048: Basemesh_female_heroic:transform12
+    400050: Basemesh_female_heroic:transform13
+    400052: Basemesh_female_heroic:transform14
+    400054: Basemesh_female_heroic:transform15
+    400056: Basemesh_female_heroic:transform16
+    400058: Basemesh_female_heroic:transform17
+    400060: Basemesh_female_heroic:transform18
+    400062: Basemesh_female_heroic:transform19
+    400064: Basemesh_female_heroic:transform2
+    400066: Basemesh_female_heroic:transform20
+    400068: Basemesh_female_heroic:transform21
+    400070: Basemesh_female_heroic:transform3
+    400072: Basemesh_female_heroic:transform4
+    400074: Basemesh_female_heroic:transform5
+    400076: Basemesh_female_heroic:transform6
+    400078: Basemesh_female_heroic:transform7
+    400080: Basemesh_female_heroic:transform8
+    400082: Basemesh_female_heroic:transform9
+    400084: group
+    400086: //RootNode
+    400088: nurbsCube1
+    400090: pCube3
+    2100000: playerColor
+    2100002: dkGreyMetal
+    2100004: whiteIlluminated
+    2100006: whiteMetal
+    2300000: pCube3
+    3300000: pCube3
+    4300000: pCube3
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: dkGreyMetal
+    second: {fileID: 2100000, guid: aa3cf997ce933bd44a343723a2387e04, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: playerColor
+    second: {fileID: 2100000, guid: 75e723fc371eb8146809156214cdd4e3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: whiteIlluminated
+    second: {fileID: 2100000, guid: c74c11dbcc1de144695b72ad2cd2e576, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: whiteMetal
+    second: {fileID: 2100000, guid: df72f1d28739c3e4691c60d5acf44ae2, type: 2}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
