@@ -972,13 +972,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedNormal: 0.42
+  speedNormal: 0.3
   speedMax: 2
-  hyperSpeedMax: 10
+  hyperSpeedMax: 2.5
   hyperExhaustRate: 2
-  hyperRestoreRate: 1
-  bulletDelayTime: 10
-  bulletVelocity: 80
-  healthBars: 5
+  hyperRestoreRate: 0.2
+  bulletDelayTime: 0.15
+  bulletVelocity: 70
+  healthBars: 10
   leftStickRotation: 1
   bullet: 0

@@ -976,14 +976,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43d978b7c572ca449b51f7ddd4e7126b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedNormal: 0.42
-  speedMax: 2
-  hyperSpeedMax: 10
-  hyperExhaustRate: 2
-  hyperRestoreRate: 1
-  bulletDelayTime: 10
+  speedNormal: 0.7
+  speedMax: 5
+  hyperSpeedMax: 0.5
+  hyperExhaustRate: 3
+  hyperRestoreRate: 0.37
+  bulletDelayTime: 0.4
   bulletVelocity: 80
-  healthBars: 5
+  healthBars: 7
   leftStickRotation: 1
   bullet: 0
 --- !u!114 &114998429739395728
