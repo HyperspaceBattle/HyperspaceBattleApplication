@@ -1,13 +1,21 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
-using Rewired;
-using System;
 
 public static class AppManager
 {
-    private static Color[] playerColors = { Color.white, Color.white };
+    #region Private Function
 
+    [SerializeField] private static int playerCount = 2;
+    private static Color[] playerColors = { Color.white, Color.white };
     private static bool[] isPlayersReady = { false, false };
+    private static string[] playerShip = { "", "" };
+    private static bool isUnpaused = true;
+    private static int levelIndex = 0;
+    private static int victor = -1;
+
+    #endregion
+
+    #region Properties
+
     public static bool PlayersReady
     {
         get
@@ -20,32 +28,14 @@ public static class AppManager
         }
     }
 
-    private static bool isPaused = false;
-    public static bool IsPaused
+    public static bool IsUnpaused
     {
         get
         {
-            return isPaused;
+            return isUnpaused;
         }
     }
 
-    public static void Pause()
-    {
-        isPaused = !isPaused;
-    }
-    
-    private static string[] playerShip = {"", ""};
-    public static string GetPlayerShip(int playerID)
-    {
-        return playerShip[playerID];
-    }
-
-    public static void SetPlayerShip(int playerID, string ship)
-    {
-        playerShip[playerID] = "Prefab/Ships/" + ship;
-    }
-
-    private static int levelIndex = 0;
     public static int LevelIndex
     {
         get
@@ -57,6 +47,30 @@ public static class AppManager
             levelIndex = value;
         }
     }
+
+    public static int Victor
+    {
+        get
+        {
+            return victor;
+        }
+        set
+        {
+            victor = value;
+        }
+    }
+
+    public static int PlayerCount
+    {
+        get
+        {
+            return playerCount;
+        }
+    }
+
+    #endregion
+
+    #region Functions
 
     public static Color GetPlayerColor(int playerId)
     {
@@ -78,6 +92,22 @@ public static class AppManager
         return isPlayersReady[playerID];
     }
 
+    public static void Pause()
+    {
+        isUnpaused = !isUnpaused;
+    }
+
+    public static string GetPlayerShip(int playerID)
+    {
+        return playerShip[playerID];
+    }
+
+    public static void SetPlayerShip(int playerID, string ship)
+    {
+        playerShip[playerID] = "Prefab/Ships/" + ship;
+    }
+
+
     public static bool AvaliableColor(int playerId, Color color)
     {
         bool isAvaliable = true;
@@ -88,9 +118,12 @@ public static class AppManager
                 isAvaliable = false;
                 break;
             }
-        }        
+        }
         return isAvaliable;
-    }    
+    }
+
+    #endregion
+
 }
 
 

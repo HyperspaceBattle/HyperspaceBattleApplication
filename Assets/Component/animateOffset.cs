@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class animateOffset : MonoBehaviour {
+public class animateOffset : MonoBehaviour
+{
  
      public bool on = true;
 	public bool AxisX = false;
@@ -14,22 +15,27 @@ public class animateOffset : MonoBehaviour {
      
      private Material _material;
  
-     void Awake () {
-         _material = GetComponent<Renderer>().material;
+    void Awake ()
+    {
+        _material = GetComponent<Renderer>().material;
 		rate = scrollSpeed * Time.deltaTime;
-     }
+    }
  
-     void Update () {
-		if (AxisX) {
-			offsetX = Mathf.Min(maxTime, offsetX + rate);
-			_material.mainTextureOffset = new Vector2 (offsetX, 0);
-		}
+    void Update ()
+    {
+        if (AppManager.IsUnpaused)
+        {
+            if (AxisX)
+            {
+                offsetX = Mathf.Min(maxTime, offsetX + rate);
+                _material.mainTextureOffset = new Vector2(offsetX, 0);
+            }
 
-		if (AxisZ) {
-			offsetZ = Mathf.Min(maxTime, offsetZ + rate);
-			_material.mainTextureOffset = new Vector2 (0, offsetZ);
-		}
-         
- 
+            if (AxisZ)
+            {
+                offsetZ = Mathf.Min(maxTime, offsetZ + rate);
+                _material.mainTextureOffset = new Vector2(0, offsetZ);
+            }
+        }         
      }
  }

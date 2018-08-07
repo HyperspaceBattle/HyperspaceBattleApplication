@@ -8,15 +8,15 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications: []
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 0}
+  m_SourcePrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1827367505539760}
-  m_IsPrefabParent: 1
+  m_IsPrefabAsset: 1
 --- !u!1 &1827367505539760
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
+  serializedVersion: 6
   m_Component:
   - component: {fileID: 4413645763212582}
   - component: {fileID: 33681955464295518}
@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 65439167786972954}
   - component: {fileID: 114410541810744530}
   - component: {fileID: 54159912239238760}
-  - component: {fileID: 114431765536782518}
+  - component: {fileID: 114832793343125644}
   m_Layer: 8
   m_Name: Lasar
   m_TagString: Player1
@@ -35,7 +35,7 @@ GameObject:
 --- !u!4 &4413645763212582
 Transform:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
@@ -48,7 +48,7 @@ Transform:
 --- !u!23 &23236668190272182
 MeshRenderer:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   m_Enabled: 1
@@ -83,14 +83,14 @@ MeshRenderer:
 --- !u!33 &33681955464295518
 MeshFilter:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!54 &54159912239238760
 Rigidbody:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   serializedVersion: 2
@@ -105,7 +105,7 @@ Rigidbody:
 --- !u!65 &65439167786972954
 BoxCollider:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   m_Material: {fileID: 0}
@@ -117,7 +117,7 @@ BoxCollider:
 --- !u!114 &114410541810744530
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   m_Enabled: 1
@@ -143,15 +143,19 @@ MonoBehaviour:
   offsetScaleX: 0.75
   offsetScaleY: 0.75
   offsetScaleZ: 0.05
---- !u!114 &114431765536782518
+--- !u!114 &114832793343125644
 MonoBehaviour:
   m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1827367505539760}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9398a9ef438cc584181a886a7957b6fe, type: 3}
+  m_Script: {fileID: 11500000, guid: a095601ac8b477c45b0f022391557673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeTilDestruct: 7
+  parentNum: 0
+  tags:
+  - Enemy
+  - Bullet
+  timer: 1.5
