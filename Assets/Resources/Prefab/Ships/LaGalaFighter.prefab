@@ -852,7 +852,7 @@ MonoBehaviour:
   hyperSpeedMax: 1.5
   hyperExhaustRate: 2
   hyperRestoreRate: 0.2
-  bulletDelayTime: 0.3
+  bulletDelayTime: 5
   bulletVelocity: 80
   healthBars: 7
   leftStickRotation: 1
