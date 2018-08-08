@@ -13,7 +13,7 @@ public class ShipView : MonoBehaviour
     private bool isDamaged;
     private float gameTime;
 
-    [Range(0.0F, 100.0F)] public float RecoverRate = 5f;
+    //[Range(0.0F, 100.0F)] public float RecoverRate = 5f;
 
     public GameObject ChargingFX { get { return chargingFX; } }
 
@@ -57,7 +57,7 @@ public class ShipView : MonoBehaviour
     {
         try
         {
-            this.gameTime += Time.deltaTime * this.RecoverRate;
+            this.gameTime += Time.deltaTime;
             if (this.isDamaged && this.gameTime >= this.ship.Model.InvincibleTimer)
                 this.isDamaged = false;
         }
@@ -103,7 +103,7 @@ public class ShipView : MonoBehaviour
     }
 
 
-    public void Explode(int opponentID)
+    private void Explode(int opponentID)
     {
         try
         {

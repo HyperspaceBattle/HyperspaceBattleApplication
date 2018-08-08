@@ -191,7 +191,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: bdf2815a14a4d1e4cb1aa857e3ee7e04, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -252,8 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095601ac8b477c45b0f022391557673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentNum: 0
-  tags:
-  - Enemy
-  - Bullet
-  timer: 1.5
+  parentNum: 2
+  timer: 2
+  gunForward: {x: 0.00000056176054, y: -0, z: 1}
+  bulletSpeed: 70

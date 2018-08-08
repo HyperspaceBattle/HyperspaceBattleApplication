@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,7 +10,14 @@ public class AddForceDown : MonoBehaviour
     
     void FixedUpdate()
     {
-        if(AppManager.IsUnpaused)
-            transform.position += gameObject.transform.forward * Time.deltaTime * -(thrust);
+        try
+        { 
+            if(AppManager.IsUnpaused)
+                transform.position += gameObject.transform.forward * Time.deltaTime * -(thrust);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in AddForceDown's FixedUpdate: " + ex.Message.ToString());
+        }
     }
 }

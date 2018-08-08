@@ -8,9 +8,12 @@ public class DestroySimple : MonoBehaviour
 	public GameObject explosion;
 	
 	// Update is called once per frame
-	void OnTriggerEnter(Collider other) 
+	void OnCollisionEnter(Collision other) 
 	{
-		Instantiate(explosion, transform.position, transform.rotation);
-		Destroy (gameObject);
+        if (!other.gameObject.tag.Equals("Enemy"))
+        {
+            Instantiate(explosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+        }		
 	}
 }
