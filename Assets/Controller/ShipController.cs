@@ -91,10 +91,9 @@ public class ShipController : MonoBehaviour
                     {
                         foreach (GameObject gun in this.ship.Model.Guns)
                         {
-                            GameObject goBullet = (GameObject)Resources.Load(this.ship.Model.Bullet);
+                            GameObject goBullet = Instantiate(this.ship.Model.Bullet, gun.transform.position, gun.transform.rotation);
                             Bullet bullet = goBullet.GetComponent<Bullet>();
-                            bullet.Init(this.ship.Model.PlayerNumber, gun.transform, this.ship.Model.BulletVelocity);
-                            this.ship.View.SetBulletColor(goBullet);
+                            bullet.Init(this.ship.Model.PlayerNumber, gun.transform, this.ship.Model.BulletVelocity, this.ship.Model.ShipColor);
                             gun.GetComponent<AudioSource>().Play();
                             this.lastPressed = this.gameTime;
                         }

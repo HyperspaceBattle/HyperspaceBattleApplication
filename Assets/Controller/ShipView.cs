@@ -9,7 +9,7 @@ public class ShipView : MonoBehaviour
     private Ship ship;
     private GameObject chargingFX;
     private GameObject explosion;
-    private Material playerColor;
+    //private Material playerColor;
     private bool isDamaged;
     private float gameTime;
 
@@ -37,15 +37,19 @@ public class ShipView : MonoBehaviour
         this.gameObject.transform.parent = this.ship.transform;
 
         // Sets the meshes that display the ship
-        Material[] shipMaterials = this.ship.Model.GetComponent<MeshRenderer>().sharedMaterials;
+        Material[] shipMaterials = this.ship.Model.GetComponent<MeshRenderer>().materials;
 
         // Connects the Ship Color Material to the Player
-        this.playerColor = (Material)Resources.Load("Prefab/Materials Shared/PlayerColor" + this.ship.Model.PlayerNumber);
+        //this.playerColor = (Material)Resources.Load("Prefab/Materials Shared/PlayerColor");
 
         // Sets the ship's color depending on the color the player selected.
-        this.playerColor.SetColor("_Color", this.ship.Model.ShipColor);
-        shipMaterials[shipMaterials.Length - 1] = this.playerColor;
-        this.ship.Model.GetComponent<MeshRenderer>().sharedMaterials = shipMaterials;
+        //this.playerColor.SetColor("_Color", this.ship.Model.ShipColor);
+        for (int index = 0; index < shipMaterials.Length; index++)
+        {
+            if (shipMaterials[index].name.Equals("PlayerColor"))
+                shipMaterials[index].SetColor("_Color", this.ship.Model.ShipColor);
+        }
+        this.ship.Model.GetComponent<MeshRenderer>().materials = shipMaterials;
 
         // Sets the trail color depending on the player
         TrailRenderer children = (TrailRenderer)this.ship.Model.GetComponentInChildren(typeof(TrailRenderer));
@@ -65,23 +69,7 @@ public class ShipView : MonoBehaviour
         {
             Debug.LogError("Error in ShipView's FixedUpdate: " + ex.Message.ToString());
         }
-    }
-
-    public void SetBulletColor(GameObject bullet)
-    {
-        try
-        {
-            SetColor bulletColor = bullet.GetComponent<SetColor>();
-            if (bulletColor != null)
-                bulletColor.ColorSet(this.ship.Model.ShipColor);
-            else
-                Debug.LogWarning("Warning in SetBulletColor: Bullet is Null");
-        }
-        catch (Exception ex)
-        {
-            Debug.LogError("Error in ShipView's SetBulletColor: " + ex.Message.ToString());
-        }
-    }
+    }   
 
     public void Damage(int opponentNum)
     {

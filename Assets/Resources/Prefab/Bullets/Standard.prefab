@@ -14,10 +14,10 @@ GameObject:
   - component: {fileID: 11400000}
   - component: {fileID: 5400000}
   - component: {fileID: 114075408279433752}
-  - component: {fileID: 114785714860853048}
+  - component: {fileID: 114391991799227946}
   m_Layer: 8
   m_Name: Standard
-  m_TagString: Player1
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -191,7 +191,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: bdf2815a14a4d1e4cb1aa857e3ee7e04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -241,7 +241,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ce98373cbc4604a85c49bf2bdefb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114785714860853048
+  matParent: {fileID: 0}
+  matChildren: []
+--- !u!114 &114391991799227946
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -252,7 +254,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a095601ac8b477c45b0f022391557673, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parentNum: 2
-  timer: 2
-  gunForward: {x: 0.00000056176054, y: -0, z: 1}
-  bulletSpeed: 70
+  parentNum: 0
+  timer: 2.5
+  gunForward: {x: 0, y: 0, z: 0}
+  bulletSpeed: -1

@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SetColor : MonoBehaviour
 {
+    public Material matParent;
+    public Material[] matChildren;
+    void Awake()
+    {
+        // Grabs the main material of the bullet.
+        matParent = this.GetComponent<MeshRenderer>().material;
+
+        // Grabs all children materials under the bullet if they exist.
+        int childCount = this.transform.childCount;
+        matChildren = new Material[childCount];
+        for (int index = 0; index < childCount; index++)
+            matChildren[index] = this.transform.GetChild(index).GetComponent<MeshRenderer>().material;
+    }
     public void ColorSet(Color color)
     {
         try
         {
-            Material parent = this.GetComponent<MeshRenderer>().sharedMaterial;
-            if (parent != null)
-            {
-                Debug.Log("parent is not null");
-                parent.SetColor("_TintColor", color);
-            }
-
-            int childCount = this.gameObject.transform.childCount;
-            for (int index = 0; index < childCount; index++)
-            {
-                Material child = this.gameObject.transform.GetChild(index).GetComponent<MeshRenderer>().sharedMaterial;
-                if (child != null)
-                {
-                    child.SetColor("_TintColor", color);
-                }
-            }
+            matParent.SetColor("_TintColor", color);
+            foreach(Material child in matChildren)
+                child.SetColor("_TintColor", color);
         }
         catch (Exception ex)
         {

@@ -47,7 +47,7 @@ public class ShipModel : MonoBehaviour
     [System.Flags]
     public enum BulletType { Standard, Standard_Long_Range, Standard_Short_Range, Machine_Gun, Machine_Dual, Spreader, Pellet_Sm, Galaga_Sniper, Lasar }
     [SerializeField] private BulletType bullet;
-    public string Bullet { get { return "Prefab/Bullets/" + this.bullet.ToString(); } }
+    public GameObject Bullet { get { return (GameObject)Resources.Load("Prefab/Bullets/" + this.bullet.ToString()); } }
 
 
     void Awake()

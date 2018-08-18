@@ -12,12 +12,14 @@ public class Bullet : MonoBehaviour
     public float bulletSpeed = -1f;
     private float gameTime = 0f;
 
-    public void Init(int playerNum, Transform gun, float speed)
+    public void Init(int playerNum, Transform gun, float speed, Color color)
     {
         this.parentNum = playerNum;
         this.gunForward = -gun.forward;
         this.bulletSpeed = speed;
-        Rigidbody rigidbody = Instantiate(this.gameObject.GetComponent<Rigidbody>(), gun.transform.position, gun.transform.rotation) as Rigidbody;
+        //Rigidbody rigidbody = Instantiate(this.gameObject.GetComponent<Rigidbody>(), gun.transform.position, gun.transform.rotation) as Rigidbody;
+        SetColor bulletColor = this.GetComponent<SetColor>();
+        bulletColor.ColorSet(color);
     }
 
     void Awake()
