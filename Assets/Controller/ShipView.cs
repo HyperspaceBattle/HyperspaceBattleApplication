@@ -37,20 +37,16 @@ public class ShipView : MonoBehaviour
         this.gameObject.transform.parent = this.ship.transform;
 
         // Sets the meshes that display the ship
-        Material[] shipMaterials = this.ship.Model.GetComponent<MeshRenderer>().materials;
-
-        // Connects the Ship Color Material to the Player
-        //this.playerColor = (Material)Resources.Load("Prefab/Materials Shared/PlayerColor");
-
-        // Sets the ship's color depending on the color the player selected.
-        //this.playerColor.SetColor("_Color", this.ship.Model.ShipColor);
-        for (int index = 0; index < shipMaterials.Length; index++)
+        foreach (Material material in this.GetComponent<MeshRenderer>().materials)
         {
-            if (shipMaterials[index].name.Equals("PlayerColor"))
-                shipMaterials[index].SetColor("_Color", this.ship.Model.ShipColor);
+            if (material.name.Contains("PlayerColor"))
+                material.color = this.ship.Model.ShipColor;
         }
-        this.ship.Model.GetComponent<MeshRenderer>().materials = shipMaterials;
-
+        
+        // Sets the Reticule color if it exists.
+        if (this.ship.Model.Reticule != null)
+            this.ship.Model.Reticule.GetComponent<MeshRenderer>().material.SetColor("_TintColor", this.ship.Model.ShipColor);
+            
         // Sets the trail color depending on the player
         TrailRenderer children = (TrailRenderer)this.ship.Model.GetComponentInChildren(typeof(TrailRenderer));
         if (children != null)

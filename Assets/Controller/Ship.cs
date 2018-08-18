@@ -13,7 +13,8 @@ public class Ship : MonoBehaviour
 
     void Start()
     {
-        this.ship = Instantiate((GameObject)Resources.Load(AppManager.GetPlayerShip(this.playerID)), this.gameObject.transform.position, this.gameObject.transform.rotation);
+        GameObject goShip = (GameObject)Resources.Load(AppManager.GetPlayerShip(this.playerID));
+        this.ship = Instantiate(goShip, this.gameObject.transform.position, goShip.transform.rotation);
 
         // Connecting the Ship's Model.
         this.Model = this.ship.GetComponent<ShipModel>();

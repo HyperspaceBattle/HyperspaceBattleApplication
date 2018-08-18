@@ -21,6 +21,7 @@ public class ShipModel : MonoBehaviour
     private Color shipColor;
     private int playerID;
     private List<GameObject> guns;
+    private GameObject reticule;
     private HpMarker health;
     private Player player;
 
@@ -41,6 +42,7 @@ public class ShipModel : MonoBehaviour
     public int PlayerNumber { get { return this.playerID + 1; } }
     public Color ShipColor { get { return this.shipColor; } }
     public List<GameObject> Guns { get { return this.guns; } }
+    public GameObject Reticule { get { return this.reticule; } }
     public HpMarker Health { get { return this.health; } }
 
 
@@ -73,6 +75,8 @@ public class ShipModel : MonoBehaviour
                 this.guns.Add(child);
             else if (child.name.Contains("HpMarkers"))
                 this.health = child.GetComponent<HpMarker>();
+            else if (child.name.Equals("Reticule"))
+                this.reticule = child;
         }
     }
 
