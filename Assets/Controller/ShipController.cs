@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipController : MonoBehaviour
 {
@@ -26,8 +27,8 @@ public class ShipController : MonoBehaviour
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
         this.ship.Model.Player = ReInput.players.GetPlayer(this.ship.Model.PlayerID);
         this.ship.Model.Player.AddInputEventDelegate(OnPausePress, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Pause");
-        this.ship.Model.Player.AddInputEventDelegate(OnSpecialPress, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Select");
-        //this.ship.Model.Player.AddInputEventDelegate(OnSpecialPress, UpdateLoopType.Update, InputActionEventType.ButtonPressedForTime, "Select", new object[]{ 5.0f });
+        //this.ship.Model.Player.AddInputEventDelegate(OnSelectPress, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Select");
+        this.ship.Model.Player.AddInputEventDelegate(OnSelectPress, UpdateLoopType.Update, InputActionEventType.ButtonPressedForTime, "Select", new object[] { AppManager.ResetTimer });
         this.ship.Model.Player.AddInputEventDelegate(OnHyperSpeedPress, UpdateLoopType.Update, InputActionEventType.ButtonPressed, "HyperSpeed");
         this.ship.Model.Player.AddInputEventDelegate(OnHyperSpeedRelease, UpdateLoopType.Update, InputActionEventType.ButtonUnpressed, "HyperSpeed");
         this.ship.Model.Player.AddInputEventDelegate(OnFirePress, UpdateLoopType.Update, InputActionEventType.AxisActive, "RS Fire Horizontal");
@@ -41,25 +42,23 @@ public class ShipController : MonoBehaviour
         this.hasInitialized = true;
     }
 
-
     void FixedUpdate()
     {        
         try
         {
+            if (this.ship.Model.Player.GetAnyButtonDown())
+                AppManager.GameTimer = 0f;
+
             if (AppManager.IsUnpaused && this.hasInitialized)
             {
                 this.gameTime += Time.deltaTime * 1000;
 
                 if (this.hyperSpeed >= this.ship.Model.HyperSpeedMax)
-                {
                     this.hyperSpeed = this.ship.Model.HyperSpeedMax * .999F;
-                }
-
+                
                 if (this.hyperSpeed <= 0)
-                {
                     this.hyperSpeed = 0;
-                }
-            
+                            
                 Vector3 rotation = new Vector3(this.ship.Model.Player.GetAxis(this.ship.Model.HorizontalRotation), 0, this.ship.Model.Player.GetAxis(this.ship.Model.VerticalRotation)) + this.ship.View.gameObject.transform.position;
                 this.ship.View.gameObject.transform.LookAt(rotation, Vector3.up);
             
@@ -83,22 +82,16 @@ public class ShipController : MonoBehaviour
     {
         try
         {
-            if (AppManager.IsUnpaused)
-            {
-                if ((this.gameTime - this.lastPressed) > (FIRERATE / this.ship.Model.BulletDelayTime))
+            if (AppManager.IsUnpaused && ((this.gameTime - this.lastPressed) > (FIRERATE / this.ship.Model.BulletDelayTime)) && (!this.ship.Model.Player.GetButton("Hyperspeed")))
+            {                
+                foreach (GameObject gun in this.ship.Model.Guns)
                 {
-                    if (!this.ship.Model.Player.GetButton("Hyperspeed"))
-                    {
-                        foreach (GameObject gun in this.ship.Model.Guns)
-                        {
-                            GameObject goBullet = Instantiate(this.ship.Model.Bullet, gun.transform.position, gun.transform.rotation);
-                            Bullet bullet = goBullet.GetComponent<Bullet>();
-                            bullet.Init(this.ship.Model.PlayerNumber, gun.transform, this.ship.Model.BulletVelocity, this.ship.Model.ShipColor);
-                            gun.GetComponent<AudioSource>().Play();
-                            this.lastPressed = this.gameTime;
-                        }
-                    }
-                }
+                    GameObject goBullet = Instantiate(this.ship.Model.Bullet, gun.transform.position, gun.transform.rotation);
+                    Bullet bullet = goBullet.GetComponent<Bullet>();
+                    bullet.Init(this.ship.Model.PlayerNumber, gun.transform, this.ship.Model.BulletVelocity, this.ship.Model.ShipColor);
+                    gun.GetComponent<AudioSource>().Play();
+                    this.lastPressed = this.gameTime;
+                }                    
             }
         }
         catch (Exception ex)
@@ -110,7 +103,7 @@ public class ShipController : MonoBehaviour
     {        
         try
         {
-            if (AppManager.IsUnpaused)
+            if(AppManager.IsUnpaused)
             {
                 this.hyperSpeed += this.ship.Model.HyperRestoreRate * Time.deltaTime;
                 this.speed = this.ship.Model.SpeedNormal;
@@ -127,7 +120,7 @@ public class ShipController : MonoBehaviour
     {        
         try
         {            
-            if (AppManager.IsUnpaused)
+            if(AppManager.IsUnpaused)
             {
                 //but you have less than enough energy to start
                 if (this.hyperSpeed <= 0)
@@ -148,8 +141,7 @@ public class ShipController : MonoBehaviour
                 }
                 else
                 {
-                    this.speed = this.ship.Model.SpeedNormal;
-                    //hyperEnergy += hyperRestoreRate * Time.deltaTime;
+                    this.speed = this.ship.Model.SpeedNormal;                    
                 }
             }
         }
@@ -171,11 +163,11 @@ public class ShipController : MonoBehaviour
         }
     }
 
-    void OnSpecialPress(InputActionEventData data)
+    void OnSelectPress(InputActionEventData data)
     {
-        if (AppManager.IsUnpaused)
+        if (!AppManager.IsUnpaused)
         {
-            Debug.Log("It Works");
+            SceneManager.LoadScene("Resources/Scenes/Splash", LoadSceneMode.Single);
         }
     }
  }

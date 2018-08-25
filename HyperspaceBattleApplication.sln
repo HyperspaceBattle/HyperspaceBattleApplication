@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperspaceBattleApplication", "Assembly-CSharp.csproj", "{C7B0242F-6835-8190-94BB-80B260AA9A87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{C7B0242F-6835-8190-94BB-80B260AA9A87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperspaceBattleApplication", "Assembly-CSharp-Editor.csproj", "{DC4491B7-373C-1C2C-D0FB-145A4A5FFEC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{DC4491B7-373C-1C2C-D0FB-145A4A5FFEC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

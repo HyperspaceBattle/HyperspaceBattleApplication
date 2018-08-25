@@ -60,6 +60,6 @@ public class Victory : MonoBehaviour
         // I was having trouble with the singleton staying when resetting the game so I'm destroying it by name
         //singleton = GameObject.Find("$Initialization");
         //Destroy(singleton);
-        SceneManager.LoadScene("Resources/Scenes/ShipSelectMenu", LoadSceneMode.Single);
+        SceneManager.LoadScene("Resources/Scenes/Splash", LoadSceneMode.Single);
     }
 }

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Ship : MonoBehaviour
 {
@@ -13,8 +11,7 @@ public class Ship : MonoBehaviour
 
     void Start()
     {
-        GameObject goShip = (GameObject)Resources.Load(AppManager.GetPlayerShip(this.playerID));
-        this.ship = Instantiate(goShip, this.gameObject.transform.position, goShip.transform.rotation);
+        this.ship = Instantiate((GameObject)Resources.Load(AppManager.GetPlayerShip(this.playerID)), this.transform.position, this.transform.rotation);
 
         // Connecting the Ship's Model.
         this.Model = this.ship.GetComponent<ShipModel>();

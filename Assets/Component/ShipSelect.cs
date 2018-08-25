@@ -61,12 +61,14 @@ public class ShipSelect : MonoBehaviour
     private Color P1UNSELECTCOLOR = new Color(1f, 0, 0, 1f);
     private Color P2SELECTCOLOR = new Color(0, 0.08965492f, 0.3f, 1f);
     private Color P2UNSELECTCOLOR = new Color(0, 0.08965492f, 1f, 1f);
+    private Color shipColor;
     
     // Use this for initialization
     void Start ()
     {
         try
         {
+            AppManager.Reset();
             this.player = ReInput.players.GetPlayer(playerId);
             this.player.AddInputEventDelegate(MoveCursor, UpdateLoopType.Update, InputActionEventType.NegativeButtonJustPressed, "LS Move Horizontal");
             this.player.AddInputEventDelegate(MoveCursor, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "LS Move Horizontal");
@@ -92,8 +94,8 @@ public class ShipSelect : MonoBehaviour
             this.SelectShip(this.ShipIndex, 0);
             // Sets the color for the player
             this.ColorIndex = 0;
-            AppManager.SetPlayerColor(this.playerId, this.ShipColors[this.playerId,this.ColorIndex]);
-            this.playerColor.SetColor("_Color", AppManager.GetPlayerColor(this.playerId));
+            this.shipColor = this.ShipColors[this.playerId, this.ColorIndex];
+            this.playerColor.SetColor("_Color", this.shipColor);
 
             this.LevelList[AppManager.LevelIndex].SetActive(true);
             AppManager.SetIsPlayerReady(this.playerId, false);
@@ -102,6 +104,12 @@ public class ShipSelect : MonoBehaviour
         {
             Debug.LogError("Error in ShipSelect's Start, Player " + playerId + ": " + ex.Message.ToString());
         }
+    }
+
+    void FixedUpdate()
+    {
+        if (player.GetAnyButtonDown())
+            AppManager.GameTimer = 0f;
     }
 
     void MoveCursor(InputActionEventData data)
@@ -170,9 +178,8 @@ public class ShipSelect : MonoBehaviour
             if (!AppManager.GetIsPlayerReady(this.playerId))
             {
                 this.ColorIndex = (this.ColorIndex + 1) % this.ShipColors.GetLength(1);
-                Color newColor = this.ShipColors[this.playerId, this.ColorIndex];
-                AppManager.SetPlayerColor(this.playerId, newColor);
-                playerColor.SetColor("_Color", newColor);
+                this.shipColor = this.ShipColors[this.playerId, this.ColorIndex];
+                this.playerColor.SetColor("_Color", this.ShipColors[this.playerId, this.ColorIndex]);
             }
         }
         catch (Exception ex)
@@ -225,6 +232,7 @@ public class ShipSelect : MonoBehaviour
             else
                 AppManager.SetPlayerShip(this.playerId, this.ShipList[this.ShipIndex].name);
 
+            AppManager.SetPlayerColor(this.playerId, this.shipColor);
             AppManager.SetIsPlayerReady(this.playerId, !AppManager.GetIsPlayerReady(this.playerId));
             if (AppManager.PlayersReady)
                 this.LoadLevel();

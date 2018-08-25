@@ -25,7 +25,7 @@ public class Spawaner : MonoBehaviour
             int counter = 0;
             while(counter < hazardCount)
             {
-                if (AppManager.IsUnpaused)
+                if(AppManager.IsUnpaused)
                 {
                     Vector3 spawnPosition = new Vector3(Random.Range(-spawnValues.x, spawnValues.x), spawnValues.y, Random.Range(-spawnValues.z, spawnValues.z));
                     Quaternion spawnRotation = Quaternion.identity;

@@ -1,52 +1,22 @@
 ﻿using UnityEngine;
 
-public static class AppManager
+public static class AppManager 
 {
-    #region Private Function
-
+    #region Private Variables
+    [SerializeField] private static float resetTimer = 5.0f;
     [SerializeField] private static int playerCount = 2;
     private static Color[] playerColors = { Color.white, Color.white };
-    private static bool[] isPlayersReady = { false, false };
     private static string[] playerShip = { "", "" };
-    private static bool isUnpaused = true;
+    private static bool[] isPlayersReady = { false, false };
     private static int levelIndex = 0;
     private static int victor = -1;
+    private static float gameTimer = 0f;
+    private static bool isUnpaused = true;
+    private static string strResetScene = "Splash";
 
     #endregion
 
-    #region Properties
-
-    public static bool PlayersReady
-    {
-        get
-        {
-            bool results = true;
-            foreach (bool ready in isPlayersReady)
-                if (!ready)
-                    results = false;
-            return results;
-        }
-    }
-
-    public static bool IsUnpaused
-    {
-        get
-        {
-            return isUnpaused;
-        }
-    }
-
-    public static int LevelIndex
-    {
-        get
-        {
-            return levelIndex;
-        }
-        set
-        {
-            levelIndex = value;
-        }
-    }
+    #region Properties          
 
     public static int Victor
     {
@@ -68,9 +38,80 @@ public static class AppManager
         }
     }
 
+    public static bool IsUnpaused
+    {
+        get
+        {
+            return isUnpaused;
+        }
+    }
+
+    public static float ResetTimer
+    {
+        get
+        {
+            return resetTimer;
+        }
+    }
+
+    public static bool PlayersReady
+    {
+        get
+        {
+            bool results = true;
+            foreach (bool ready in isPlayersReady)
+                if (!ready)
+                    results = false;
+            return results;
+        }
+    }
+
+    public static int LevelIndex
+    {
+        get
+        {
+            return levelIndex;
+        }
+        set
+        {
+            levelIndex = value;
+        }
+    }
+
+    public static float GameTimer
+    {
+        get
+        {
+            return gameTimer;
+        }
+        set
+        {
+            gameTimer = value;
+        }
+    }
+    
+    public static string ResetScene
+    {
+        get
+        {
+            return strResetScene;
+        }
+    }
+
     #endregion
 
     #region Functions
+
+    public static void Reset()
+    {
+        playerColors = new Color[]{ Color.white, Color.white };
+        playerShip = new string[] { "", "" };
+        isPlayersReady = new bool[]{ false, false };
+        victor = -1;
+        levelIndex = 0;
+        gameTimer = 0f;
+        isUnpaused = true;
+    }
 
     public static Color GetPlayerColor(int playerId)
     {
@@ -81,22 +122,7 @@ public static class AppManager
     {
         playerColors[playerId] = color;
     }
-
-    public static void SetIsPlayerReady(int playerID, bool result)
-    {
-        isPlayersReady[playerID] = result;
-    }
-
-    public static bool GetIsPlayerReady(int playerID)
-    {
-        return isPlayersReady[playerID];
-    }
-
-    public static void Pause()
-    {
-        isUnpaused = !isUnpaused;
-    }
-
+        
     public static string GetPlayerShip(int playerID)
     {
         return playerShip[playerID];
@@ -106,20 +132,20 @@ public static class AppManager
     {
         playerShip[playerID] = "Prefab/Ships/" + ship;
     }
-
-
-    public static bool AvaliableColor(int playerId, Color color)
+    
+    public static void Pause()
     {
-        bool isAvaliable = true;
-        for (int index = 0; index < playerColors.Length; index++)
-        {
-            if (index != playerId && playerColors[index].Equals(color))
-            {
-                isAvaliable = false;
-                break;
-            }
-        }
-        return isAvaliable;
+        isUnpaused = !isUnpaused;
+    }
+
+    public static void SetIsPlayerReady(int playerID, bool result)
+    {
+        isPlayersReady[playerID] = result;
+    }
+
+    public static bool GetIsPlayerReady(int playerID)
+    {
+        return isPlayersReady[playerID];
     }
 
     #endregion

@@ -23,7 +23,7 @@ public class animateOffset : MonoBehaviour
  
     void Update ()
     {
-        if (AppManager.IsUnpaused)
+        if(AppManager.IsUnpaused)
         {
             if (AxisX)
             {

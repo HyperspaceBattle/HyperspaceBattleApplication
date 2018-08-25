@@ -32,7 +32,7 @@ public class Bullet : MonoBehaviour
     {
         try
         {
-            if (AppManager.IsUnpaused)
+            if(AppManager.IsUnpaused)
             {
                 // Moves the bullet in the direction the ship is facing.
                 if (this.bulletSpeed > 0)
@@ -51,7 +51,6 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision other)
     {
-        Debug.Log("Colliding with " + other.gameObject.name);
         try
         {            
             // Handles damaging a ship.

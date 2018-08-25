@@ -8,7 +8,7 @@ public class TimedSelfDestruct : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (AppManager.IsUnpaused)
+        if(AppManager.IsUnpaused)
         {
             this.gameTime += Time.deltaTime;
             if(this.gameTime > this.timeTilDestruct)

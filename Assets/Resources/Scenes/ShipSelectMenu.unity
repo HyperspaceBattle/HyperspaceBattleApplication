@@ -2019,54 +2019,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1341101744}
   m_Mesh: {fileID: 4300000, guid: 2b86392e2505d8748a5de73325783436, type: 3}
---- !u!1001 &1360677419
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893852173887578, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 114525532499437846, guid: a3da1ede864f29f4e8c686875d5489c0,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114525532499437846, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-  m_SourcePrefab: {fileID: 100100000, guid: a3da1ede864f29f4e8c686875d5489c0, type: 2}
-  m_IsPrefabAsset: 0
 --- !u!1 &1364072132
 GameObject:
   m_ObjectHideFlags: 0
@@ -2076,6 +2028,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1364072133}
   - component: {fileID: 1364072134}
+  - component: {fileID: 1364072135}
   m_Layer: 0
   m_Name: Menu
   m_TagString: Untagged
@@ -4450,6 +4403,18 @@ MonoBehaviour:
     customControllerIdCounter: 0
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
+--- !u!114 &1364072135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1364072132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07ba566492aa7f74b89fc7fb4999bc4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetTime: 60
 --- !u!1 &1365373595
 GameObject:
   m_ObjectHideFlags: 0

@@ -107,6 +107,7 @@ GameObject:
   - component: {fileID: 4774378958483256}
   - component: {fileID: 114000346448154846}
   - component: {fileID: 114476833988479208}
+  - component: {fileID: 114367445740192044}
   m_Layer: 0
   m_Name: FramerateManager
   m_TagString: Untagged
@@ -592,6 +593,18 @@ MonoBehaviour:
   m_UiShowAnamorphicBloomScales: 0
   m_UiShowStarBloomScales: 0
   m_UiShowHeightSampling: 0
+--- !u!114 &114367445740192044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1437067523455172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5992cb987dbfb74f8be04585c43b567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resetTime: 300
 --- !u!114 &114476833988479208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -833,7 +846,7 @@ MonoBehaviour:
     - _id: 9
       _name: Select
       _type: 1
-      _descriptiveName: Action0
+      _descriptiveName: Action1
       _positiveDescriptiveName: 
       _negativeDescriptiveName: 
       _behaviorId: 0
@@ -986,17 +999,6 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 7
-        _elementType: 1
-        _elementIdentifierId: 22
-        _axisRange: 0
-        _invert: 0
-        _axisContribution: 0
-        _keyboardKeyCode: 0
-        _modifierKey1: 0
-        _modifierKey2: 0
-        _modifierKey3: 0
-      - _actionCategoryId: 0
         _actionId: 6
         _elementType: 1
         _elementIdentifierId: 12
@@ -1008,7 +1010,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 6
+        _actionId: 7
         _elementType: 1
         _elementIdentifierId: 13
         _axisRange: 0
@@ -1019,7 +1021,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 5
+        _actionId: 7
         _elementType: 1
         _elementIdentifierId: 14
         _axisRange: 0
@@ -1399,6 +1401,17 @@ MonoBehaviour:
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 9
+        _elementType: 1
+        _elementIdentifierId: 12
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 0
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
     - id: 3
       categoryId: 1
       layoutId: 0
@@ -1495,7 +1508,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 5
+        _actionId: 7
         _elementType: 1
         _elementIdentifierId: 10
         _axisRange: 0
@@ -1517,7 +1530,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 6
+        _actionId: 5
         _elementType: 1
         _elementIdentifierId: 11
         _axisRange: 0
@@ -1550,7 +1563,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 7
+        _actionId: 9
         _elementType: 1
         _elementIdentifierId: 13
         _axisRange: 0
@@ -1799,7 +1812,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 7
+        _actionId: 9
         _elementType: 1
         _elementIdentifierId: 13
         _axisRange: 0
@@ -1810,7 +1823,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: -1
+        _actionId: 9
         _elementType: 1
         _elementIdentifierId: 22
         _axisRange: 0
@@ -2927,6 +2940,17 @@ MonoBehaviour:
         _invert: 0
         _axisContribution: 0
         _keyboardKeyCode: 13
+        _modifierKey1: 0
+        _modifierKey2: 0
+        _modifierKey3: 0
+      - _actionCategoryId: 0
+        _actionId: 9
+        _elementType: 1
+        _elementIdentifierId: -1
+        _axisRange: 0
+        _invert: 0
+        _axisContribution: 0
+        _keyboardKeyCode: 114
         _modifierKey1: 0
         _modifierKey2: 0
         _modifierKey3: 0
