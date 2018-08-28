@@ -22,12 +22,6 @@ public class Bullet : MonoBehaviour
         bulletColor.ColorSet(color);
     }
 
-    void Awake()
-    {
-        //foreach (string tag in tags)
-        //    this.destroyableTags.Add(tag);
-    }
-
     void FixedUpdate()
     {
         try
@@ -52,11 +46,7 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision other)
     {
         try
-        {            
-            // Handles damaging a ship.
-            ShipView oppShipView = other.gameObject.GetComponent<ShipView>();
-            if (oppShipView != null)
-                oppShipView.Damage(this.parentNum);
+        {
             Destroy(this.gameObject);
         }
         catch (Exception ex)

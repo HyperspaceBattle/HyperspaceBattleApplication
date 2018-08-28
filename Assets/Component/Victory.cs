@@ -8,35 +8,38 @@ public class Victory : MonoBehaviour
 {
     //REWIRED CONTROLLER SUPPORT
     //================================================================
-    [SerializeField] private float Timer;
+    [SerializeField] private float Timer = 10f;
     public MeshRenderer winner;
-    private Rewired.Player[] players; // The Rewired Player
-	private Vector3 moveVector;
-	private GameObject singleton;
+    private Player[] players; // The Rewired Player
     private float gameTime;
 
     void Awake ()
     {
         gameTime = 0f;
-        int playerCount = AppManager.PlayerCount;
-        players = new Player[playerCount];
+        this.players = new Player[AppManager.PlayerCount];
         //rewire start settings
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-        for (int id = 0; id < playerCount; id++)
+        for (int id = 0; id < AppManager.PlayerCount; id++)
         {
             players[id] = ReInput.players.GetPlayer(id);
             players[id].AddInputEventDelegate(OnPausePress, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed, "Pause");
         }
-        winner.sharedMaterial = (Material)Resources.Load("Prefab/Materials Shared/P" + AppManager.Victor + "Wins"); 
+        winner.material = (Material)Resources.Load("Materials/P" + AppManager.Victor + "Wins"); 
     }
 
 	void FixedUpdate ()
     {
-        gameTime += Time.deltaTime;
-        if (gameTime < Timer)
+        try
         {
-            Debug.Log("Changing by Timer.");
-            MainMenu();
+            gameTime += Time.deltaTime;
+            if (gameTime > Timer)
+            {
+                MainMenu(true);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in Victory's FixedUpdate: " + ex.Message.ToString());
         }
     }
 
@@ -44,8 +47,7 @@ public class Victory : MonoBehaviour
     {
         try
         {
-            Debug.Log("Changing by Start Press.");
-            MainMenu();
+            MainMenu(false);
         }
         catch (Exception ex)
         {
@@ -53,13 +55,13 @@ public class Victory : MonoBehaviour
         }
     }
 
-    void MainMenu()
+    void MainMenu(bool bolTimer)
     {
         foreach (Player player in players)
             player.ClearInputEventDelegates();
-        // I was having trouble with the singleton staying when resetting the game so I'm destroying it by name
-        //singleton = GameObject.Find("$Initialization");
-        //Destroy(singleton);
-        SceneManager.LoadScene("Resources/Scenes/Splash", LoadSceneMode.Single);
+        if(bolTimer)
+            SceneManager.LoadScene("Splash", LoadSceneMode.Single);
+        else
+            SceneManager.LoadScene("ShipSelectMenu", LoadSceneMode.Single);
     }
 }

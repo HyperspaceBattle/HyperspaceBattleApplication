@@ -59,25 +59,44 @@ public class ShipView : MonoBehaviour
         {
             this.gameTime += Time.deltaTime;
             if (this.isDamaged && this.gameTime >= this.ship.Model.InvincibleTimer)
+            {
                 this.isDamaged = false;
+            }
         }
         catch (Exception ex)
         {
             Debug.LogError("Error in ShipView's FixedUpdate: " + ex.Message.ToString());
         }
-    }   
+    }
 
-    public void Damage(int opponentNum)
+    void OnCollisionEnter(Collision other)
+    {
+        try
+        {
+            // Handles damaging a ship.
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            if (bullet != null)
+            {
+                this.Damage(bullet.parentNum);
+            }
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipView's OnCollisionEnter: " + ex.Message.ToString());
+        }
+    }
+
+    private void Damage(int opponentNum)
     {
         try
         {
             if (this.ship.Model.PlayerNumber != opponentNum && !this.isDamaged)
             {
-                bool isDead = this.ship.Model.Health.Damage();
-                if (isDead)
-                    Explode(opponentNum);
                 this.isDamaged = true;
                 this.gameTime = 0f;
+                bool isDead = this.ship.Model.Health.Damage();
+                if (!isDead)
+                    Explode(opponentNum);
             }
         }
         catch (Exception ex)

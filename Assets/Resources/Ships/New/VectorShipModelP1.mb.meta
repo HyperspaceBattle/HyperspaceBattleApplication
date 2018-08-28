@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: 38d94352e51788041af5c3f8b5056f93
 ModelImporter:
-  serializedVersion: 22
+  serializedVersion: 23
   fileIDToRecycleName:
     100000: Basemesh_female_heroic:Group13243
     100002: Basemesh_female_heroic:Group18600
@@ -170,6 +170,8 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
+    previousCalculatedGlobalScale: 1
+    hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0

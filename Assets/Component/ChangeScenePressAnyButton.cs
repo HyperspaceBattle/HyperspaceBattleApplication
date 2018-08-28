@@ -15,11 +15,10 @@ public class ChangeScenePressAnyButton : MonoBehaviour
     void Awake ()
     {
         this.gameTime = 0f;
-        int playerCount = AppManager.PlayerCount;
-        this.players = new Player[playerCount];
+        this.players = new Player[AppManager.PlayerCount];
         //rewire start settings
         // Get the Rewired Player object for this player and keep it for the duration of the character's lifetime
-        for (int id = 0; id < playerCount; id++)
+        for (int id = 0; id < AppManager.PlayerCount; id++)
         {
             this.players[id] = ReInput.players.GetPlayer(id);
             this.players[id].AddInputEventDelegate(OnInputUpdate, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed);
@@ -30,9 +29,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour
     {
         try
         {
-            foreach (Player player in this.players)
-                player.ClearInputEventDelegates();
-            this.NextScene();
+            this.NextScene(false);
         }
         catch (Exception ex)
         {
@@ -46,11 +43,8 @@ public class ChangeScenePressAnyButton : MonoBehaviour
         {
             this.gameTime += Time.deltaTime;
             if (this.gameTime >= this.seconds)
-            {
-                if (goToSplashScreen)
-                    SceneManager.LoadScene(AppManager.ResetScene, LoadSceneMode.Single);
-                else
-                    this.NextScene();
+            {                
+                this.NextScene(true);
             }
         }
         catch (Exception ex)
@@ -59,11 +53,17 @@ public class ChangeScenePressAnyButton : MonoBehaviour
         }        
     }
 
-    void NextScene()
+    void NextScene(bool bolTimer)
     {
         try
         {
-            SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
+            foreach (Player player in this.players)
+                player.ClearInputEventDelegates();
+
+            if (bolTimer)
+                SceneManager.LoadScene(AppManager.ResetScene, LoadSceneMode.Single);
+            else
+                SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         }
         catch (Exception ex)
         {
