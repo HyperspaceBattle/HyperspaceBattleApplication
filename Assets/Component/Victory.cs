@@ -47,6 +47,7 @@ public class Victory : MonoBehaviour
     {
         try
         {
+            Debug.Log("PRESSED");
             MainMenu(false);
         }
         catch (Exception ex)

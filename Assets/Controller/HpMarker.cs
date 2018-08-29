@@ -48,7 +48,6 @@ public class HpMarker : MonoBehaviour
 
     public bool Damage()
     {
-        Debug.Log("Health Marker Count = " + hpMarkers.Count);
         GameObject hpMarker = hpMarkers.Dequeue();
         hpMarker.SetActive(false);
         return hpMarkers.Count > 0;

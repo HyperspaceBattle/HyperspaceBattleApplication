@@ -8,7 +8,6 @@ public class ShipView : MonoBehaviour
 {
     private Ship ship;
     private GameObject chargingFX;
-    private GameObject explosion;
     //private Material playerColor;
     private bool isDamaged;
     private float gameTime;
@@ -19,9 +18,6 @@ public class ShipView : MonoBehaviour
 
     void Awake()
     {
-        // Creates the explosion GameObject.
-        this.explosion = (GameObject)Resources.Load("Prefab/FXexplosion");
-
         // ChargingFx
         this.chargingFX = Instantiate((GameObject)Resources.Load("Prefab/ChargingFx"), this.gameObject.transform.position, this.gameObject.transform.rotation);
         this.chargingFX.transform.parent = this.gameObject.transform;
@@ -95,7 +91,7 @@ public class ShipView : MonoBehaviour
                 this.isDamaged = true;
                 this.gameTime = 0f;
                 bool isDead = this.ship.Model.Health.Damage();
-                if (!isDead)
+                if (isDead)
                     Explode(opponentNum);
             }
         }
@@ -110,17 +106,10 @@ public class ShipView : MonoBehaviour
     {
         try
         {
-            Time.timeScale = .1f;
             AppManager.Victor = opponentID;
-            //spawn explosion
-            Instantiate(this.explosion, this.ship.transform.position, this.ship.transform.rotation);
+            GameObject explosion = Instantiate((GameObject)Resources.Load("Prefab/FXexplosion"), this.ship.transform.position, this.ship.transform.rotation);
             this.ship.gameObject.SetActive(false);
-            Time.timeScale = 1f;
-
-            this.ship.Model.Player.ClearInputEventDelegates();
-            this.ship.Model.Player = null;
-            //Destroy(this.ship);
-            SceneManager.LoadScene("Resources/Scenes/Victory", LoadSceneMode.Additive);
+            Invoke("NextScene", explosion.GetComponent<TimedSelfDestruct>().timeTilDestruct + 0.5f);
         }
         catch (Exception ex)
         {
@@ -128,4 +117,17 @@ public class ShipView : MonoBehaviour
         }
     }
 
+    private void NextScene()
+    {
+        try
+        {
+            this.ship.Model.Player.ClearInputEventDelegates();
+            this.ship.Model.Player = null;
+            SceneManager.LoadScene("Resources/Scenes/Victory", LoadSceneMode.Additive);
+        }
+        catch (Exception ex)
+        {
+            Debug.LogError("Error in ShipView's NextScene: " + ex.Message.ToString());
+        }
+    }
 }
