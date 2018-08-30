@@ -13,7 +13,6 @@ public class ShipModel : MonoBehaviour
     [SerializeField] private float hyperRestoreRate = 1f;
     [SerializeField] private float bulletDelayTime = 10f;
     [SerializeField] private float bulletVelocity = 80f;
-    [SerializeField] private float invincibleTimer = 5f;
     [SerializeField] private int healthBars = 5;
     [SerializeField] private bool leftStickRotation = true;
     private string strHorizontalRot;
@@ -24,6 +23,7 @@ public class ShipModel : MonoBehaviour
     private GameObject reticule;
     private HpMarker health;
     private Player player;
+    private float invincibleTimer = 2f;
 
     public float SpeedNormal { set { this.speedNormal = value; } get { return this.speedNormal; } }
     public float SpeedMax { set { this.speedMax = value; } get { return this.speedMax; } }

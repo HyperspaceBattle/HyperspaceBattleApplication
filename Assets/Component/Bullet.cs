@@ -47,7 +47,9 @@ public class Bullet : MonoBehaviour
     {
         try
         {
-            Destroy(this.gameObject);
+            Bullet bullet = other.gameObject.GetComponent<Bullet>();
+            if(!(bullet != null && bullet.parentNum == this.parentNum))
+                Destroy(this.gameObject);
         }
         catch (Exception ex)
         {

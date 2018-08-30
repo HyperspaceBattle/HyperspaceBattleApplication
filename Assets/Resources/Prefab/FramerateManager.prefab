@@ -767,8 +767,8 @@ MonoBehaviour:
         _layoutId: 0
       _defaultCustomControllerMaps: []
       _startingCustomControllers: []
-      _assignMouseOnStart: 1
-      _assignKeyboardOnStart: 1
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
       _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
@@ -1464,7 +1464,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 2
+        _actionId: 4
         _elementType: 1
         _elementIdentifierId: 6
         _axisRange: 0
@@ -1475,7 +1475,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 1
+        _actionId: 3
         _elementType: 1
         _elementIdentifierId: 7
         _axisRange: 0
@@ -1486,7 +1486,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 1
+        _actionId: 3
         _elementType: 1
         _elementIdentifierId: 8
         _axisRange: 0
@@ -1497,7 +1497,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 2
+        _actionId: 4
         _elementType: 1
         _elementIdentifierId: 9
         _axisRange: 0
@@ -1508,7 +1508,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 7
+        _actionId: 5
         _elementType: 1
         _elementIdentifierId: 10
         _axisRange: 0
@@ -1530,7 +1530,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 5
+        _actionId: 6
         _elementType: 1
         _elementIdentifierId: 11
         _axisRange: 0
@@ -1552,7 +1552,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 7
+        _actionId: 9
         _elementType: 1
         _elementIdentifierId: 12
         _axisRange: 0
@@ -1563,7 +1563,7 @@ MonoBehaviour:
         _modifierKey2: 0
         _modifierKey3: 0
       - _actionCategoryId: 0
-        _actionId: 9
+        _actionId: 7
         _elementType: 1
         _elementIdentifierId: 13
         _axisRange: 0
