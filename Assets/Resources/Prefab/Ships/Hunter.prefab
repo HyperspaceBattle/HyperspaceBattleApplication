@@ -1419,10 +1419,10 @@ MonoBehaviour:
   speedMax: 2
   hyperSpeedMax: 1
   hyperExhaustRate: 2
-  hyperRestoreRate: 0.2
+  hyperRestoreRate: 0.05
   bulletDelayTime: 8
   bulletVelocity: 90
-  healthBars: 9
+  healthBars: 3
   leftStickRotation: 0
   bullet: 0
 --- !u!114 &114578139857686284

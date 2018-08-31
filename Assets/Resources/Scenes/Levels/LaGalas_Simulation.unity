@@ -345,6 +345,7 @@ GameObject:
   m_Component:
   - component: {fileID: 280595514}
   - component: {fileID: 280595515}
+  - component: {fileID: 280595516}
   m_Layer: 0
   m_Name: AudioMenuTrack
   m_TagString: Untagged
@@ -371,7 +372,7 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 280595513}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 98bcb814c6af46644936cd0cd2b1df5d, type: 3}
@@ -460,6 +461,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &280595516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 280595513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3eadcb8b8cd9ef4ea955fc38353c826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &306735476
 Prefab:
   m_ObjectHideFlags: 0
@@ -1087,7 +1099,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 919302802}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -128.00003, y: 0, z: -876}
+  m_LocalPosition: {x: -128.00003, y: 0, z: -132.8}
   m_LocalScale: {x: 1, y: 1, z: 256.0001}
   m_Children:
   - {fileID: 404804029}
@@ -1497,6 +1509,14 @@ Prefab:
         type: 2}
       propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[11]._actionId
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4765398883367758, guid: cd46acf24205bfe4eb0095c35ba97349, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -10.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4686482540790346, guid: cd46acf24205bfe4eb0095c35ba97349, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10.579998
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd46acf24205bfe4eb0095c35ba97349, type: 2}

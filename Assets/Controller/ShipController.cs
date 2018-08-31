@@ -1,7 +1,5 @@
 ﻿using Rewired;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using System; 
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +14,7 @@ public class ShipController : MonoBehaviour
     private float lastPressed;
     private bool hasInitialized = false;
     private const int FIRERATE = 1000;
+
 
     public void Init(GameObject parent)
     {

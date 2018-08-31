@@ -11,6 +11,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour
 	public int seconds = 60;
     private Player[] players; // The Rewired Player
     private float gameTime;
+    private string timerScene;
 
     void Awake ()
     {
@@ -23,6 +24,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour
             this.players[id] = ReInput.players.GetPlayer(id);
             this.players[id].AddInputEventDelegate(OnInputUpdate, UpdateLoopType.Update, InputActionEventType.ButtonJustPressed);
         }
+        timerScene = (goToSplashScreen) ? AppManager.ResetScene : sceneToLoad;
     }
 
     void OnInputUpdate(InputActionEventData data)
@@ -61,7 +63,7 @@ public class ChangeScenePressAnyButton : MonoBehaviour
                 player.ClearInputEventDelegates();
 
             if (bolTimer)
-                SceneManager.LoadScene(AppManager.ResetScene, LoadSceneMode.Single);
+                SceneManager.LoadScene(timerScene, LoadSceneMode.Single);
             else
                 SceneManager.LoadScene(sceneToLoad, LoadSceneMode.Single);
         }

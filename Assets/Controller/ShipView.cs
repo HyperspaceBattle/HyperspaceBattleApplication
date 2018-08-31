@@ -123,7 +123,7 @@ public class ShipView : MonoBehaviour
         {
             this.ship.Model.Player.ClearInputEventDelegates();
             this.ship.Model.Player = null;
-            SceneManager.LoadScene("Resources/Scenes/Victory", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Resources/Scenes/Victory", LoadSceneMode.Single);
         }
         catch (Exception ex)
         {

@@ -1225,6 +1225,6 @@ MonoBehaviour:
   hyperRestoreRate: 0.5
   bulletDelayTime: 8
   bulletVelocity: 80
-  healthBars: 3
+  healthBars: 4
   leftStickRotation: 0
   bullet: 0
