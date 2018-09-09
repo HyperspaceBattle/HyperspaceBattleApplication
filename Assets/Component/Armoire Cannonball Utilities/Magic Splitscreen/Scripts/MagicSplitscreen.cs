@@ -66,6 +66,10 @@ public class MagicSplitscreen : MonoBehaviour
     [Tooltip("Whether to show a separation stripe when the screen splits")]
 #endif
     public bool showSeparator;
+	
+	public GameObject SeperatorStrip;
+	private float distanceMod;
+		
     #endregion
 
     #region Private variables
@@ -261,6 +265,14 @@ public class MagicSplitscreen : MonoBehaviour
             // Position the splitscreen mask in front of the second camera
             this.PositionSplitscreenMask(this.secondaryCamera, this.player2.position, this.player2.position + this.cameraDisplacement2d);
             this.separatorRenderer.enabled = this.isSeparatorUsable && this.showSeparator;
+
+			//grabs magnitude and multiplies it by numbers generated from guesswork
+			distanceMod = distanceBetweenPlayers.sqrMagnitude ;
+			distanceMod *= 0.000625f;
+			distanceMod *= 0.0015f;
+			
+			//applies new scale to seperator
+			SeperatorStrip.transform.localScale = new Vector3(distanceMod, SeperatorStrip.transform.localScale.y, SeperatorStrip.transform.localScale.z);
         }
         else
         {

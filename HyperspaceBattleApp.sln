@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperspaceBattleApp", "Assembly-CSharp.csproj", "{3D481E46-6779-B05A-886A-DDBAF78DF2F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp", "Assembly-CSharp.csproj", "{3D481E46-6779-B05A-886A-DDBAF78DF2F5}"
 EndProject
-Project("{2F9CAD4B-5B37-ECA8-375C-5A1EEB68102C}") = "HyperspaceBattleApp", "Assembly-UnityScript.unityproj", "{C7CE0306-78C7-325A-D950-E26C0428EC7F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HyperspaceBattleApp", "Assembly-CSharp-Editor.csproj", "{FE0AF572-A87E-412C-99C4-0FFF95BC1FCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{FE0AF572-A87E-412C-99C4-0FFF95BC1FCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +15,6 @@ Global
 		{3D481E46-6779-B05A-886A-DDBAF78DF2F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D481E46-6779-B05A-886A-DDBAF78DF2F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D481E46-6779-B05A-886A-DDBAF78DF2F5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C7CE0306-78C7-325A-D950-E26C0428EC7F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C7CE0306-78C7-325A-D950-E26C0428EC7F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C7CE0306-78C7-325A-D950-E26C0428EC7F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C7CE0306-78C7-325A-D950-E26C0428EC7F}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FE0AF572-A87E-412C-99C4-0FFF95BC1FCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FE0AF572-A87E-412C-99C4-0FFF95BC1FCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE0AF572-A87E-412C-99C4-0FFF95BC1FCA}.Release|Any CPU.ActiveCfg = Release|Any CPU

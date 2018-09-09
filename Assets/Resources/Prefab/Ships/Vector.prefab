@@ -289,7 +289,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833021802253994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.267677, y: 27.580723, z: 6.000272}
+  m_LocalPosition: {x: -27.267677, y: 49.31, z: 6.000272}
   m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 4630691174870374}
@@ -1370,8 +1370,8 @@ MonoBehaviour:
   hyperSpeedMax: 0.5
   hyperExhaustRate: 3
   hyperRestoreRate: 0.37
-  bulletDelayTime: 7.5
+  bulletDelayTime: 10
   bulletVelocity: 100
   healthBars: 6
   leftStickRotation: 1
-  bullet: 0
+  bullet: 6

@@ -1227,4 +1227,4 @@ MonoBehaviour:
   bulletVelocity: 80
   healthBars: 4
   leftStickRotation: 0
-  bullet: 0
+  bullet: 7

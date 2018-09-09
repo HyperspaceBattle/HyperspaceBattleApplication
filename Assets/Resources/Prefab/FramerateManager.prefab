@@ -73,6 +73,9 @@ GameObject:
   - component: {fileID: 124742369668314958}
   - component: {fileID: 81683448011452150}
   - component: {fileID: 114109699956481994}
+  - component: {fileID: 114810057361104284}
+  - component: {fileID: 114438856240723172}
+  - component: {fileID: 114717133751410134}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -605,6 +608,45 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   resetTime: 300
+--- !u!114 &114438856240723172
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364073157681342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a338d679868f45439ea43c7ae035e36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    visualizeFocus: 0
+    tweakMode: 0
+    filteringQuality: 2
+    apertureShape: 0
+    apertureOrientation: 0
+  focus:
+    transform: {fileID: 0}
+    focusPlane: 20
+    range: 35
+    nearPlane: 2.5
+    nearFalloff: 15
+    farPlane: 37.5
+    farFalloff: 1000
+    nearBlurRadius: 15
+    farBlurRadius: 1.51
+  bokehTexture:
+    texture: {fileID: 0}
+    scale: 1
+    intensity: 50
+    threshold: 2
+    spawnHeuristic: 0.15
+  m_FilmicDepthOfFieldShader: {fileID: 4800000, guid: bff0e5458fb914f5c9985ba4f09171d2,
+    type: 3}
+  m_MedianFilterShader: {fileID: 4800000, guid: a058b22d4123add4b807e832604e5e7b,
+    type: 3}
+  m_TextureBokehShader: {fileID: 4800000, guid: c961b8ed1f00f924d804ada5143bd0e8,
+    type: 3}
 --- !u!114 &114476833988479208
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2999,13 +3041,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a196d5d765fb14042b67229726e69d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraDistance: 45
+  cameraDistance: 50
   cameraRotation: {x: 65, y: 0, z: 0}
-  triggerDistance: 20
+  triggerDistance: 40
   primaryCamera: {fileID: 20666253470626702}
   player1: {fileID: 4765398883367758}
   player2: {fileID: 4686482540790346}
   showSeparator: 1
+  SeperatorStrip: {fileID: 1259655047797278}
+--- !u!114 &114717133751410134
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364073157681342}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f4675e73110dec44be926f7ec053451, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resolution: 1
 --- !u!114 &114803609109287976
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3017,6 +3072,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce282f227533a8843a2bf1b6ef7c93f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114810057361104284
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1364073157681342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc35e0180670ab4e8d2f9439137791f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SMAA:
+    settings:
+      debugPass: 0
+      quality: 2
+      edgeDetectionMethod: 1
+    quality:
+      diagonalDetection: 1
+      cornerDetection: 1
+      threshold: 0.1
+      depthThreshold: 0.01
+      maxSearchSteps: 16
+      maxDiagonalSearchSteps: 8
+      cornerRounding: 25
+      localContrastAdaptationFactor: 2
+    predication:
+      enabled: 1
+      threshold: 1
+      scale: 2
+      strength: 0.4
+    temporal:
+      enabled: 0
+      fuzzSize: 2
+  m_FXAA:
+    preset:
+      qualitySettings:
+        subpixelAliasingRemovalAmount: 0.75
+        edgeDetectionThreshold: 0.166
+        minimumRequiredLuminance: 0.0833
+      consoleSettings:
+        subpixelSpreadAmount: 0.5
+        edgeSharpnessAmount: 8
+        edgeDetectionThreshold: 0.125
+        minimumRequiredLuminance: 0.05
+  m_Method: 0
 --- !u!114 &114863628214959554
 MonoBehaviour:
   m_ObjectHideFlags: 1

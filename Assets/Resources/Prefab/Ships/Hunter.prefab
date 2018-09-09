@@ -699,7 +699,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: aeff6dfc69dfd0248b745433d8abdd97, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1424,7 +1424,7 @@ MonoBehaviour:
   bulletVelocity: 90
   healthBars: 3
   leftStickRotation: 0
-  bullet: 0
+  bullet: 5
 --- !u!114 &114578139857686284
 MonoBehaviour:
   m_ObjectHideFlags: 1
