@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 4686482540790346}
   - component: {fileID: 143795368236506598}
   - component: {fileID: 114559574280931556}
+  - component: {fileID: 114814381795473718}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Ship
@@ -144,6 +145,7 @@ GameObject:
   - component: {fileID: 4765398883367758}
   - component: {fileID: 143555293296786538}
   - component: {fileID: 114092870028390302}
+  - component: {fileID: 114526057301800352}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Ship
@@ -214,7 +216,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1364073157681342}
   m_LocalRotation: {x: 0.53729963, y: -0, z: -0, w: 0.8433914}
-  m_LocalPosition: {x: -54, y: 45, z: -47}
+  m_LocalPosition: {x: -54, y: 45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4774378958483256}
@@ -3015,6 +3017,35 @@ MonoBehaviour:
     customControllerIdCounter: 0
   _controllerDataFiles: {fileID: 11400000, guid: d21d2b20df8369642b76aafbb2576ba7,
     type: 2}
+--- !u!114 &114526057301800352
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1840558686996334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ab123b07a05ab47bb782f9111659a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockPositionX: 0
+  lockPositionY: 1
+  lockPositionZ: 0
+  offsetPositionX: 0
+  offsetPositionY: 0
+  offsetPositionZ: 0
+  lockRotationX: 0
+  lockRotationY: 0
+  lockRotationZ: 0
+  offsetRotationX: 0
+  offsetRotationY: 0
+  offsetRotationZ: 0
+  lockScaleX: 0
+  lockScaleY: 0
+  lockScaleZ: 0
+  offsetScaleX: 1
+  offsetScaleY: 1
+  offsetScaleZ: 1
 --- !u!114 &114559574280931556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3041,9 +3072,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a196d5d765fb14042b67229726e69d91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraDistance: 50
+  cameraDistance: 60
   cameraRotation: {x: 65, y: 0, z: 0}
-  triggerDistance: 40
+  triggerDistance: 35
   primaryCamera: {fileID: 20666253470626702}
   player1: {fileID: 4765398883367758}
   player2: {fileID: 4686482540790346}
@@ -3117,6 +3148,35 @@ MonoBehaviour:
         edgeDetectionThreshold: 0.125
         minimumRequiredLuminance: 0.05
   m_Method: 0
+--- !u!114 &114814381795473718
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1432775532137432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ab123b07a05ab47bb782f9111659a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockPositionX: 0
+  lockPositionY: 1
+  lockPositionZ: 0
+  offsetPositionX: 0
+  offsetPositionY: 0
+  offsetPositionZ: 0
+  lockRotationX: 0
+  lockRotationY: 0
+  lockRotationZ: 0
+  offsetRotationX: 0
+  offsetRotationY: 0
+  offsetRotationZ: 0
+  lockScaleX: 0
+  lockScaleY: 0
+  lockScaleZ: 0
+  offsetScaleX: 1
+  offsetScaleY: 1
+  offsetScaleZ: 1
 --- !u!114 &114863628214959554
 MonoBehaviour:
   m_ObjectHideFlags: 1

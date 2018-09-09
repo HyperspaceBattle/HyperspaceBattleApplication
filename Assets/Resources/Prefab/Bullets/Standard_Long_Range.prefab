@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.26, y: 0.26, z: 0.52}
+  m_LocalScale: {x: 0.16560349, y: 0.26, z: 1.21108}
   m_Children:
   - {fileID: 4000010531842828}
   m_Father: {fileID: 0}
@@ -170,8 +170,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012210196736}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 6.8}
-  m_LocalScale: {x: 3.158635, y: 14.578308, z: 3.158632}
+  m_LocalPosition: {x: 0, y: 0, z: 6.7999997}
+  m_LocalScale: {x: 6.03852, y: 0.8257097, z: 3.8461556}
   m_Children: []
   m_Father: {fileID: 400000}
   m_RootOrder: 0
@@ -242,10 +242,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parentNum: 0
-  tags:
-  - Enemy
-  - Bullet
   timer: 1.5
+  gunForward: {x: 0, y: 0, z: 0}
+  bulletSpeed: -1
 --- !u!114 &114989097433688338
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -257,3 +256,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55ce98373cbc4604a85c49bf2bdefb86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  matParent: {fileID: 0}
+  matChildren: []

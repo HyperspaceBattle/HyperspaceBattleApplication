@@ -283,7 +283,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1150183577524212}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: -21.512913, y: 9.998708, z: 0.4946765}
+  m_LocalPosition: {x: -40.415474, y: 31.16, z: -12.155001}
   m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
   m_Children:
   - {fileID: 4671047275496912}
@@ -351,7 +351,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1830732105505556}
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0.00000028088027}
-  m_LocalPosition: {x: -0.49587324, y: -0.505766, z: 7}
+  m_LocalPosition: {x: -0.49587324, y: -0.505766, z: 5.87}
   m_LocalScale: {x: 0.37531984, y: 0.37531984, z: 0.37531984}
   m_Children: []
   m_Father: {fileID: 4161104068061806}
@@ -403,8 +403,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1932784935847426}
   m_LocalRotation: {x: -1, y: -0, z: 0.00000028088027, w: 0}
-  m_LocalPosition: {x: -0.49587324, y: -0.505766, z: -0.628756}
-  m_LocalScale: {x: 1.8765992, y: 1.8765992, z: 1.8765992}
+  m_LocalPosition: {x: 0, y: -0.69, z: -0.28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4161104068061806}
   m_RootOrder: 0
@@ -1119,15 +1119,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 0.6
-  speedMax: 5
-  hyperSpeedMax: 0.5
+  speedMax: 17
+  hyperSpeedMax: 2
   hyperExhaustRate: 2.5
   hyperRestoreRate: 0.1
   bulletDelayTime: 6
   bulletVelocity: 70
   healthBars: 8
   leftStickRotation: 0
-  bullet: 3
+  bullet: 5
 --- !u!198 &198425647187814782
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -1376,8 +1376,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.03
-      minScalar: 0.01
+      scalar: 0.1
+      minScalar: 0.05
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -1752,7 +1752,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 8
-    angle: 11.49
+    angle: 45.51
     length: 0.95087564
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1

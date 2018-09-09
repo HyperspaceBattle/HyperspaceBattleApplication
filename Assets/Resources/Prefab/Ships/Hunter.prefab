@@ -306,7 +306,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1709706750869798}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0.6313809, y: -2.896, z: 19.543194}
+  m_LocalPosition: {x: 0.6313809, y: -2.896, z: 10.7}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4455788061221692}
@@ -460,7 +460,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1911681892571556}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.350813, y: 10.122902, z: 4.0920906}
+  m_LocalPosition: {x: -40.253372, y: 31.85218, z: -8.557585}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4791377844936342}
@@ -1416,15 +1416,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speedNormal: 0.4
-  speedMax: 2
-  hyperSpeedMax: 1
+  speedMax: 13
+  hyperSpeedMax: 8
   hyperExhaustRate: 2
   hyperRestoreRate: 0.05
   bulletDelayTime: 8
   bulletVelocity: 90
   healthBars: 3
   leftStickRotation: 0
-  bullet: 5
+  bullet: 2
 --- !u!114 &114578139857686284
 MonoBehaviour:
   m_ObjectHideFlags: 1
