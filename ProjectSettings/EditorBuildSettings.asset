@@ -14,9 +14,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/Controls.unity
     guid: ab79602902fdabb478e5247d7776a616
-  - enabled: 0
-    path: Assets/Resources/Scenes/ShipSelect.unity
-    guid: 7162a3eb0eddde44f908715902a90cd9
   - enabled: 1
     path: Assets/Resources/Scenes/ShipSelectMenu.unity
     guid: 2a669fa27ef5ccb49ab0fc2f045f4bbb
@@ -26,15 +23,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Resources/Scenes/Levels/Vector_Debris_Cluster.unity
     guid: 5f5169a827b2a5d45a0c6af7b59be6d1
-  - enabled: 0
-    path: Assets/Resources/Scenes/Lvl-LaGalas Simulation.unity
-    guid: c837e1f109a016748a90722930da0518
   - enabled: 1
     path: Assets/Resources/Scenes/Levels/LaGalas_Simulation.unity
     guid: b7080e706b84bb941ac6c3d20c9258ae
   - enabled: 1
-    path: Assets/Resources/Scenes/Levels/Hunter_Space_Colony.unity
-    guid: fe34ce2a79a9f8d49907a4a245e4237e
+    path: Assets/Resources/Scenes/Levels/RuinedSpaceLab.unity
+    guid: 74f41d58cd8823547a4a826ec7758814
   - enabled: 1
     path: Assets/Resources/Scenes/Levels/Stal_Multiverse.unity
     guid: 9aabb3c776f967d4589797be25af1d4d

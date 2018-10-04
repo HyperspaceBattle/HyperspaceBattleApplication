@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Resources/Scenes/Levels/Hyperspace.unity
+- path: Assets/Resources/Scenes/Levels/RuinedSpaceLab.unity
   isLoaded: 1
   isActive: 1
